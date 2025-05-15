@@ -1,0 +1,41 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.toolbar {
+  background: #f0f0f0;
+  padding: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.editor-body {
+  display: flex;
+  flex: 1;
+}
+
+.sidebar {
+  width: 200px;
+  background: #eee;
+  padding: 10px;
+}
+
+.sidebar.right {
+  border-left: 1px solid #ccc;
+}
+
+.canvas {
+  flex: 1;
+  background: #fff;
+  padding: 20px;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
