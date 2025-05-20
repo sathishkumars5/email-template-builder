@@ -1,4 +1,6 @@
 import React from 'react';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 import { EditorProvider } from './context';
 import HeaderToolbar from './components/HeaderToolbar/HeaderToolbar';
 import BlockSelector from './components/BlockSelector/BlockSelector';
@@ -9,16 +11,18 @@ import './styles/index.css';
 
 const App = () => {
   return (
-    <EditorProvider>
-      <div className="app-container">
-        <HeaderToolbar />
-        <div className="editor-body">
-          <BlockSelector />
-          <CanvasEditor />
-          <PropertiesPanel />
+    <DndProvider backend={HTML5Backend}>
+        <EditorProvider>
+        <div className="app-container">
+          <HeaderToolbar />
+          <div className="editor-body">
+            <BlockSelector />
+            <CanvasEditor />
+            <PropertiesPanel />
+          </div>
         </div>
-      </div>
-    </EditorProvider>
+      </EditorProvider>
+    </DndProvider>
   );
 };
 
