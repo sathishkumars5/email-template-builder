@@ -1,21 +1,26 @@
+
 import React, { createContext, useState } from 'react';
 
-// 1. Create context
-export const EditorContext = createContext([]);
+export const EditorContext = createContext();
 
-// 2. Create provider component
 export const EditorProvider = ({ children }) => {
-  // 3. Define shared states here
-  const [state, setState] = useState([]);
+  const [component, setComponent] = useState([]);
+  const [selected, setSelected] = useState(null);
 
-  // 4. Define functions to update state
-  const addBlock = (addComponent)=>{ 
-    setState((currentComponent) =>[...currentComponent,addComponent])
-  }
-  // function selectBlock() { ... }
+  const addBlock = (newComponent) => {
+    setComponent((prev) => [...prev, newComponent]);
+  };
+
+  const updateElement = (id, updatedComponent) => {
+    setComponent((prev) =>
+      prev.map((comp) => (comp.id === id ? { ...comp, ...updatedComponent } : comp))
+    );
+  };
 
   return (
-    <EditorContext.Provider value={{ state, addBlock }}>
+    <EditorContext.Provider
+      value={{ component, addBlock, updateElement, selected, setSelected }}
+    >
       {children}
     </EditorContext.Provider>
   );

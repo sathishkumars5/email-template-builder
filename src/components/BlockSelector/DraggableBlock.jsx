@@ -6,23 +6,26 @@ const DraggableBlock = ({ type,lable}) => {
     type,
     item: {type},
     collect: (monitor) => ({
-      isDragging: !!monitor.isDragging(),
+      isDragging: monitor.isDragging(),
     }),
   });
 
   return (
-    <button
-      ref={dragRef}
-      style={{
-        opacity: isDragging ? 0.5 : 1,
-        cursor: 'move',
-        padding: '8px 12px',
-        marginBottom: '10px',
-      }}
-    >
+    <div>
+      <button
+        ref={dragRef}
+        style={{
+          opacity: isDragging ? 0.5 : 1,
+          cursor: 'move',
+          padding: '8px 12px',
+          marginBottom: '10px',
+        }}
+      >
       {lable}
     </button>
-  );
+  
+    </div>
+  )
 };
   
 export default DraggableBlock;
