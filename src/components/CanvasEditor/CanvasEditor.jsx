@@ -92,7 +92,7 @@ const CanvasEditor = () => {
         className="canvas-container"
         style={{
           border: '1px solid',
-          height: '80vh',
+          // height: '80vh',
           width: '80%',
           display: 'flex',
           flexDirection: 'column',
@@ -106,7 +106,7 @@ const CanvasEditor = () => {
         </div>
 
         {/* Main */}
-        <div ref={mainDropRef} style={{ flex: 1, overflowY: 'auto', border: '1px solid gray' }}>
+        <div ref={mainDropRef} style={{  minHeight: '400px', flex: 1, overflowY: 'auto', border: '1px solid gray' }}>
           {component.filter((comp) => comp.area === 'main').map(renderComponent)}
         </div>
 
@@ -115,6 +115,10 @@ const CanvasEditor = () => {
           {component.filter((comp) => comp.area === 'footer').map(renderComponent)}
         </div>
       </div>
+    <div className="canvas">
+      <p>Drag blocks here</p>
+      <p>hii</p>
+    </div>
     </div>
   );
 };
