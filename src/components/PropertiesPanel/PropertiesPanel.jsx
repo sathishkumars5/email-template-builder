@@ -1,14 +1,34 @@
-// Updates selected block’s properties
+// // import React from 'react'
+// // import { structure } from '../../data/structure'
+// // const PropertiesPanel = () => {
+// //     console.log(structure.components[0].content);
+    
+// //   return (
+// //     <div>hii</div>
+// //   )
+// // }
 
-import React from 'react';
+// // export default PropertiesPanel
 
-const PropertiesPanel = () => {
-  return (
-    <div className="sidebar right">
-      <p>Element Settings</p>
-      
-    </div>
-  );
-};
+// import React from 'react'
+// import { structure } from '../../data/structure'
 
-export default PropertiesPanel;
+// const PropertiesPanel = () => {
+
+//   if (structure) {
+    
+//   }
+//   // const firstComponent = structure.components[0]
+
+//   console.log('Content:', firstComponent.content)
+//   console.log('Style:', firstComponent.style)
+
+//   return (
+//     <div>
+//       <h3>Component Preview:</h3>
+//       <p style={firstComponent.style}>{firstComponent.content}</p>
+//     </div>
+//   )
+// }
+
+// export default PropertiesPanel
