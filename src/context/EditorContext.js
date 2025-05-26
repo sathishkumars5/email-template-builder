@@ -4,25 +4,29 @@ import { structure } from '../data/structure';
 export const EditorContext = createContext();
 
 export const EditorProvider = ({ children }) => {
-  const [components,setComponents ] = useState(structure.components);
+  const [components, setComponents] = useState(structure.components);
 
   const [template, setTemplate] = useState(structure.templetes[0][1]);
 
+  const [selected, setSelected] = useState({ section: null, id: null });
 
-    // console.log('Template:', template);
-
-  const [selected, setSelected] = useState(null);
-
+  console.log('UseContext Selected:', selected);
 
   return (
     <EditorContext.Provider
-      value={{template,setTemplate,components,setComponents, selected, setSelected}}
+      value={{
+        template,
+        setTemplate,
+        components,
+        setComponents,
+        selected,
+        setSelected
+      }}
     >
       {children}
     </EditorContext.Provider>
   );
 };
-
 
 
 

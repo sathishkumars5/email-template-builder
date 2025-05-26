@@ -1,11 +1,9 @@
 import React from 'react';
+import DropZone from '../../utils/DropZone';
 import useEditorContext from '../../hooks/useEditorContext';
-import renderBlock from '../../utils/renderBlock'; 
 
 const CanvasEditor = () => {
   const { template } = useEditorContext();
-
-  console.log('Template:', template);
 
   if (!template || typeof template !== 'object') {
     return (
@@ -15,40 +13,21 @@ const CanvasEditor = () => {
     );
   }
 
-  const { header = [], Container = [], footer = [] } = template;
-
   return (
-    <div className="canvas" style={{ padding: '1rem', border: '1px dashed gray' }}>
-      {/* Header Section */}
-      <div style={{backgroundColor:'yellow', padding:'1rem', margin:'0 2rem'}}>
-        {header.map((block) => (
-          <div key={block.id} style={{ marginBottom: '0.5rem' }}>
-            {renderBlock(block)}
-            {console.log(header)}
-            
-          </div>
-        ))}
-      </div>
+    <div className="canvas" style={{ padding: '1rem', border: '1px dashed gray'}}>
+      
+      <DropZone section="header" />
 
-      {/* Container Section */}
-      <div style={{backgroundColor:'yellow', padding:'1rem', margin:'0 2rem'}}>
-        {Container.map((block) => (
-          <div key={block.id} style={{ marginBottom: '0.5rem' }}>
-            {renderBlock(block)}
-          </div>
-        ))}
-      </div>
+      <DropZone section="Container" />
 
-      {/* Footer Section */}
-      <div style={{backgroundColor:'yellow', padding:'1rem', margin:'0 2rem'}}>
-        {footer.map((block) => (
-          <div key={block.id} style={{ marginBottom: '0.5rem' }}>
-            {renderBlock(block)}
-          </div>
-        ))}
-      </div>
+      <DropZone section="footer" />
     </div>
   );
 };
 
 export default CanvasEditor;
+
+
+
+
+

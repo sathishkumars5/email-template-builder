@@ -30,8 +30,8 @@ templetes:[
             src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJ1TI5SEdhXCfEOOdKeuqohbW_EFUHEOqTiA&s', 
             alt: 'Logo',
             style: {
-              height: '100px', 
-              width: '100px'
+              height: '70px', 
+              width: '70px'
             }
         },
         {
@@ -40,11 +40,19 @@ templetes:[
             type:'text',
             content: 'Email Template',
             style: {
-              color: 'black' 
+              color: 'black',
+              textAlign:'center'
+            },
+
+            parentStyle:{
+
             }
           
         }
       ],
+      headerStyle:{
+
+      },
       Container: [
         {
           
@@ -52,7 +60,8 @@ templetes:[
             type:'text',
             content: 'Type your text',
             style: {
-              color: 'black'
+              color: 'black',
+              textAlign:'center'
             }
           
         },
@@ -74,7 +83,8 @@ templetes:[
             type:'text',
             content: 'Type your text',
             style: {
-              color: 'black'
+              color: 'black',
+              textAlign:'center'
             }
           
         },

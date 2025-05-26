@@ -4,14 +4,19 @@ const renderBlock = (block) => {
   switch (block.type) {
     case 'button':
       return (
-        <button id={block.id} style={block.style}>
+        <button
+          id={block.id}
+          style={block.style}
+          onClick={() => console.log(block.id)} 
+        >
           {block.content}
         </button>
       );
 
     case 'text':
       return (
-        <p id={block.id} style={block.style}>
+        <p id={block.id} style={block.style} onBlur={()=>console.log()
+        }>
           {block.content}
         </p>
       );
