@@ -1,6 +1,7 @@
 import React from 'react';
 import DropZone from '../../utils/DropZone';
 import useEditorContext from '../../hooks/useEditorContext';
+// import '../../styles/';
 
 const CanvasEditor = () => {
   const { template } = useEditorContext();

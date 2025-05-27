@@ -34,8 +34,11 @@ body, html {
 
 .canvas {
   flex: 1;
-  background: #fff;
+  /* background: #e00707; */
   padding: 20px;
+  /* align-items: ; */
+  
   border-left: 1px solid #ccc;
   border-right: 1px solid #ccc;
 }
+

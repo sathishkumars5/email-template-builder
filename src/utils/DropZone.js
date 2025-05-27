@@ -35,12 +35,12 @@ const DropZone = ({ section }) => {
     })
   });
 
-  const background = isOver ? '#d3f9d8' : 'yellow';
+  const background = isOver ? '#d3f9d8' : '';
 
   return (
-    <div ref={dropRef} style={{ backgroundColor: background, padding: '1rem', margin: '0 2rem' }}>
+    <div ref={dropRef} style={{ backgroundColor: background, padding: '1rem', margin: '0 2rem',...(section === 'header' ? template.headerStyle : {}),}}>
       {(template[section]).map((block) => (
-        <div key={block.id} style={{ marginBottom: '0.5rem' }}>
+<div key={block.id} >
           {renderBlock(block)}
         </div>
       ))}
