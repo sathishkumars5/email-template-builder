@@ -36,14 +36,7 @@ const DropZone = ({ section }) => {
   const background = isOver ? '#d3f9d8' : '';
 
   return (
-<<<<<<< HEAD
-    <div ref={dropRef} style={{ backgroundColor: background, padding: '1rem', margin: '0 2rem',...(section === 'header' ? template.headerStyle : {}),}}>
-      {(template[section]).map((block) => (
-<div key={block.id} >
-          {renderBlock(block)}
-        </div>
-      ))}
-=======
+
     <div ref={dropRef} style={{ backgroundColor: background, padding: '1rem', margin: '0 2rem' }}>
       {(template[section] || []).map((block) => {
         const isSelected = selected?.id === block.id && selected?.section === section;
@@ -63,7 +56,6 @@ const DropZone = ({ section }) => {
           </div>
         );
       })}
->>>>>>> 6a58997c5312aa20ff281b9553882775725751f5
     </div>
   );
 };

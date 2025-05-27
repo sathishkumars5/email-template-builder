@@ -1,128 +1,3 @@
-// export const structure = {
-//   components:[
-//  {
-//     id: Math.floor(1000 + Math.random() * 9000),
-//     type: "button",
-//     content: 'Button',
-//     style: {
-//     color: 'white',
-//     backgroundColor: 'blue'
-//     }
-//   },
-//   {
-//     id: Math.floor(1000 + Math.random() * 9000),
-//     type:'text',
-//     content: 'text',
-//     style: {
-//         color: 'black'
-//     }
-//   }
-//   ],
-
-
-// templetes:[
-//   {
-//     1: {
-//       header: [
-//         {
-//             id: Math.floor(1000 + Math.random() * 9000),
-//             type: 'img',
-//             src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJ1TI5SEdhXCfEOOdKeuqohbW_EFUHEOqTiA&s', 
-//             alt: 'Logo',
-//             style: {
-//               height: '70px', 
-//               width: '70px'
-//             }
-//         },
-//         {
-        
-//             id: Math.floor(1000 + Math.random() * 9000),
-//             type:'text',
-//             content: 'Email Template',
-//             style: {
-//               color: 'black',
-//               textAlign:'center'
-//             },
-
-//             parentStyle:{
-
-//             }
-          
-//         }
-//       ],
-//       headerStyle:{
-
-//       },
-//       Container: [
-//         {
-          
-//             id: Math.floor(1000 + Math.random() * 9000),
-//             type:'text',
-//             content: 'Type your text',
-//             style: {
-//               color: 'black',
-//               textAlign:'center'
-//             }
-          
-//         },
-//         {
-          
-//             id: Math.floor(1000 + Math.random() * 9000),
-//             type: 'img',
-//             src: 'https://cdn.pixabay.com/photo/2016/01/26/17/15/gmail-1162901_1280.png', 
-//             alt: 'Any Image',
-//             style: {
-//               height: '100px',
-//               width: '100px'
-//             }
-          
-//         },
-//         {
-          
-//             id: Math.floor(1000 + Math.random() * 9000),
-//             type:'text',
-//             content: 'Type your text',
-//             style: {
-//               color: 'black',
-//               textAlign:'center'
-//             }
-          
-//         },
-//         {
-//           id: Math.floor(1000 + Math.random() * 9000),
-//           type: "button",
-//           content: 'Button',
-//           style: {
-//           color: 'white',
-//           backgroundColor: 'blue'
-//           }
-//         },
-//       ],
-//       footer: [
-//         {
-//             id: Math.floor(1000 + Math.random() * 9000),
-//             type: 'text',
-//             content: 'add Address or other details',
-//             style: {
-//               color: 'black'
-//             }
-//         },
-//         {
-//           id: Math.floor(1000 + Math.random() * 9000),
-//           type: "button",
-//           content: 'Button',
-//           style: {
-//           color: 'white',
-//           backgroundColor: 'blue'
-//           }
-//         },
-//       ]
-//     }
-//   }
-// ] 
-// };
-
-
 export const structure = {
   components:[
     {
@@ -172,11 +47,7 @@ export const structure = {
           }
         ],
         headerStyle:{
-<<<<<<< HEAD
-          //  backgroundColor: 'green',
-=======
            backgroundColor: 'green',
->>>>>>> 6a58997c5312aa20ff281b9553882775725751f5
           // width:"100%",
           // display:"flex",
           // alignItems:"center",
@@ -208,11 +79,7 @@ export const structure = {
           {
             id: Math.floor(1000 + Math.random() * 9000),
             type:'text',
-<<<<<<< HEAD
-            content: `You’ve received this message because your email address has been registered with our site. Please click the button below to verify your email address and confirm that you are the owner of this account.`,
-=======
-            content: 'You’ve received this message because your email address has been registered with our site. Please click the button below to verify your email address and confirm that you are the owner of this account.',
->>>>>>> 6a58997c5312aa20ff281b9553882775725751f5
+            content:"You’ve received this message because your email address has been registered with our site. Please click the button below to verify your email address and confirm that you are the owner of this account.",
             style: {
               color: 'black',
               textAlign: 'center'
@@ -221,11 +88,7 @@ export const structure = {
           {
             id: Math.floor(1000 + Math.random() * 9000),
             type:'text',
-<<<<<<< HEAD
-            content: `If you did not register with us, please disregard this email.`,
-=======
-            content: 'If you did not register with us, please disregard this email.',
->>>>>>> 6a58997c5312aa20ff281b9553882775725751f5
+            content: "If you did not register with us, please disregard this email.",
             style: {
               color: 'black',
               textAlign: 'center',
@@ -249,25 +112,19 @@ export const structure = {
           {
             id: Math.floor(1000 + Math.random() * 9000),
             type:'text',
-<<<<<<< HEAD
-            content: `Once confirmed, this email will be uniquely associated with your account.`,
-=======
-            content: 'Once confirmed, this email will be uniquely associated with your account.',
->>>>>>> 6a58997c5312aa20ff281b9553882775725751f5
+            content: "Once confirmed, this email will be uniquely associated with your account.",
             style: {
               color: 'black',
               textAlign: 'center'
             }
           }
         ],
-<<<<<<< HEAD
-=======
 
         footer: [
           {
             id: Math.floor(1000 + Math.random() * 9000),
             type:'text',
-            content: 'Style Casual © 2021 Style Casual, Inc. All Rights Reserved.<br>4562 Hazy Panda Limits, Chair Crossing, Kentucky, US, 607898',
+            content: "Style Casual © 2021 Style Casual, Inc. All Rights Reserved.<br>4562 Hazy Panda Limits, Chair Crossing, Kentucky, US, 607898",
             style: {
               color: 'black',
               fontSize: '12px',
@@ -277,36 +134,7 @@ export const structure = {
           {
             id: Math.floor(1000 + Math.random() * 9000),
             type:'text',
-            content: 'Visit Us | Privacy Policy | Terms of Use',
-            style: {
-              color: 'black',
-              fontSize: '12px',
-              textAlign: 'center',
-              marginTop: '10px'
-            }
-          }
-        ]
-      }
-    }
-  ]
-};
->>>>>>> 6a58997c5312aa20ff281b9553882775725751f5
-
-        footer: [
-          {
-            id: Math.floor(1000 + Math.random() * 9000),
-            type:'text',
-            content: `Style Casual © 2021 Style Casual, Inc. All Rights Reserved.<br>4562 Hazy Panda Limits, Chair Crossing, Kentucky, US, 607898`,
-            style: {
-              color: 'black',
-              fontSize: '12px',
-              textAlign: 'center'
-            }
-          },
-          {
-            id: Math.floor(1000 + Math.random() * 9000),
-            type:'text',
-            content: `Visit Us | Privacy Policy | Terms of Use`,
+            content:" Visit Us | Privacy Policy | Terms of Use",
             style: {
               color: 'black',
               fontSize: '12px',
