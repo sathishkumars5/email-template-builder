@@ -1,12 +1,23 @@
-import {React} from 'react';
+import React from 'react';
 import useEditorContext from '../../hooks/useEditorContext';
+import { Dragable } from './Dragable';
 
 export const Text = () => {
-    const {components} = useEditorContext();
-    const componentBtn = components.find(item => item.type === 'text');
-    return (
-      <div id= {Math.floor(1000 + Math.random() * 9000)}>
-        <button id={componentBtn.id} style={componentBtn.style}>{componentBtn.content}</button>
-      </div> 
-    );
-}
+  const { components } = useEditorContext();
+  const componentText = components.find(item => item.type === 'text');
+
+  if (!componentText) return null;
+
+  return (
+    <Dragable data={componentText}> 
+        <div id={Math.floor(1000 + Math.random() * 9000)}>
+        <p
+          id={componentText.id}
+          style={componentText.style}
+        >
+          {componentText.content}
+        </p>
+      </div>
+    </Dragable>
+  );
+};

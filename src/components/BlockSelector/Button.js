@@ -4,19 +4,18 @@ import { Dragable } from './Dragable';
 
 export const Button = () => {
   const { components } = useEditorContext();
-  const componentBtn = components.find(item => item.type === 'button');
+  const componentText = components.find(item => item.type === 'button');
 
-  if (!componentBtn) return null;
+  if (!componentText) return null;
 
   return (
-    <Dragable>
-      <div id={Math.floor(1000 + Math.random() * 9000)}>
+    <Dragable data={componentText}> 
+        <div id={Math.floor(1000 + Math.random() * 9000)}>
         <button
-          id={componentBtn.id}
-          style={componentBtn.style}
-          type={componentBtn.type}
+          id={componentText.id}
+          style={componentText.style}
         >
-          {componentBtn.content}
+          {componentText.content}
         </button>
       </div>
     </Dragable>

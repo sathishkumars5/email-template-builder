@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // // import React from 'react'
 // // import { structure } from '../../data/structure'
 // // const PropertiesPanel = () => {
@@ -12,6 +13,19 @@
 
 // import React from 'react'
 // import { structure } from '../../data/structure'
+=======
+import React from 'react';
+import PropertyBlock from '../PropertiesPanel/PropertyBlock';
+
+const PropertiesPanel = () => {
+  return (
+    <div className="properties-panel">
+      <h3>Properties</h3>
+      <PropertyBlock />
+    </div>
+  );
+};
+>>>>>>> 91e20d02886bedc132e32f6618d981eee1f0241a
 
 // const PropertiesPanel = () => {
 

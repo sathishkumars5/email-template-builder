@@ -1,20 +1,61 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+
+const TextBlock = ({ block }) => {
+  const [isEditable, setIsEditable] = useState(false);
+  const [content, setContent] = useState(block?.content || '');
+  const pRef = useRef(null);
+
+  const handleClick = () => {
+    setIsEditable(true);
+  };
+
+  const handleBlur = (e) => {
+    const newText = e.target.innerText;
+    setIsEditable(false);
+    setContent(newText);
+    console.log("Updated content:", newText);
+  };
+
+  useEffect(() => {
+    if (isEditable && pRef.current) {
+      pRef.current.focus();
+    }
+  }, [isEditable]);
+
+  return (
+    <p
+      id={block.id}
+      ref={pRef}
+      style={block.style}
+      contentEditable={isEditable}
+      suppressContentEditableWarning={true}
+      onClick={handleClick}
+      onBlur={handleBlur}
+    >
+      {content}
+    </p>
+  );
+};
 
 const renderBlock = (block) => {
+  if (!block || typeof block !== 'object' || !block.type) {
+    return <div style={{ color: 'red' }}>Invalid block</div>;
+  }
+
   switch (block.type) {
     case 'button':
       return (
-        <button id={block.id} style={block.style}>
-          {block.content}
+        <button
+          id={block.id}
+          style={block.style}
+          onClick={() => console.log('Button clicked:', block.id)}
+        >
+          {block.content || 'Button'}
         </button>
       );
 
     case 'text':
-      return (
-        <p id={block.id} style={block.style}>
-          {block.content}
-        </p>
-      );
+      return <TextBlock block={block} />;
 
     case 'img':
       return (
