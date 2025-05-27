@@ -6,21 +6,44 @@ export const EditorContext = createContext();
 export const EditorProvider = ({ children }) => {
   const [components, setComponents] = useState(structure.components);
 
-  const [template, setTemplate] = useState(structure.templetes[0][1]);
+   const [template, setTemplate] = useState(structure.templetes[0][1]);
 
-  const [selected, setSelected] = useState({ section: null, id: null });
 
-  console.log('UseContext Selected:', selected);
+  const [selected, setSelected] = useState({
+    section: null, 
+    id: null       
+  });
+
+
+  const updateBlock = (section, id, newProps) => {
+    setTemplate((prevTemplate) => {
+      const updatedSection = prevTemplate[section].map((block) =>
+        block.id === id ? { ...block, ...newProps } : block
+      );
+      return {
+        ...prevTemplate,
+        [section]: updatedSection,
+      };
+    });
+  };
+
+
+  const getSelectedBlock = () => {
+    if (!selected.section || !selected.id) return null;
+    return template[selected.section]?.find((block) => block.id === selected.id);
+  };
 
   return (
     <EditorContext.Provider
       value={{
-        template,
-        setTemplate,
         components,
         setComponents,
+        template,
+        setTemplate,
         selected,
-        setSelected
+        setSelected,
+        updateBlock,
+        getSelectedBlock,
       }}
     >
       {children}
@@ -30,26 +53,45 @@ export const EditorProvider = ({ children }) => {
 
 
 
+// import React, { createContext, useState } from 'react';
+// import { structure } from '../data/structure';
 
-  // const addBlock = (section, newComponent) => {
-  //   setComponent((prev) => ({
-  //     ...prev,
-  //     [section]: [...(prev[section] || []), newComponent],
-  //   }));
-  // };
+// export const EditorContext = createContext();
 
-  // const updateElement = (id, updatedComponent) => {
-  //   setComponent((prev) => {
-  //     const updated = {};
-  //     for (let section in prev) {
-  //       updated[section] = prev[section].map((item) => {
-  //         const key = Object.keys(item)[0];
-  //         const block = item[key];
-  //         return block.id === id
-  //           ? { [key]: { ...block, ...updatedComponent } }
-  //           : item;
-  //       });
-  //     }
-  //     return updated;
-  //   });
-  // };
+// export const EditorProvider = ({ children }) => {
+//   const [components, setComponents] = useState(structure.components);
+
+//   const [template, setTemplate] = useState(structure.templetes[0][1]);
+
+//   const [selected, setSelected] = useState({ section: null, id: null });
+
+//   console.log('UseContext Selected:', template);
+
+//   return (
+//     <EditorContext.Provider
+//       value={{
+//         template,
+//         setTemplate,
+//         components,
+//         setComponents,
+//         selected,
+//         setSelected
+//       }}
+//     >
+//       {children}
+//     </EditorContext.Provider>
+//   );
+// };
+
+
+
+
+
+
+
+
+
+
+
+
+
