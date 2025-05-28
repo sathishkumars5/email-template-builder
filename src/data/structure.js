@@ -32,6 +32,10 @@ export const structure = {
               height: '50px',
               width: '50px',
               margin:'auto'
+            },
+            parentStyle: {
+              display:'flex',
+              justifyContent: 'center'
             }
           },
           {
@@ -63,6 +67,10 @@ export const structure = {
               height: '100px',
               width: '100px',
               margin: 'auto'
+            },
+            parentStyle: {
+              display:'flex',
+              justifyContent: 'center'
             }
           },
           {
@@ -124,7 +132,7 @@ export const structure = {
           {
             id: Math.floor(1000 + Math.random() * 9000),
             type:'text',
-            content: 'Style Casual © 2021 Style Casual, Inc. All Rights Reserved.<br>4562 Hazy Panda Limits, Chair Crossing, Kentucky, US, 607898',
+            content: 'Style Casual © 2021 Style Casual, Inc. All Rights Reserved.4562 Hazy Panda Limits, Chair Crossing, Kentucky, US, 607898',
             style: {
               color: 'black',
               fontSize: '12px',

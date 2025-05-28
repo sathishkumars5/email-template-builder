@@ -1,3 +1,5 @@
+// src/context/EditorContext.js
+
 import React, { createContext, useState } from 'react';
 import { structure } from '../data/structure';
 
@@ -5,32 +7,25 @@ export const EditorContext = createContext();
 
 export const EditorProvider = ({ children }) => {
   const [components, setComponents] = useState(structure.components);
-
-   const [template, setTemplate] = useState(structure.templetes[0][1]);
-
-
-  const [selected, setSelected] = useState({
-    section: null, 
-    id: null       
-  });
-
+  const [template, setTemplate] = useState(structure.templetes?.[0]?.[1] || {});
+  const [selected, setSelected] = useState({ section: null, id: null });
 
   const updateBlock = (section, id, newProps) => {
-    setTemplate((prevTemplate) => {
-      const updatedSection = prevTemplate[section].map((block) =>
+    setTemplate((prev) => {
+      const updatedSection = prev[section]?.map((block) =>
         block.id === id ? { ...block, ...newProps } : block
-      );
+      ) || [];
+
       return {
-        ...prevTemplate,
+        ...prev,
         [section]: updatedSection,
       };
     });
   };
 
-
   const getSelectedBlock = () => {
     if (!selected.section || !selected.id) return null;
-    return template[selected.section]?.find((block) => block.id === selected.id);
+    return template[selected.section]?.find((b) => b.id === selected.id);
   };
 
   return (

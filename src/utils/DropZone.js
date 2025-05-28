@@ -1,5 +1,5 @@
-// import React, { useEffect } from 'react';
 import { useDrop } from 'react-dnd';
+// import { useEffect } from 'react';
 import renderBlock from '../utils/renderBlock';
 import useEditorContext from '../hooks/useEditorContext';
 
@@ -7,6 +7,19 @@ const ItemType = 'DRAGGABLE_ITEM';
 
 const DropZone = ({ section }) => {
   const { template, setTemplate, setSelected, selected } = useEditorContext();
+
+  // useEffect(() => {
+  //   console.log('Updated Template:', template);
+  // }, [template]);
+
+  // useEffect(() => {
+  //   if (selected?.id && selected?.section) {
+  //     const selectedBlock = template[selected.section]?.find(
+  //       (block) => block.id === selected.id
+  //     );
+  //     console.log('Selected Block:', selectedBlock);
+  //   }
+  // }, [selected, template]);
 
   const [{ isOver }, dropRef] = useDrop({
     accept: ItemType,
@@ -16,19 +29,17 @@ const DropZone = ({ section }) => {
         id: Math.floor(1000 + Math.random() * 9000),
       };
 
-      const updatedTemplate = {
-        ...template,
-        [section]: [...(template[section] || []), newBlock],
-      };
+      setTemplate((prevTemplate) => {
+        const updatedSection = [...(prevTemplate[section] || []), newBlock];
+        return {
+          ...prevTemplate,
+          [section]: updatedSection,
+        };
+      });
 
-      setTemplate(updatedTemplate);
       setSelected({ section, id: newBlock.id });
-
-      console.log(selected);
-       console.log(template);
-      
     },
-    collect: monitor => ({
+    collect: (monitor) => ({
       isOver: monitor.isOver(),
     }),
   });
@@ -36,20 +47,32 @@ const DropZone = ({ section }) => {
   const background = isOver ? '#d3f9d8' : '';
 
   return (
-    <div ref={dropRef} style={{ backgroundColor: background, padding: '1rem', margin: '0 2rem' }}>
+    <div
+      ref={dropRef}
+      style={{ backgroundColor: background, padding: '1rem', margin: '0 2rem' }}
+    >
       {(template[section] || []).map((block) => {
         const isSelected = selected?.id === block.id && selected?.section === section;
+
+        const baseStyle = {
+          marginBottom: '0.5rem',
+          border: isSelected ? '2px solid blue' : '1px solid transparent',
+          padding: '0.25rem',
+          cursor: 'pointer',
+          
+        };
+
+     
+        const combinedStyle =
+          block.type === 'img' && block.parentStyle
+            ? { ...baseStyle, ...block.parentStyle }
+            : baseStyle;
 
         return (
           <div
             key={block.id}
             onClick={() => setSelected({ section, id: block.id })}
-            style={{
-              marginBottom: '0.5rem',
-              border: isSelected ? '2px solid blue' : '1px solid transparent',
-              padding: '0.25rem',
-              cursor: 'pointer',
-            }}
+            style={combinedStyle}
           >
             {renderBlock(block)}
           </div>
@@ -60,4 +83,16 @@ const DropZone = ({ section }) => {
 };
 
 export default DropZone;
+
+
+
+
+
+
+
+
+
+
+
+
 

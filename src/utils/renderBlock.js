@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect } from 'react';
 const TextBlock = ({ block }) => {
   const [isEditable, setIsEditable] = useState(false);
   const [content, setContent] = useState(block?.content || '');
-  const pRef = useRef(null);
+  const paraRef = useRef(null);
 
   const handleClick = () => {
     setIsEditable(true);
@@ -13,26 +13,26 @@ const TextBlock = ({ block }) => {
     const newText = e.target.innerText;
     setIsEditable(false);
     setContent(newText);
-    console.log("Updated content:", newText);
+    // console.log("Updated content:", newText);
   };
 
   useEffect(() => {
-    if (isEditable && pRef.current) {
-      pRef.current.focus();
+    if (isEditable && paraRef.current) {
+      paraRef.current.focus();
     }
   }, [isEditable]);
 
   return (
     <p
       id={block.id}
-      ref={pRef}
+      ref={paraRef}
       style={block.style}
       contentEditable={isEditable}
       suppressContentEditableWarning={true}
       onClick={handleClick}
       onBlur={handleBlur}
     >
-      {content}
+      {block.content}
     </p>
   );
 };
