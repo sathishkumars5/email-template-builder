@@ -32,7 +32,7 @@ const TextBlock = ({ block }) => {
       onClick={handleClick}
       onBlur={handleBlur}
     >
-      {content}
+      {block.content}
     </p>
   );
 };

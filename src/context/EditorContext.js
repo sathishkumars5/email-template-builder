@@ -15,17 +15,19 @@ export const EditorProvider = ({ children }) => {
   });
 
 
+
+
   const updateBlock = (section, id, newProps) => {
-    setTemplate((prevTemplate) => {
-      const updatedSection = prevTemplate[section].map((block) =>
-        block.id === id ? { ...block, ...newProps } : block
-      );
-      return {
-        ...prevTemplate,
-        [section]: updatedSection,
-      };
-    });
-  };
+  setTemplate((prevTemplate) => {
+    const updatedSection = prevTemplate[section].map((block) =>
+      block.id === id ? { ...block, ...newProps } : block
+    );
+    return {
+      ...prevTemplate,
+      [section]: updatedSection,
+    };
+  });
+};
 
 
   const getSelectedBlock = () => {
@@ -52,6 +54,17 @@ export const EditorProvider = ({ children }) => {
 };
 
 
+  // const updateBlock = (section, id, newProps) => {
+  //   setTemplate((prevTemplate) => {
+  //     const updatedSection = prevTemplate[section].map((block) =>
+  //       block.id === id ? { ...block, ...newProps } : block
+  //     );
+  //     return {
+  //       ...prevTemplate,
+  //       [section]: updatedSection,
+  //     };
+  //   });
+  // };
 
 // import React, { createContext, useState } from 'react';
 // import { structure } from '../data/structure';
