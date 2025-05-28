@@ -9,14 +9,17 @@ export const Button = () => {
   if (!componentText) return null;
 
   return (
-    <Dragable data={componentText}> 
-        <div id={Math.floor(1000 + Math.random() * 9000)}>
-        <button
+    <Dragable data={componentText} tooltip="Button Block" > 
+        <div className='componentDiv' id={Math.floor(1000 + Math.random() * 9000)}>
+       
+        <p
+            className='paracontainer'
           id={componentText.id}
-          style={componentText.style}
-        >
-          {componentText.content}
-        </button>
+          // style={componentText.style}
+        > 
+          {componentText.icon}
+         </p>
+          {/* {componentText.icon} */}
       </div>
     </Dragable>
   );

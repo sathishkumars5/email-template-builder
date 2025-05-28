@@ -66,6 +66,23 @@ const renderBlock = (block) => {
           style={block.style}
         />
       );
+        case 'link':
+      return (
+      <a
+        id={block.id}
+        href={block.href || '#'}
+        style={{
+            ...block.style,
+            display: 'inline-block',
+            backgroundImage: `url(${block.src})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+       }}
+  
+    >
+     {block.content} 
+</a>
+      );
 
     default:
       return <div>Unknown block type: {block.type}</div>;

@@ -10,6 +10,45 @@ body, html {
   height: 100vh;
 }
 
+.componentDiv.button{
+width: 20px;
+}
+.paracontainer{
+  text-align: center;
+  
+  margin: 10px;
+}
+#components {
+  position: sticky;      
+  top: 50px;
+  background-color: #ffffff;
+  width: 50%;
+  border-radius: 8px;   
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+  padding: 16px;         
+  z-index: 1000;      
+}
+
+.componentDiv {
+  min-width: 60px;
+  min-height: 45px;
+  text-align: center;
+  cursor: pointer;
+  /* margin: 4px;  */
+  font-size: 18px; 
+  border-radius: 8px;
+  border: 2px solid rgb(64, 98, 250);
+  background-color: rgb(90, 158, 221);
+  color: #000000;
+  transition: background-color 0.3s, transform 0.2s; 
+}
+
+.componentDiv:hover {
+  background-color: rgb(189, 216, 240);
+  border: solid 2px blue;
+  transform: scale(1.05); 
+}
+
 .toolbar {
   background: #f0f0f0;
   padding: 10px;
@@ -24,7 +63,10 @@ body, html {
 
 .sidebar {
   width: 200px;
-  background: #eee;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #d7d7d7;
   padding: 10px;
 }
 

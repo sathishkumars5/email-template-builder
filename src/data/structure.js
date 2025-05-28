@@ -1,22 +1,59 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import {faImage} from '@fortawesome/free-solid-svg-icons';
+import {faLink} from '@fortawesome/free-solid-svg-icons';
+import {faT} from '@fortawesome/free-solid-svg-icons';
+// import {faRectangleWide} from '@fortawesome/free-solid-svg-icons';
+import { faRectangleList } from '@fortawesome/free-solid-svg-icons';
+{/* <FontAwesomeIcon icon="fa-solid fa-rectangle-wide" /> */}
+
+
+
 export const structure = {
   components:[
     {
       id: Math.floor(1000 + Math.random() * 9000),
       type: "button",
       content: 'Button',
+      icon:<FontAwesomeIcon icon={faRectangleList}/>,
       style: {
-        color: 'white',
-        backgroundColor: 'blue'
+      color: "white",
+      width: "87px",
+      height: "30px",
+      border: "2px solid black",
+      backgroundColor: "blue",
       }
     },
     {
       id: Math.floor(1000 + Math.random() * 9000),
       type:'text',
+       icon:<FontAwesomeIcon icon={faT}/>,
       content: 'text',
       style: {
         color: 'black'
       }
+    },
+     {
+        id: Math.floor(1000 + Math.random() * 9000),
+        type:'img',
+        content: 'Upload a image',
+        icon:<FontAwesomeIcon icon={faImage}/>,
+        style: {
+        color: 'black',
+        backgroundColor: ' none'
     }
+    },
+     {
+    id: Math.floor(1000 + Math.random() * 9000),
+    type: "link",
+    content: 'Add your Link',
+    href:"",
+    icon:<FontAwesomeIcon icon={faLink}/>,
+    style: {
+    color: 'black',
+    backgroundColor: 'none'
+    }
+   }
   ],
 
   templetes:[
@@ -26,11 +63,11 @@ export const structure = {
           {
             id: Math.floor(1000 + Math.random() * 9000),
             type: 'img',
-            src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Leaf_icon.svg/2048px-Leaf_icon.svg.png', 
+            src: 'https://www.dckap.com/wp-content/uploads/2023/08/logo-full-color-no-slogan.svg', 
             alt: 'Logo',
             style: {
               height: '50px',
-              width: '50px',
+              width: '100px',
               margin:'auto'
             }
           },
