@@ -3,26 +3,23 @@
   position: fixed;
   top: 0;
   right: 0;
-  width: 350px;
-  height: 45vh;
-  background: #1e1e1e;
-  color: #fff;
-  box-shadow: -4px 0 15px rgba(0, 0, 0, 0.5);
-  z-index: 1000;
-  padding: 1.5rem;
+  width: 300px;
+  height: 43vh;
+  color: #000000;
+  padding: 1rem;
   overflow-y: auto;
   transition: transform 0.3s ease-in-out;
   transform: translateX(0); 
   font-family: 'Inter', sans-serif;
+   cursor: all-scroll;
+   font-weight: 600;
 }
 
-.properties-panel.hidden {
-  transform: translateX(100%); 
-}
+
 
 .properties-panel h3 {
   margin-top: 0;
-  color: #c68efd;
+  color: #03f70f;
   font-size: 1.5rem;
   display: flex;
   justify-content: space-between;
@@ -31,54 +28,31 @@
 }
 
 .properties-panel .close-btn {
-  background: none;
-  border: none;
+  
   font-size: 1.5rem;
-  color: #aaa;
+  color: #19f005;
   cursor: pointer;
-  transition: color 0.2s ease;
+  transition: color 0.4s ease;
 }
 
 .properties-panel .close-btn:hover {
-  color: #fff;
+  color: #fd0202;
 }
 
 .property-panel {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  margin-top: 1rem;
 }
-
-.property-panel label {
-  font-weight: 500;
-  margin-bottom: 0.25rem;
-}
-
 .property-panel input,
 .property-panel select {
   padding: 0.5rem;
   border-radius: 6px;
   border: 1px solid #444;
-  background: #2c2c2c;
+  background: #050505;
   color: #fff;
   font-size: 0.95rem;
 }
 
-.property-panel input[type="color"] {
-  padding: 0.2rem;
-  height: 2.2rem;
-  width: 100%;
-}
-.close-btn {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  color: #aaa;
-  cursor: pointer;
-  margin-left: auto;
-}
 
-.close-btn:hover {
-  color: white;
-}
+

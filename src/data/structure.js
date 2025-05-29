@@ -13,7 +13,7 @@ export const structure = {
       id: Math.floor(1000 + Math.random() * 9000),
       type:'text',
       content: 'text',
-      style: {
+      style: {  
         color: 'black'
       }
     }
