@@ -36,6 +36,8 @@ export const structure = {
      {
         id: Math.floor(1000 + Math.random() * 9000),
         type:'img',
+        src: 'https://www.dckap.com/wp-content/uploads/2023/08/logo-full-color-no-slogan.svg', 
+
         content: 'Upload a image',
         icon:<FontAwesomeIcon icon={faImage}/>,
         style: {

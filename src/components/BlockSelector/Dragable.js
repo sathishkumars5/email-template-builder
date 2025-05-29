@@ -14,7 +14,7 @@ export const Dragable = ({ children, data, tooltip }) => {
 
   return (
     <div
-      style={{ opacity: isDragging ? 0.5 : 1, cursor: 'pointer', position: 'relative', display: 'inline-block',
+      style={{ opacity: isDragging ? 0.5 : 1, cursor: 'pointer', position: 'relative', 
         }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
@@ -23,7 +23,7 @@ export const Dragable = ({ children, data, tooltip }) => {
         <div
             style={{
             position: 'absolute',
-            top: '-5px',
+            top: '-15px',
             left: '50%',
             transform: 'translateX(-50%)',
             backgroundColor: 'rgba(0, 0, 0, 0.8)',
@@ -42,7 +42,7 @@ export const Dragable = ({ children, data, tooltip }) => {
       <div
         style={{
           display: 'inline-block',
-          margin: '20px',
+          margin:"15px 3px",
           borderRadius: '10px',
           
           
