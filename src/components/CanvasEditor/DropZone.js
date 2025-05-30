@@ -34,7 +34,7 @@ const DropZone = ({ section }) => {
       setHoverIndex(index === -1 ? blocks.length : index);
     },
     drop(item) {
-      const newBlock = { ...item, id: Date.now() }; // simpler unique ID
+      const newBlock = { ...item, id: Date.now() }; 
       const updated = [...blocks];
       updated.splice(hoverIndex ?? updated.length, 0, newBlock);
 
