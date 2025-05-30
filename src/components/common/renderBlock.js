@@ -1,35 +1,33 @@
 import React, { useState, useRef, useEffect } from 'react';
 
 const TextBlock = ({ block }) => {
-  const [isEditable, setIsEditable] = useState(false);
+  // const [isEditable, setIsEditable] = useState(false);
   const [content, setContent] = useState(block?.content || '');
   const paraRef = useRef(null);
 
-  const handleClick = () => {
-    setIsEditable(true);
-  };
+  // const handleClick = () => {
+  //   setIsEditable(true);
+  // };
 
   const handleBlur = (e) => {
     const newText = e.target.innerText;
-    setIsEditable(false);
+    // setIsEditable(false);
     setContent(newText);
     // console.log("Updated content:", newText);
   };
 
-  useEffect(() => {
-    if (isEditable && paraRef.current) {
-      paraRef.current.focus();
-    }
-  }, [isEditable]);
+  // useEffect(() => {
+  //   if (isEditable && paraRef.current) {
+  //     paraRef.current.focus();
+  //   }
+  // }, [isEditable]);
 
   return (
     <p
       id={block.id}
       ref={paraRef}
       style={block.style}
-      contentEditable={isEditable}
-      suppressContentEditableWarning={true}
-      onClick={handleClick}
+      // onClick={handleClick}
       onBlur={handleBlur}
     >
       {block.content}
@@ -58,6 +56,8 @@ const renderBlock = (block) => {
       return <TextBlock block={block} />;
 
     case 'img':
+    
+
       return (
         <img
           id={block.id}

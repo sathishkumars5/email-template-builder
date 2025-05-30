@@ -1,5 +1,5 @@
 import React from 'react';
-import DropZone from '../../utils/DropZone';
+import DropZone from './DropZone';
 import useEditorContext from '../../hooks/useEditorContext';
 
 const CanvasEditor = () => {

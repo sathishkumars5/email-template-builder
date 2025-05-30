@@ -1,0 +1,257 @@
+import { useDrop } from 'react-dnd';
+import renderBlock from '../common/renderBlock';
+import useEditorContext from '../../hooks/useEditorContext';
+import { useEffect, useRef, useState } from 'react';
+
+
+const ItemType = 'DRAGGABLE_ITEM';
+
+const DropZone = ({ section }) => {
+  const { template, setTemplate, setSelected, selected } = useEditorContext();
+  const [hoverIndex, setHoverIndex] = useState(null);
+  const [isDraggingOver, setIsDraggingOver] = useState(false);
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    console.log('Template updated for section:', section);
+    console.log('New content:', template[section]);
+  }, [template[section]]);
+
+  const [{ isOver }, dropRef] = useDrop({
+    accept: ItemType,
+
+    hover(item, monitor) {
+      const clientOffset = monitor.getClientOffset();
+      const containerRect = containerRef.current?.getBoundingClientRect();
+      if (!clientOffset || !containerRect) return;
+
+      const y = clientOffset.y - containerRect.top;
+      const blocks = template[section] || [];
+
+      let index = 0;
+      let totalHeight = 0;
+
+      for (let i = 0; i < blocks.length; i++) {
+        const blockEle = document.getElementById(blocks[i].id);
+        if (blockEle) {
+          const rect = blockEle.getBoundingClientRect();
+          totalHeight += rect.height;
+          if (y < totalHeight) {
+            index = i;
+            break;
+          }
+          index = i + 1;
+        }
+      }
+
+      setHoverIndex(index);
+    },
+
+    drop(item) {
+      const newBlock = {
+        ...item,
+        id: Math.floor(1000 + Math.random() * 9000),
+      };
+
+      setTemplate((prev) => {
+        const updated = [...(prev[section] || [])];
+        updated.splice(hoverIndex ?? updated.length, 0, newBlock);
+        return {
+          ...prev,
+          [section]: updated,
+        };
+      });
+
+      setSelected({ section, id: newBlock.id });
+      setHoverIndex(null);
+    },
+
+    collect: (monitor) => {
+      const over = monitor.isOver({ shallow: true });
+      setIsDraggingOver(over);
+      return { isOver: over };
+    },
+  });
+
+  const blocks = template[section] || [];
+
+  return (
+    <div
+      ref={(el) => {
+        dropRef(el);
+        containerRef.current = el;
+      }}
+      onMouseLeave={() => {
+        setIsDraggingOver(false);
+        setHoverIndex(null);
+      }}
+      style={{
+        backgroundColor: isDraggingOver ? '#ffd9ca' : '#fff',
+        // padding: '1rem',
+        margin: '0 2rem',
+        // border: '1px dashed#ffd9ca',
+        minHeight: '50px',
+      }}
+    >
+      {blocks.map((block, i) => {
+        const isSelected = selected?.id === block.id && selected?.section === section;
+
+        return (
+          <div key={block.id}>
+            {hoverIndex === i && isDraggingOver && (
+              <div
+                style={{
+                  height: '2px',
+                  backgroundColor: '#c74a27',
+                  margin: '.8rem 0',
+                }}
+              />
+            )}
+            <div
+              id={block.id}
+              onClick={() => setSelected({ section, id: block.id })}
+              style={{
+                marginBottom: '0.5rem',
+                border: isSelected ? '2px solid  #f17a4b' : '1px solid transparent',
+                padding: '0.25rem',
+                cursor: 'pointer',
+              }}
+            >
+              {renderBlock(block)}
+            </div>
+          </div>
+        );
+      })}
+
+      {hoverIndex === blocks.length && isDraggingOver && (
+        <div
+          style={{
+            height: '2px',
+            backgroundColor: '#c74a27',
+            margin: '.8rem 0',
+          }}
+        />
+      )}
+    </div>
+  );
+};
+
+export default DropZone;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const ItemType = 'DRAGGABLE_ITEM';
+
+// const DropZone = ({ section }) => {
+//   const { template, setTemplate, setSelected, selected } = useEditorContext();
+
+//   useEffect(() => {
+//     console.log('Updated Template:', template);
+//   }, [template]);
+
+//   useEffect(() => {
+//     if (selected?.id && selected?.section) {
+//       const selectedBlock = template[selected.section]?.find(
+//         (block) => block.id === selected.id
+//       );
+//       console.log('Selected Block:', selectedBlock);
+//     }
+//   }, [selected, template]);
+
+//   const [{ isOver }, dropRef] = useDrop({
+//     accept: ItemType,
+//     drop: (item) => {
+//       const newBlock = {
+//         ...item,
+//         id: Math.floor(1000 + Math.random() * 9000),
+//       };
+
+//       setTemplate((prevTemplate) => {
+//         const updatedSection = [...(prevTemplate[section] || []), newBlock];
+//         return {
+//           ...prevTemplate,
+//           [section]: updatedSection,
+//         };
+//       });
+
+//       setSelected({ section, id: newBlock.id });
+//     },
+//     collect: (monitor) => ({
+//       isOver: monitor.isOver(),
+//     }),
+//   });
+
+//   const background = isOver ? '#d3f9d8' : '';
+
+//   return (
+//     <div
+//       ref={dropRef}
+//       style={{ backgroundColor: background, padding: '1rem', margin: '0 2rem' }}
+//     >
+//       {(template[section] || []).map((block) => {
+//         const isSelected = selected?.id === block.id && selected?.section === section;
+
+//         const baseStyle = {
+//           marginBottom: '0.5rem',
+//           border: isSelected ? '2px solid blue' : '1px solid transparent',
+//           padding: '0.25rem',
+//           cursor: 'pointer',
+          
+//         };
+
+     
+//         const combinedStyle =
+//           block.type === 'img' && block.parentStyle
+//             ? { ...baseStyle, ...block.parentStyle }
+//             : baseStyle;
+
+//         return (
+//           <div
+//             key={block.id}
+//             onClick={() => setSelected({ section, id: block.id })}
+//             style={combinedStyle}
+//           >
+//             {renderBlock(block)}
+//           </div>
+//         );
+//       })}
+//     </div>
+//   );
+// };
+
+// export default DropZone;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
