@@ -1,24 +1,49 @@
-// Top bar : Save, Export, Undo/Redo
 import React, { useState } from 'react'
 import Htmlconvert from './Htmlconvert'
+import PopUpHtml from './PopUpHtml'
 
 const HeaderToolbar = () => {
-  const [html, setHtml] = useState()
+  const [isPopupOpen, setPopupOpen] = useState(false)
+  const [copyHtml, setCopyHtml] = useState('')
+  const [isPreview, setPreview] = useState(false)
   const htmlCode = Htmlconvert()
 
-  const showHtml = () => {
-    setHtml(htmlCode)
+  const showPreview = () => {
+    setPreview(true)
   }
 
-  const showPreview = () => {
-    const previewWindow = window.open('', '_blank')
-    if (previewWindow) {
-      previewWindow.document.open()
-      previewWindow.document.write(htmlCode)
-      previewWindow.document.close()
-    } else {
-      alert('Popup blocked! Please allow popups for this website.')
-    }
+  const backCanvas = () => {
+    setPreview(false)
+  }
+
+  if (isPreview) {
+    return (
+      <div style={{ width: '100vw', height: '100vh', background: '#fff' }}>
+        <button
+          onClick={backCanvas}
+          style={{
+            position: 'absolute',
+            top: 10,
+            left: 10,
+            zIndex: 10,
+            padding: '8px 16px',
+            background: 'grey',
+            color: 'white',
+            border: 'none',
+            borderRadius: '4px',
+            cursor: 'pointer'
+          }}
+        >
+          ⬅ Back to Canvas
+        </button>
+
+        <iframe
+          title="Preview"
+          style={{ width: '100vw', height: '100vw', border: 'none' }}
+          srcDoc={htmlCode}
+        />
+      </div>
+    )
   }
 
   return (
@@ -26,10 +51,13 @@ const HeaderToolbar = () => {
       <button style={btnStyle} onClick={showPreview}>Preview</button>
       <button style={btnStyle}>Undo</button>
       <button style={btnStyle}>Redo</button>
-      <button style={btnStyle} onClick={showHtml}>Export</button>
-      <div style={{ margin: '20px auto', padding: '20px', background: '#f9f9f9' }} contentEditable={true}>
-        {html}
-      </div>
+      <button style={btnStyle} onClick={() => setPopupOpen(true)}>Export</button>
+
+      <PopUpHtml isOpen={isPopupOpen} onClose={() => setPopupOpen(false)}>
+        <p>{htmlCode}</p>
+        <button onClick={() => setCopyHtml([...htmlCode])}>Copy</button>
+        <button onClick={() => setPopupOpen(false)}>Close</button>
+      </PopUpHtml>
     </div>
   )
 }

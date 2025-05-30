@@ -1,5 +1,5 @@
 import React from 'react'
-import { structure } from '../../data/structure';
+import useEditorContext from '../../hooks/useEditorContext'
 
 function camelToKebab(changeCase) {
   return changeCase.replace(/[A-Z]/g, x => '-' + x.toLowerCase());
@@ -11,16 +11,13 @@ function inlineStyle(objstyle) {
     .join(';');
 }
 
-const generateHtml = () => {
-  let html = '';
-
-  structure.templetes.forEach(templateObj => {
-    
-    Object.entries(templateObj).forEach(([templateId, templateData]) => {
+const generateHtml = (template) => {
+      let html = '';
+   
       html += `<div style="border:1px solid lightblue; margin:20px; padding:10px;">`;
-
-      html += `<div style="${inlineStyle(templateData.headerStyle || {})}">`;
-      templateData.header?.forEach(block => {
+      html += `<div style="${inlineStyle(template.headerStyle || {})}">`;
+      template.header?.forEach(block => {
+        
         if (block.type === 'text') {
           html += `<p style="${inlineStyle(block.style)}">${block.content}</p>`;
         } else if (block.type === 'img') {
@@ -31,8 +28,8 @@ const generateHtml = () => {
       });
       html += `</div>`;
 
-      html += `<div>`;
-      templateData.Container?.forEach(block => {
+      html += `<div style="${inlineStyle(template.ContainerStyle || {})}">`;
+      template.Container?.forEach(block => {
         if (block.type === 'text') {
           html += `<p style="${inlineStyle(block.style)}">${block.content}</p>`;
         } else if (block.type === 'img') {
@@ -43,8 +40,8 @@ const generateHtml = () => {
       });
       html += `</div>`;
 
-      html += `<div>`;
-      templateData.footer?.forEach(block => {
+      html += `<div style="${inlineStyle(template.footerStyle || {})}">`;
+      template.footer?.forEach(block => {
         if (block.type === 'text') {
           html += `<p style="${inlineStyle(block.style)}">${block.content}</p>`;
         } else if (block.type === 'img') {
@@ -56,13 +53,12 @@ const generateHtml = () => {
       html += `</div>`;
 
       html += `</div>`;
-    });
-  });
   return html;
 };
 
 const Htmlconvert = () => {
-  const htmlString = generateHtml();
+  const {template}=useEditorContext()
+  const htmlString = generateHtml(template);
   const fullHtml=`<!DOCTYPE html>
     <html>
       <head>
