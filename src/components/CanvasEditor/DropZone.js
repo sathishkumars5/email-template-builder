@@ -3,77 +3,53 @@ import renderBlock from '../common/renderBlock';
 import useEditorContext from '../../hooks/useEditorContext';
 import { useEffect, useRef, useState } from 'react';
 
-
 const ItemType = 'DRAGGABLE_ITEM';
 
 const DropZone = ({ section }) => {
   const { template, setTemplate, setSelected, selected } = useEditorContext();
   const [hoverIndex, setHoverIndex] = useState(null);
-  const [isDraggingOver, setIsDraggingOver] = useState(false);
   const containerRef = useRef(null);
+
+  const blocks = template[section] || [];
 
   useEffect(() => {
     console.log('Template updated for section:', section);
-    console.log('New content:', template[section]);
-  }, [template[section]]);
+    console.log('New content:', blocks);
+  }, [blocks]);
 
   const [{ isOver }, dropRef] = useDrop({
     accept: ItemType,
-
     hover(item, monitor) {
-      const clientOffset = monitor.getClientOffset();
-      const containerRect = containerRef.current?.getBoundingClientRect();
-      if (!clientOffset || !containerRect) return;
+      const offset = monitor.getClientOffset();
+      const container = containerRef.current?.getBoundingClientRect();
+      if (!offset || !container) return;
 
-      const y = clientOffset.y - containerRect.top;
-      const blocks = template[section] || [];
-
-      let index = 0;
-      let totalHeight = 0;
-
-      for (let i = 0; i < blocks.length; i++) {
-        const blockEle = document.getElementById(blocks[i].id);
-        if (blockEle) {
-          const rect = blockEle.getBoundingClientRect();
-          totalHeight += rect.height;
-          if (y < totalHeight) {
-            index = i;
-            break;
-          }
-          index = i + 1;
-        }
-      }
-
-      setHoverIndex(index);
-    },
-
-    drop(item) {
-      const newBlock = {
-        ...item,
-        id: Math.floor(1000 + Math.random() * 9000),
-      };
-
-      setTemplate((prev) => {
-        const updated = [...(prev[section] || [])];
-        updated.splice(hoverIndex ?? updated.length, 0, newBlock);
-        return {
-          ...prev,
-          [section]: updated,
-        };
+      const y = offset.y - container.top;
+      let index = blocks.findIndex((block, i) => {
+        const el = document.getElementById(block.id);
+        const rect = el?.getBoundingClientRect();
+        return rect && y < rect.bottom;
       });
 
+      setHoverIndex(index === -1 ? blocks.length : index);
+    },
+    drop(item) {
+      const newBlock = { ...item, id: Date.now() }; // simpler unique ID
+      const updated = [...blocks];
+      updated.splice(hoverIndex ?? updated.length, 0, newBlock);
+
+      setTemplate((prev) => ({ ...prev, [section]: updated }));
       setSelected({ section, id: newBlock.id });
       setHoverIndex(null);
     },
-
-    collect: (monitor) => {
-      const over = monitor.isOver({ shallow: true });
-      setIsDraggingOver(over);
-      return { isOver: over };
-    },
+    collect: (monitor) => ({
+      isOver: monitor.isOver({ shallow: true }),
+    }),
   });
 
-  const blocks = template[section] || [];
+  useEffect(() => {
+    if (!isOver) setHoverIndex(null);
+  }, [isOver]);
 
   return (
     <div
@@ -81,60 +57,44 @@ const DropZone = ({ section }) => {
         dropRef(el);
         containerRef.current = el;
       }}
-      onMouseLeave={() => {
-        setIsDraggingOver(false);
-        setHoverIndex(null);
-      }}
+      onMouseLeave={() => setHoverIndex(null)}
       style={{
-        backgroundColor: isDraggingOver ? '#ffd9ca' : '#fff',
-        // padding: '1rem',
+        backgroundColor: isOver ? '#ffd9ca' : '#fff',
         margin: '0 2rem',
-        // border: '1px dashed#ffd9ca',
         minHeight: '50px',
       }}
     >
-      {blocks.map((block, i) => {
-        const isSelected = selected?.id === block.id && selected?.section === section;
-
-        return (
-          <div key={block.id}>
-            {hoverIndex === i && isDraggingOver && (
-              <div
-                style={{
-                  height: '2px',
-                  backgroundColor: '#c74a27',
-                  margin: '.8rem 0',
-                }}
-              />
-            )}
-            <div
-              id={block.id}
-              onClick={() => setSelected({ section, id: block.id })}
-              style={{
-                marginBottom: '0.5rem',
-                border: isSelected ? '2px solid  #f17a4b' : '1px solid transparent',
-                padding: '0.25rem',
-                cursor: 'pointer',
-              }}
-            >
-              {renderBlock(block)}
-            </div>
+      {blocks.map((block, i) => (
+        <div key={block.id}>
+          {hoverIndex === i && isOver && <Divider />}
+          <div
+            id={block.id}
+            onClick={() => setSelected({ section, id: block.id })}
+            style={{
+              marginBottom: '0.5rem',
+              border: selected?.id === block.id ? '2px solid #f17a4b' : '1px solid transparent',
+              padding: '0.25rem',
+              cursor: 'pointer',
+            }}
+          >
+            {renderBlock(block)}
           </div>
-        );
-      })}
-
-      {hoverIndex === blocks.length && isDraggingOver && (
-        <div
-          style={{
-            height: '2px',
-            backgroundColor: '#c74a27',
-            margin: '.8rem 0',
-          }}
-        />
-      )}
+        </div>
+      ))}
+      {hoverIndex === blocks.length && isOver && <Divider />}
     </div>
   );
 };
+
+const Divider = () => (
+  <div
+    style={{
+      height: '2px',
+      backgroundColor: '#c74a27',
+      margin: '.8rem 0',
+    }}
+  />
+);
 
 export default DropZone;
 
