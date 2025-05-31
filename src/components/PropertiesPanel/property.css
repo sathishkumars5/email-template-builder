@@ -31,7 +31,7 @@
   padding-top: 0;
   border-radius: 10px;
   width: 400px;
-  height: 50vh;
+  height: 55vh;
   max-width: 90%;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
   z-index: 1000;
@@ -56,9 +56,8 @@
 }
 
 
-/* ========== Close Button ========== */
+
 .properties-panel .close-btn {
-  font-size: 1.5rem;
   color: red;
   cursor: pointer;
   margin-top: 0;
@@ -66,7 +65,6 @@
 }
 
 
-/* ========== Input / Select Fields ========== */
 .property-panel {
   display: flex;
   flex-direction: column;
@@ -76,9 +74,16 @@
 .property-panel select {
   border-radius: 6px;
   padding: 8px;
-  border: 2px solid #080808;
+  border: 1px solid #f17a4b;
+  background-color: white;
+  outline:none;
   margin-bottom: 20px;
   margin-top: 3px;
-  color: #0e0d0d;
-  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  /* color: #0e0d0d; */
+  /* transition: box-shadow 0.3s ease, border-color 0.3s ease; */
+}
+
+.property-panel label{
+      font-weight: 560;
+      font-size: small;
 }

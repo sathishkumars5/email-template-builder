@@ -1,15 +1,15 @@
-// Contains buttons like "Add Text", "Add Image"
 import {React} from 'react';
-import { Button } from './Button';
-import { Text } from './Text';
+import NavComponents from './navComponent';
+
 
 const BlockSelector = () => {
  
   return (
     <div className="sidebar left">
-      <p>Blocks</p>
-      <Button />
-      <Text />
+      <h4>Blocks</h4>
+     <div id='components'>
+<NavComponents/>
+      </div>
     </div>
   );
 };

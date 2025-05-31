@@ -1,6 +1,6 @@
 import React from 'react';
 import useEditorContext from '../../hooks/useEditorContext';
-// import TextComp from './textcomp';
+
 
 const PropertyBlock = () => {
   const { selected, template, updateBlock } = useEditorContext();
@@ -44,7 +44,7 @@ const PropertyBlock = () => {
     if (margin === '0 auto 0 0') return 'left';
     if (margin === '0 0 0 auto') return 'right';
 
-    return  ;
+    return 'center' ;
 };
 
 
@@ -93,6 +93,7 @@ const PropertyBlock = () => {
             <label>Text Color</label>
             <input
               type="color"
+              className='inputColor'
               value={block.style?.color || '#000000'}
               onChange={(e) => handleStyleChange(e, 'color')}
             />
@@ -105,6 +106,17 @@ const PropertyBlock = () => {
               <option value="center">Center</option>
               <option value="right">Right</option>
             </select>
+            <label>Font Weight</label>
+  <select
+    value={block.style?.fontWeight || 'normal'}
+    onChange={(e) => handleStyleChange(e, 'fontWeight')}
+  >
+    <option value="normal">Normal</option>
+    <option value="bold">Bold</option>
+    <option value="lighter">Lighter</option>
+    <option value="bolder">Bolder</option>
+  </select>
+
           </>
 
         );
@@ -179,7 +191,47 @@ const PropertyBlock = () => {
               <option value="right">Right</option>
             </select>
           </>
+          
         );
+        case 'link':
+  return (
+    <>
+      <label>Link Text</label>
+      <input
+        type="text"
+        value={block.content || ''}
+        onChange={(e) => handleChange(e, 'content')}
+      />
+      <label>Href</label>
+      <input
+        type="text"
+        value={block.href || '' }
+        onChange={(e) => handleChange(e, 'href')}
+      />
+      <label>Text Color</label>
+      <input
+        type="color"
+        value={block.style?.color || '#000000'}
+        onChange={(e) => handleStyleChange(e, 'color')}
+      />
+      <label>Background Color</label>
+      <input
+        type="color"
+        value={block.style?.backgroundColor || '#ffffff'}
+        onChange={(e) => handleStyleChange(e, 'backgroundColor')}
+      />
+       <label>Text Align</label>
+            <select
+              value={block.style?.textAlign || 'left' === block.style?.display}
+              onChange={(e) => handleStyleChange(e, 'textAlign')}
+            >
+              <option value="left">Left</option>
+              <option value="center">Center</option>
+              <option value="right">Right</option>
+            </select>
+          </>
+  );
+
 
       default:
         return <p>No editable properties for this block.</p>;
