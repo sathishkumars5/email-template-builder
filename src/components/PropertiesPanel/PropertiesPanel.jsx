@@ -14,15 +14,17 @@ const PropertiesPanel = ({ onClose }) => {
   }));
   
   return (
-    <div ref={dragRef}
+   <div className='main'>
+     <div ref={dragRef}
       className="properties-panel"
       style={{ opacity: isDragging ? 0.5 : 1 }}>
       <h3 className="panel-header">
         PROPERTIES
-        <h5 className="close-btn" onClick={onClose}>X </h5>
+        <h6 className="close-btn" onClick={onClose}>X </h6>
       </h3>
       <PropertyBlock />
     </div>
+   </div>
   );
 };
 

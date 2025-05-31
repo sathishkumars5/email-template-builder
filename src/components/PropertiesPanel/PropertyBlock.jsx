@@ -133,12 +133,14 @@ const PropertyBlock = () => {
             <label>Text Color</label>
             <input
               type="color"
+              className='inputColor'
               value={block.style?.color || '#ffffff'}
               onChange={(e) => handleStyleChange(e, 'color')}
             />
             <label>Background Color</label>
             <input
               type="color"
+              className='inputColor'
               value={block.style?.backgroundColor || '#0000ff'}
               onChange={(e) => handleStyleChange(e, 'backgroundColor')}
             />
@@ -211,6 +213,7 @@ const PropertyBlock = () => {
       <label>Text Color</label>
       <input
         type="color"
+        className='inputColor'
         value={block.style?.color || '#000000'}
         onChange={(e) => handleStyleChange(e, 'color')}
       />

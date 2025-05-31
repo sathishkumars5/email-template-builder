@@ -50,7 +50,9 @@
         "color": "black",
         "fontSize": "1rem",
         "display": "block",
-        "textAlign": "center"
+        "textAlign": "center",
+        "textDecoration":"none"
+        
       }
     },
 
