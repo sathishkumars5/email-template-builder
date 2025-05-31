@@ -55,7 +55,7 @@ const renderBlock = (block) => {
         <Button
           id={block.id}
           style={block.style}
-        buttonText={block.content||"Button"}
+          buttonText={block.content||"Button"}
         />
        
       );
