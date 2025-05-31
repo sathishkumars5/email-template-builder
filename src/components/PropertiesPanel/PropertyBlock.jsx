@@ -1,5 +1,6 @@
 import React from 'react';
 import useEditorContext from '../../hooks/useEditorContext';
+import { TEXT_WHITE, TEXT_BLACK } from '../../constants/colors';
 
 
 const PropertyBlock = () => {
@@ -94,7 +95,7 @@ const PropertyBlock = () => {
             <input
               type="color"
               className='inputColor'
-              value={block.style?.color || '#000000'}
+              value={block.style?.color || TEXT_BLACK}
               onChange={(e) => handleStyleChange(e, 'color')}
             />
             <label>Text Align</label>
@@ -134,7 +135,7 @@ const PropertyBlock = () => {
             <input
               type="color"
               className='inputColor'
-              value={block.style?.color || '#ffffff'}
+              value={block.style?.color || TEXT_WHITE}
               onChange={(e) => handleStyleChange(e, 'color')}
             />
             <label>Background Color</label>
@@ -214,13 +215,13 @@ const PropertyBlock = () => {
       <input
         type="color"
         className='inputColor'
-        value={block.style?.color || '#000000'}
+        value={block.style?.color || TEXT_BLACK}
         onChange={(e) => handleStyleChange(e, 'color')}
       />
       <label>Background Color</label>
       <input
         type="color"
-        value={block.style?.backgroundColor || '#ffffff'}
+        value={block.style?.backgroundColor || TEXT_WHITE}
         onChange={(e) => handleStyleChange(e, 'backgroundColor')}
       />
        <label>Text Align</label>

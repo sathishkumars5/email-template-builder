@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import CodeEditor from '@uiw/react-textarea-code-editor';
 import { useNotification } from '../../context/NotificationContext';
 
-function PopUpHtml({ isOpen, onClose, content, title = "Modal", type = "default", onSave }) {
+function Modal({ isOpen, onClose, content, title = "Modal", type = "default", onSave }) {
   const [editableContent, setEditableContent] = useState(content || '');
   const { showSuccess, showError } = useNotification();
 
@@ -145,4 +145,4 @@ function PopUpHtml({ isOpen, onClose, content, title = "Modal", type = "default"
   );
 }
 
-export default PopUpHtml;
+export default Modal;

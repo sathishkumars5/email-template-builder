@@ -10,15 +10,15 @@ width: 20px;
   cursor: pointer;
   font-size: 18px; 
   border-radius: 8px;
-  border: solid 2px  #c74a27;
-  background-color: white;
+  border: solid 2px var(--primary-color);
+  background-color: var(--text-white);
   color: #777;
   transition: background-color 0.3s, transform 0.2s; 
 }
 
 .componentDiv:hover {
   background-color:  rgb(255, 245, 240);
-  border: solid 2px  #c74a27;
+  border: solid 2px var(--primary-color);
   transform: scale(1.05); 
 }
 
@@ -30,7 +30,7 @@ width: 20px;
 #components {
   position: sticky;      
   top: 50px;
-  background-color:#ffffff;
+  background-color: var(--text-white);
   border-radius: 8px;   
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
   padding: 10px;         

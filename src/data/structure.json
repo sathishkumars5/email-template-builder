@@ -10,8 +10,8 @@
               "textAlign": "center",
               "display": "block",
               "margin": "20px auto",
-               "color": "white",
-              "backgroundColor": "#c74a27",
+               "color": "#ffffff",
+              "backgroundColor": "var(--primary-color)",
               "border":"none"
         
       }
@@ -21,7 +21,7 @@
       "type": "text",
       "content": "Enter the text",
       "style": {
-              "color": "black",
+              "color": "#000000",
               "fontSize": "18px",
               "fontweigth":"normal",
               "textAlign": "center"
@@ -47,7 +47,7 @@
       "content": "add your link",
       "href": "",
       "style": {
-        "color": "black",
+        "color": "#000000",
         "fontSize": "1rem",
         "display": "block",
         "textAlign": "center",
@@ -60,7 +60,7 @@
       "id": "1005",
       "type": "space",
       "style": {
-        "color": "black",
+        "color": "#000000",
       "backgroundColor":"",
       "height":"20px"
 
@@ -88,7 +88,7 @@
             "type": "text",
             "content": "Style Casual",
             "style": {
-              "color": "black",
+              "color": "#000000",
               "fontSize": "18px",
               "fontweigth":"normal",
               "textAlign": "center"
@@ -114,7 +114,7 @@
             "type": "text",
             "content": "Confirm Your Email",
             "style": {
-              "color": "black",
+              "color": "#000000",
               "fontSize": "18px",
               "fontweigth":"normal",
               "textAlign": "center"
@@ -125,7 +125,7 @@
             "type": "text",
             "content": "You’ve received this message because your email address has been registered with our site. Please click the button below to verify your email address and confirm that you are the owner of this account.",
             "style": {
-             "color": "black",
+             "color": "#000000",
               "fontSize": "18px",
               "fontweigth":"normal",
               "textAlign": "center"
@@ -136,7 +136,7 @@
             "type": "text",
             "content": "If you did not register with us, please disregard this email.",
             "style": {
-           "color": "black",
+           "color": "#000000",
               "fontSize": "18px",
               "fontweigth":"normal",
               "textAlign": "center"
@@ -152,8 +152,8 @@
               "textAlign": "center",
               "display": "block",
               "margin": "20px auto",
-               "color": "white",
-              "backgroundColor": "#c74a27",
+               "color": "#ffffff",
+              "backgroundColor": "var(--primary-color)",
               "border":"none"
       
             }
@@ -163,7 +163,7 @@
             "type": "text",
             "content": "Once confirmed, this email will be uniquely associated with your account.",
             "style": {
-             "color": "black",
+             "color": "#000000",
               "fontSize": "18px",
               "fontweigth":"normal",
               "textAlign": "center"
@@ -176,7 +176,7 @@
             "type": "text",
             "content": "Style Casual © 2021 Style Casual, Inc. All Rights Reserved. 4562 Hazy Panda Limits, Chair Crossing, Kentucky, US, 607898",
             "style": {
-            "color": "black",
+            "color": "#000000",
               "fontSize": "18px",
               "fontweigth":"normal",
               "textAlign": "center"
@@ -187,7 +187,7 @@
             "type": "text",
             "content": "Visit Us | Privacy Policy | Terms of Use",
             "style": {
-             "color": "black",
+             "color": "#000000",
               "fontSize": "18px",
               "fontweigth":"normal",
               "textAlign": "center"
