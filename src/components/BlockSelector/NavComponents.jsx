@@ -10,11 +10,6 @@ import {faArrowsUpDown} from '@fortawesome/free-solid-svg-icons';
 import { faRectangleList } from '@fortawesome/free-solid-svg-icons';
 
 
-
-
-
-
-
 export default function NavComponents() {
 
       const { components } = useEditorContext();
