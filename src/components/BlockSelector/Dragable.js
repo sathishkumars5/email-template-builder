@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDrag } from 'react-dnd';
 
 export const Dragable = ({ children, data, tooltip }) => {
+
   const [{ isDragging }, dragRef] = useDrag(() => ({
     type: 'DRAGGABLE_ITEM',
     item: data,
@@ -23,7 +24,7 @@ export const Dragable = ({ children, data, tooltip }) => {
         <div
             style={{
             position: 'absolute',
-            top: '-15px',
+            top: '-11px',
             left: '50%',
             transform: 'translateX(-50%)',
             backgroundColor: 'rgba(0, 0, 0, 0.8)',
@@ -40,7 +41,7 @@ export const Dragable = ({ children, data, tooltip }) => {
       )}
 
       <div
-        style={{
+          style={{
           display: 'inline-block',
           margin:"15px 3px",
           borderRadius: '10px',

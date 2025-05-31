@@ -1,0 +1,183 @@
+{
+  "components": [
+    {
+      "id": "1001",
+      "type": "button",
+      "content": "Button",
+      "style": {
+        "color": "white",
+        "backgroundColor": "#c74a27",
+        "borderRadius":"4px"
+      }
+    },
+    {
+      "id": "1002",
+      "type": "text",
+      "content": "Enter the text",
+      "style": {
+        "color": "black"
+      }
+    },
+
+     {
+      "id": "1003",
+      "type": "img",
+       "src": "https://www.dckap.com/wp-content/uploads/2023/08/logo-full-color-no-slogan.svg",
+        "alt": "Upload a image",
+       "style": {
+        "color": "",
+        "backgroundColor": ""
+
+      }
+    },
+    {
+      "id": "1004",
+      "type": "link",
+      "content": "add you link",
+      "href":"",
+      "style": {
+      "color": "black",
+      "backgroundColor":""
+      }
+    },
+    {
+      "id": "1005",
+      "type": "space",
+      "style": {
+        "color": "black",
+      "backgroundColor":"",
+      "height":"20px"
+
+      }
+    }
+  ],
+  "templates": [
+    {
+      "template1": {
+        "header": [
+          {
+            "id": "1003",
+            "type": "img",
+            "src": "https://www.dckap.com/wp-content/uploads/2023/08/logo-full-color-no-slogan.svg",
+            "alt": "Logo",
+            "style": {
+              "height": "50px",
+              "width": "50px",
+              "margin": "auto"
+            },
+            "parentStyle": {
+              "display": "flex",
+              "justifyContent": "center"
+            }
+          },
+          {
+            "id": "1004",
+            "type": "text",
+            "content": "Style Casual",
+            "style": {
+              "color": "black",
+              "fontSize": "24px",
+              "textAlign": "center"
+            }
+          }
+        ],
+        "headerStyle": {
+          "backgroundColor": "green"
+        },
+        "Container": [
+          {
+            "id": "1005",
+            "type": "img",
+            "src": "https://cdn.pixabay.com/photo/2016/01/26/17/15/gmail-1162901_1280.png",
+            "alt": "Email Icon",
+            "style": {
+              "height": "100px",
+              "width": "100px",
+              "margin": "auto"
+            },
+            "parentStyle": {
+              "display": "flex",
+              "justifyContent": "center"
+            }
+          },
+          {
+            "id": "1006",
+            "type": "text",
+            "content": "Confirm Your Email",
+            "style": {
+              "color": "black",
+              "fontSize": "32px",
+              "fontWeight": "bold",
+              "textAlign": "center"
+            }
+          },
+          {
+            "id": "1007",
+            "type": "text",
+            "content": "You’ve received this message because your email address has been registered with our site. Please click the button below to verify your email address and confirm that you are the owner of this account.",
+            "style": {
+              "color": "black",
+              "textAlign": "center"
+            }
+          },
+          {
+            "id": "1008",
+            "type": "text",
+            "content": "If you did not register with us, please disregard this email.",
+            "style": {
+              "color": "black",
+              "textAlign": "center",
+              "marginTop": "10px"
+            }
+          },
+          {
+            "id": "1009",
+            "type": "button",
+            "content": "CONFIRM YOUR EMAIL",
+            "style": {
+              "color": "white",
+              "backgroundColor": "#3B82F6",
+              "padding": "10px 20px",
+              "borderRadius": "4px",
+              "textAlign": "center",
+              "display": "block",
+              "margin": "20px auto"
+            }
+          },
+          {
+            "id": "1010",
+            "type": "text",
+            "content": "Once confirmed, this email will be uniquely associated with your account.",
+            "style": {
+              "color": "black",
+              "textAlign": "center"
+            }
+          }
+        ],
+        "footer": [
+          {
+            "id": "1011",
+            "type": "text",
+            "content": "Style Casual © 2021 Style Casual, Inc. All Rights Reserved. 4562 Hazy Panda Limits, Chair Crossing, Kentucky, US, 607898",
+            "style": {
+              "color": "black",
+              "fontSize": "12px",
+              "textAlign": "center"
+            }
+          },
+          {
+            "id": "1012",
+            "type": "text",
+            "content": "Visit Us | Privacy Policy | Terms of Use",
+            "style": {
+              "color": "black",
+              "fontSize": "12px",
+              "textAlign": "center",
+              "marginTop": "10px"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

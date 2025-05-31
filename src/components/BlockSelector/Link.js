@@ -1,24 +1,12 @@
-import React from 'react';
-import useEditorContext from '../../hooks/useEditorContext';
-import { Dragable } from './Dragable';
+import React from 'react'
 
-export const Link = () => {
-  const { components } = useEditorContext();
-  const componentText = components.find(item => item.type === 'link');
-
-  if (!componentText) return null;
-
+export default function Link({href,id,style,linkText}) {
   return (
-    <Dragable data={componentText} tooltip="Link Block"> 
-        <div className='componentDiv' id={Math.floor(1000 + Math.random() * 9000)}>
-        <p 
-        className='paracontainer'
-          id={componentText.id}
-          style={componentText.style}
-        >
-          {componentText.icon}
-        </p>
-      </div>
-    </Dragable>
-  );
+    <a
+          id={id}
+          style={style}
+          href={href}
+        
+    >{linkText}</a>
+  )
 };

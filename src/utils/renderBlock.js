@@ -1,10 +1,16 @@
 import React, { useState, useRef, useEffect } from 'react';
+import Button from '../components/BlockSelector/Button';
+import Image from '../components/BlockSelector/Image';
+import Link from '../components/BlockSelector/Link';
+import  {Space} from '../components/BlockSelector/Space';
+import Text from '../components/BlockSelector/Text';
+
+
 
 const TextBlock = ({ block }) => {
   const [isEditable, setIsEditable] = useState(false);
   const [content, setContent] = useState(block?.content || '');
   const pRef = useRef(null);
-
   const handleClick = () => {
     setIsEditable(true);
   };
@@ -32,7 +38,7 @@ const TextBlock = ({ block }) => {
       onClick={handleClick}
       onBlur={handleBlur}
     >
-      {content}
+      {block.content}
     </p>
   );
 };
@@ -45,21 +51,25 @@ const renderBlock = (block) => {
   switch (block.type) {
     case 'button':
       return (
-        <button
+
+        <Button
           id={block.id}
           style={block.style}
-          onClick={() => console.log('Button clicked:', block.id)}
-        >
-          {block.content || 'Button'}
-        </button>
+        buttonText={block.content||"Button"}
+        />
+       
       );
 
     case 'text':
-      return <TextBlock block={block} />;
+      return <Text 
+        id={block.id}
+        style={block.style}
+        Textcontent={block.content||"Enter a text"}
+      />;
 
     case 'img':
       return (
-        <img
+        <Image
           id={block.id}
           src={block.src}
           alt={block.alt || 'Image'}
@@ -68,9 +78,10 @@ const renderBlock = (block) => {
       );
         case 'link':
       return (
-      <a
+      <Link
         id={block.id}
         href={block.href || '#'}
+       linkText={block.content}
         style={{
             ...block.style,
             display: 'inline-block',
@@ -79,10 +90,16 @@ const renderBlock = (block) => {
             backgroundPosition: 'center',
        }}
   
-    >
-     {block.content} 
-</a>
+   />
       );
+       case 'space':
+      return (
+      <Space 
+      id={block.id}
+        style={block.style}
+        />
+      );
+
 
     default:
       return <div>Unknown block type: {block.type}</div>;
