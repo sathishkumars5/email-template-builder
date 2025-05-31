@@ -1,13 +1,12 @@
 import NavComponents from './NavComponents';
-
+import './Block.css'
 
 const BlockSelector = () => {
  
   return (
     <div className="sidebar left">
-      <h4>Blocks</h4>
      <div id='components'>
-<NavComponents/>
+    <NavComponents/>
       </div>
     </div>
   );

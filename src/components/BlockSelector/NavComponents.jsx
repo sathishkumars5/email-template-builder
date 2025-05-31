@@ -3,11 +3,8 @@ import React, { useState } from 'react'
 import useEditorContext from '../../hooks/useEditorContext';
 import { Dragable } from './Dragable';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faImage} from '@fortawesome/free-solid-svg-icons';
-import {faLink} from '@fortawesome/free-solid-svg-icons';
-import {faT} from '@fortawesome/free-solid-svg-icons';
-import {faArrowsUpDown} from '@fortawesome/free-solid-svg-icons';
-import { faRectangleList } from '@fortawesome/free-solid-svg-icons';
+import { faRectangleList,faImage, faLink,faT,faArrowsUpDown} from '@fortawesome/free-solid-svg-icons';
+
 
 
 export default function NavComponents() {
@@ -45,12 +42,12 @@ export default function NavComponents() {
 
   return (
 
-        navItems.map(item=>{
+        navItems.map((item,index)=>{
  const componentText = components.find(item1 => item1.type === item.type);
 
 return(
 
-<Dragable data={componentText} tooltip={item.tooltip} > 
+<Dragable data={componentText} key={index} tooltip={item.tooltip} > 
             <div className='componentDiv' id={Math.floor(1000 + Math.random() * 9000)}>
             <p
                 className='paracontainer'

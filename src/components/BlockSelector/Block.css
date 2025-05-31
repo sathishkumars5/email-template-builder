@@ -1,0 +1,38 @@
+
+.componentDiv.button{
+width: 20px;
+}
+
+.componentDiv {
+  min-width: 60px;
+  min-height: 45px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 18px; 
+  border-radius: 8px;
+  border: solid 2px  #c74a27;
+  background-color: white;
+  color: #777;
+  transition: background-color 0.3s, transform 0.2s; 
+}
+
+.componentDiv:hover {
+  background-color:  rgb(255, 245, 240);
+  border: solid 2px  #c74a27;
+  transform: scale(1.05); 
+}
+
+.paracontainer{
+  text-align: center;
+  margin: 10px;
+}
+
+#components {
+  position: sticky;      
+  top: 50px;
+  background-color:#ffffff;
+  border-radius: 8px;   
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+  padding: 10px;         
+  z-index: 1000;      
+}
