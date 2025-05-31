@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import Htmlconvert from './Htmlconvert'
 import PopUpHtml from './PopUpHtml'
+import './NavBar.css';
+
 
 const HeaderToolbar = () => {
   const [isPopupOpen, setPopupOpen] = useState(false)
@@ -17,34 +19,12 @@ const HeaderToolbar = () => {
 
   const copyHtml=()=>{
     navigator.clipboard.writeText(htmlCode)
-    .then(()=>{
-      alert('Copied to clipboard')
-    })
-    .catch(err => {
-        console.error('Failed to copy: ', err);
-    });
   }
 
   if (isPreview) {
     return (
       <div style={{ width: '100vw', height: '100vh', background: '#fff' }}>
-        <button
-          onClick={backCanvas}
-          style={{
-            position: 'absolute',
-            top: 10,
-            left: 10,
-            zIndex: 10,
-            padding: '8px 16px',
-            background: 'grey',
-            color: 'white',
-            border: 'none',
-            borderRadius: '4px',
-            cursor: 'pointer'
-          }}
-        >
-          ⬅ Back to Canvas
-        </button>
+        <button onClick={backCanvas} className='btnStyle'>⬅ BACK TO EDITOR</button>
 
         <iframe
           title="Preview"
@@ -57,27 +37,24 @@ const HeaderToolbar = () => {
 
   return (
     <div style={{ padding: '10px', background: '#eee', textAlign: 'center' }}>
-      <button style={btnStyle} onClick={showPreview}>Preview</button>
-      <button style={btnStyle}>Undo</button>
-      <button style={btnStyle}>Redo</button>
-      <button style={btnStyle} onClick={() => setPopupOpen(true)}>Export</button>
+      <button className='btnStyle' onClick={showPreview}>PREVIEW</button>
+      {/* <button className='btnStyle'>UNDO</button>
+      <button className='btnStyle'>REDO</button> */}
+      <button className='mainBtnStyle' onClick={() => setPopupOpen(true)}>EXPORT</button>
 
       <PopUpHtml isOpen={isPopupOpen} onClose={() => setPopupOpen(false)}>
-        <p>{htmlCode}</p>
-        <button onClick={copyHtml}>Copy</button>
-        <button onClick={() => setPopupOpen(false)}>Close</button>
+        <div className="popup-content">
+          <p style={{ textAlign: 'left', whiteSpace: 'pre-wrap' }}>{htmlCode}</p>
+        </div>
+        <div className='popup-buttons'>
+          <button onClick={() => setPopupOpen(false)} className='btnStyle'>CLOSE</button>
+          <button onClick={copyHtml} className='btnStyle'>COPY</button>
+        </div>
       </PopUpHtml>
     </div>
   )
 }
 
-const btnStyle = {
-  margin: '0 8px',
-  padding: '8px 16px',
-  border: '1px solid #ccc',
-  borderRadius: '5px',
-  background: 'lightblue',
-  cursor: 'pointer'
-}
+
 
 export default HeaderToolbar
