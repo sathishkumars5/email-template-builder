@@ -1,9 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
-import Button from '../components/BlockSelector/Button';
-import Image from '../components/BlockSelector/Image';
-import Link from '../components/BlockSelector/Link';
-import  {Space} from '../components/BlockSelector/Space';
-import Text from '../components/BlockSelector/Text';
+// import Button from '../components/BlockSelector/Button';
+// import Image from '../components/BlockSelector/Image';
+// import Link from '../components/BlockSelector/Link';
+// import  {Space} from '../components/BlockSelector/Space';
+// import Text from '../components/BlockSelector/Text';
 
 
 
@@ -44,66 +44,67 @@ const TextBlock = ({ block }) => {
 };
 
 const renderBlock = (block) => {
-  if (!block || typeof block !== 'object' || !block.type) {
-    return <div style={{ color: 'red' }}>Invalid block</div>;
-  }
+  return true
+  // if (!block || typeof block !== 'object' || !block.type) {
+  //   return <div style={{ color: 'red' }}>Invalid block</div>;
+  // }
 
-  switch (block.type) {
-    case 'button':
-      return (
+  // switch (block.type) {
+  //   case 'button':
+  //     return (
 
-        <Button
-          id={block.id}
-          style={block.style}
-        buttonText={block.content||"Button"}
-        />
+  //       <Button
+  //         id={block.id}
+  //         style={block.style}
+  //       buttonText={block.content||"Button"}
+  //       />
        
-      );
+  //     );
 
-    case 'text':
-      return <Text 
-        id={block.id}
-        style={block.style}
-        Textcontent={block.content||"Enter a text"}
-      />;
+  //   case 'text':
+  //     return <Text 
+  //       id={block.id}
+  //       style={block.style}
+  //       Textcontent={block.content||"Enter a text"}
+  //     />;
 
-    case 'img':
-      return (
-        <Image
-          id={block.id}
-          src={block.src}
-          alt={block.alt || 'Image'}
-          style={block.style}
-        />
-      );
-        case 'link':
-      return (
-      <Link
-        id={block.id}
-        href={block.href || '#'}
-       linkText={block.content}
-        style={{
-            ...block.style,
-            display: 'inline-block',
-            backgroundImage: `url(${block.src})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-       }}
+  //   case 'img':
+  //     return (
+  //       <Image
+  //         id={block.id}
+  //         src={block.src}
+  //         alt={block.alt || 'Image'}
+  //         style={block.style}
+  //       />
+  //     );
+  //       case 'link':
+  //     return (
+  //     <Link
+  //       id={block.id}
+  //       href={block.href || '#'}
+  //      linkText={block.content}
+  //       style={{
+  //           ...block.style,
+  //           display: 'inline-block',
+  //           backgroundImage: `url(${block.src})`,
+  //           backgroundSize: 'cover',
+  //           backgroundPosition: 'center',
+  //      }}
   
-   />
-      );
-       case 'space':
-      return (
-      <Space 
-      id={block.id}
-        style={block.style}
-        />
-      );
+  //  />
+  //     );
+  //      case 'space':
+  //     return (
+  //     <Space 
+  //     id={block.id}
+  //       style={block.style}
+  //       />
+  //     );
 
 
-    default:
-      return <div>Unknown block type: {block.type}</div>;
-  }
+  //   default:
+  //     return <div>Unknown block type: {block.type}</div>;
+  // }
 };
 
 export default renderBlock;
