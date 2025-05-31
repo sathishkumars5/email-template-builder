@@ -4,7 +4,6 @@ import PopUpHtml from './PopUpHtml'
 
 const HeaderToolbar = () => {
   const [isPopupOpen, setPopupOpen] = useState(false)
-  const [copyHtml, setCopyHtml] = useState('')
   const [isPreview, setPreview] = useState(false)
   const htmlCode = Htmlconvert()
 
@@ -14,6 +13,16 @@ const HeaderToolbar = () => {
 
   const backCanvas = () => {
     setPreview(false)
+  }
+
+  const copyHtml=()=>{
+    navigator.clipboard.writeText(htmlCode)
+    .then(()=>{
+      alert('Copied to clipboard')
+    })
+    .catch(err => {
+        console.error('Failed to copy: ', err);
+    });
   }
 
   if (isPreview) {
@@ -55,7 +64,7 @@ const HeaderToolbar = () => {
 
       <PopUpHtml isOpen={isPopupOpen} onClose={() => setPopupOpen(false)}>
         <p>{htmlCode}</p>
-        <button onClick={() => setCopyHtml([...htmlCode])}>Copy</button>
+        <button onClick={copyHtml}>Copy</button>
         <button onClick={() => setPopupOpen(false)}>Close</button>
       </PopUpHtml>
     </div>
