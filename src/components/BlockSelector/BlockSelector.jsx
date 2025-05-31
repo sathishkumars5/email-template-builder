@@ -1,11 +1,5 @@
-// Contains buttons like "Add Text", "Add Image"
 import {React} from 'react';
-import NavComponents from './NavComponents';
-import { Button } from './Button';
-import { Text } from './Text';
-import { Image } from './Image';
-import { Link } from './Link';
-import {Space} from './Space'
+import NavComponents from './navComponent';
 
 
 const BlockSelector = () => {

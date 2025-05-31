@@ -1,33 +1,41 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import Button from '../components/BlockSelector/Button';
+import Image from '../components/BlockSelector/Image';
+import Link from '../components/BlockSelector/Link';
+import  {Space} from '../components/BlockSelector/Space';
+import Text from '../components/BlockSelector/Text';
+
+
 
 const TextBlock = ({ block }) => {
-  // const [isEditable, setIsEditable] = useState(false);
+  const [isEditable, setIsEditable] = useState(false);
   const [content, setContent] = useState(block?.content || '');
-  const paraRef = useRef(null);
-
-  // const handleClick = () => {
-  //   setIsEditable(true);
-  // };
+  const pRef = useRef(null);
+  const handleClick = () => {
+    setIsEditable(true);
+  };
 
   const handleBlur = (e) => {
     const newText = e.target.innerText;
-    // setIsEditable(false);
+    setIsEditable(false);
     setContent(newText);
-    // console.log("Updated content:", newText);
+    console.log("Updated content:", newText);
   };
 
-  // useEffect(() => {
-  //   if (isEditable && paraRef.current) {
-  //     paraRef.current.focus();
-  //   }
-  // }, [isEditable]);
+  useEffect(() => {
+    if (isEditable && pRef.current) {
+      pRef.current.focus();
+    }
+  }, [isEditable]);
 
   return (
     <p
       id={block.id}
-      ref={paraRef}
+      ref={pRef}
       style={block.style}
-      // onClick={handleClick}
+      contentEditable={isEditable}
+      suppressContentEditableWarning={true}
+      onClick={handleClick}
       onBlur={handleBlur}
     >
       {block.content}
@@ -43,29 +51,55 @@ const renderBlock = (block) => {
   switch (block.type) {
     case 'button':
       return (
-        <button
+
+        <Button
           id={block.id}
           style={block.style}
-          onClick={() => console.log('Button clicked:', block.id)}
-        >
-          {block.content || 'Button'}
-        </button>
+        buttonText={block.content||"Button"}
+        />
+       
       );
 
     case 'text':
-      return <TextBlock block={block} />;
+      return <Text 
+        id={block.id}
+        style={block.style}
+        Textcontent={block.content||"Enter a text"}
+      />;
 
     case 'img':
-    
-
       return (
-        <img
+        <Image
           id={block.id}
           src={block.src}
           alt={block.alt || 'Image'}
           style={block.style}
         />
       );
+        case 'link':
+      return (
+      <Link
+        id={block.id}
+        href={block.href || '#'}
+       linkText={block.content}
+        style={{
+            ...block.style,
+            display: 'inline-block',
+            backgroundImage: `url(${block.src})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+       }}
+  
+   />
+      );
+       case 'space':
+      return (
+      <Space 
+      id={block.id}
+        style={block.style}
+        />
+      );
+
 
     default:
       return <div>Unknown block type: {block.type}</div>;

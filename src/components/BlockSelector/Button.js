@@ -1,5 +1,3 @@
-import React from 'react'
-
 export default function Button({buttonText,id,style}) {
   return (
     <button
@@ -9,3 +7,4 @@ export default function Button({buttonText,id,style}) {
     >{buttonText}</button>
   )
 };
+
