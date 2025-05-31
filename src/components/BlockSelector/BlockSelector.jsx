@@ -1,5 +1,4 @@
-import {React} from 'react';
-import NavComponents from './navComponent';
+import NavComponents from './NavComponents';
 
 
 const BlockSelector = () => {
