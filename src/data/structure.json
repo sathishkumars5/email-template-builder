@@ -6,46 +6,70 @@
       "content": "Button",
       "style": {
         "color": "white",
-        "border": "1px solid #f17a4b",
         "backgroundColor": "#c74a27",
-        "boder":"none",
-        "padding":".3rem",
         "borderRadius":"4px"
       }
     },
     {
       "id": "1002",
       "type": "text",
-      "content": "text",
+      "content": "Enter the text",
       "style": {
-        "color": "white",
-        "border": "1px solid #f17a4b",
-        "borderRadius": "4px",
-        "padding":"8px",
-        "backgroundColor": "#c74a27",
-        "width": "fit-content"
+        "color": "black"
+      }
+    },
+
+     {
+      "id": "1003",
+      "type": "img",
+       "src": "https://www.dckap.com/wp-content/uploads/2023/08/logo-full-color-no-slogan.svg",
+        "alt": "Upload a image",
+       "style": {
+        "color": "",
+        "backgroundColor": ""
+
+      }
+    },
+    {
+      "id": "1004",
+      "type": "link",
+      "content": "add you link",
+      "href":"",
+      "style": {
+      "color": "black",
+      "backgroundColor":""
+      }
+    },
+    {
+      "id": "1005",
+      "type": "space",
+      "style": {
+        "color": "black",
+      "backgroundColor":"",
+      "height":"20px"
+
       }
     }
-
   ],
   "templates": [
     {
       "template1": {
         "header": [
-       {
-          "id": "1003",
-          "type": "img",
-          "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwVyJZmx2tda4xPaeriWINRAAz7Py779ft9A&s",
-          "alt": "Logo",
-          "style": {
-            "height": "100px",
-            "width": "150px",
-            "margin": "auto",
-            "display":"block",
-            "objectFit": "contain"
-          }
-        },
-
+          {
+            "id": "1003",
+            "type": "img",
+            "src": "https://www.dckap.com/wp-content/uploads/2023/08/logo-full-color-no-slogan.svg",
+            "alt": "Logo",
+            "style": {
+              "height": "50px",
+              "width": "50px",
+              "margin": "auto"
+            },
+            "parentStyle": {
+              "display": "flex",
+              "justifyContent": "center"
+            }
+          },
           {
             "id": "1004",
             "type": "text",
@@ -57,6 +81,9 @@
             }
           }
         ],
+        "headerStyle": {
+          "backgroundColor": "green"
+        },
         "Container": [
           {
             "id": "1005",
@@ -66,8 +93,11 @@
             "style": {
               "height": "100px",
               "width": "100px",
-              "display":"block",
               "margin": "auto"
+            },
+            "parentStyle": {
+              "display": "flex",
+              "justifyContent": "center"
             }
           },
           {
@@ -106,10 +136,9 @@
             "content": "CONFIRM YOUR EMAIL",
             "style": {
               "color": "white",
-              "backgroundColor": "#c74a27",
-              "boder":"none",
+              "backgroundColor": "#3B82F6",
               "padding": "10px 20px",
-              "borderRadius": "8px",
+              "borderRadius": "4px",
               "textAlign": "center",
               "display": "block",
               "margin": "20px auto"

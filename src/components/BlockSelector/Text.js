@@ -15,7 +15,7 @@ export const Text = () => {
           id={componentText.id}
           style={componentText.style}
         >
-          {componentText.content}
+          {componentText.type}
         </p>
       </div>
     </Dragable>
