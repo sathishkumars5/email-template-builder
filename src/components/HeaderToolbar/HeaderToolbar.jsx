@@ -43,7 +43,9 @@ const HeaderToolbar = () => {
       <button className='mainBtnStyle' onClick={() => setPopupOpen(true)}>EXPORT</button>
 
       <PopUpHtml isOpen={isPopupOpen} onClose={() => setPopupOpen(false)}>
-        <p style={{ textAlign: 'left', whiteSpace: 'pre-wrap' }}>{htmlCode}</p>
+        <div className="popup-content">
+          <p style={{ textAlign: 'left', whiteSpace: 'pre-wrap' }}>{htmlCode}</p>
+        </div>
         <div className='popup-buttons'>
           <button onClick={() => setPopupOpen(false)} className='btnStyle'>CLOSE</button>
           <button onClick={copyHtml} className='btnStyle'>COPY</button>
