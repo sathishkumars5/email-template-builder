@@ -1,6 +1,7 @@
 import React from 'react';
 import DropZone from './DropZone';
 import useEditorContext from '../../hooks/useEditorContext';
+// import '../../styles/';
 
 const CanvasEditor = () => {
   const { template } = useEditorContext();
@@ -20,7 +21,9 @@ const CanvasEditor = () => {
 
       <DropZone section="Container" />
 
+
       <DropZone section="footer" />
+
     </div>
   );
 };

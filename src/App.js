@@ -7,6 +7,8 @@ import BlockSelector from './components/BlockSelector/BlockSelector';
 import CanvasEditor from './components/CanvasEditor/CanvasEditor';
 import PropertiesPanel from './components/PropertiesPanel/PropertiesPanel';
 
+
+
 import './styles/index.css';
 
 const App = () => {

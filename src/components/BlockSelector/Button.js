@@ -1,23 +1,11 @@
-import React from 'react';
-import useEditorContext from '../../hooks/useEditorContext';
-import { Dragable } from './Dragable';
+import React from 'react'
 
-export const Button = () => {
-  const { components } = useEditorContext();
-  const componentText = components.find(item => item.type === 'button');
-
-  if (!componentText) return null;
-
+export default function Button({buttonText,id,style}) {
   return (
-    <Dragable data={componentText}> 
-        <div id={Math.floor(1000 + Math.random() * 9000)}>
-        <button
-          id={componentText.id}
-          style={componentText.style}
-        >
-          {componentText.content}
-        </button>
-      </div>
-    </Dragable>
-  );
+    <button
+      id={id}
+          style={style}
+          onClick={() => console.log('Button clicked:', id)}
+    >{buttonText}</button>
+  )
 };
