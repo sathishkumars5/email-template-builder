@@ -1,14 +1,32 @@
-// Updates selected block’s properties
-
 import React from 'react';
+import PropertyBlock from '../PropertiesPanel/PropertyBlock';
+import './property.css';
+import { useDrag } from 'react-dnd';
 
-const PropertiesPanel = () => {
+const PropertiesPanel = ({ onClose }) => {
+
+  const [{ isDragging }, dragRef] = useDrag(() => ({
+    type: 'PANEL',
+    item: {},
+    collect: (monitor) => ({
+      isDragging: !!monitor.isDragging(),
+    }),
+  }));
+  
   return (
-    <div className="sidebar right">
-      <p>Element Settings</p>
-      
+    <div ref={dragRef}
+      className="properties-panel"
+      style={{ opacity: isDragging ? 0.5 : 1 }}>
+      <h3 className="panel-header">
+        PROPERTIES
+        <h5 className="close-btn" onClick={onClose}>X </h5>
+      </h3>
+      <PropertyBlock />
     </div>
   );
 };
 
 export default PropertiesPanel;
+
+
+
