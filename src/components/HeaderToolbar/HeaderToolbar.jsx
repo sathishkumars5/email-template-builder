@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import Htmlconvert from './Htmlconvert'
+import { generateFullHtml } from './Htmlconvert'
 import Modal from './Modal'
 import { useNotification } from '../../context/NotificationContext'
+import useEditorContext from '../../hooks/useEditorContext'
 import './NavBar.css';
 
 const HeaderToolbar = () => {
@@ -10,20 +11,18 @@ const HeaderToolbar = () => {
   const [isPopupOpen, setPopupOpen] = useState(false)
   const [modalType, setModalType] = useState('html')
   const [modalTitle, setModalTitle] = useState('')
+  const [htmlCode, setHtmlCode] = useState('')
   const { showSuccess, showError, showWarning } = useNotification()
-  const htmlCode = Htmlconvert()
+  const { template } = useEditorContext()
 
   const showPreview = () => {
     navigate('/preview')
   }
 
-  const openHtmlEditor = () => {
-    setModalType('html')
-    setModalTitle('HTML Code Editor')
-    setPopupOpen(true)
-  }
-
   const openPreviewModal = () => {
+    // Generate fresh HTML with current template state
+    const freshHtmlCode = generateFullHtml(template)
+    setHtmlCode(freshHtmlCode)
     setModalType('preview')
     setModalTitle('HTML Preview')
     setPopupOpen(true)
@@ -31,11 +30,18 @@ const HeaderToolbar = () => {
 
   const handleExport = () => {
     try {
-      if (!htmlCode || htmlCode.trim() === '') {
+      // Generate fresh HTML with current template state
+      const freshHtmlCode = generateFullHtml(template)
+      
+      if (!freshHtmlCode || freshHtmlCode.trim() === '') {
         showWarning('No content to export. Please add some blocks to your template first.')
         return
       }
-      openHtmlEditor()
+      
+      setHtmlCode(freshHtmlCode)
+      setModalType('html')
+      setModalTitle('HTML Code Editor')
+      setPopupOpen(true)
       showSuccess('HTML code generated successfully!')
     } catch (error) {
       console.error('Export error:', error)
@@ -53,8 +59,8 @@ const HeaderToolbar = () => {
   return (
     <div style={{ padding: '10px', background: '#eee', textAlign: 'center' }}>
       <button className='btnStyle' onClick={showPreview}>PREVIEW</button>
-      <button className='btnStyle' onClick={openPreviewModal}>PREVIEW MODAL</button>
-      <button className='btnStyle' onClick={testNotifications}>TEST NOTIFICATIONS</button>
+      {/* <button className='btnStyle' onClick={openPreviewModal}>PREVIEW MODAL</button>
+      <button className='btnStyle' onClick={testNotifications}>TEST NOTIFICATIONS</button> */}
       <button className='mainBtnStyle' onClick={handleExport}>EXPORT</button>
 
       <Modal 

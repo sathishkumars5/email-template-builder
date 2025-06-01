@@ -1,11 +1,13 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import Htmlconvert from '../components/HeaderToolbar/Htmlconvert';
+import { generateFullHtml } from '../components/HeaderToolbar/Htmlconvert';
+import useEditorContext from '../hooks/useEditorContext';
 import './PreviewPage.css';
 
 const PreviewPage = () => {
   const navigate = useNavigate();
-  const htmlCode = Htmlconvert();
+  const { template } = useEditorContext();
+  const htmlCode = generateFullHtml(template);
 
   const handleBackToEditor = () => {
     navigate('/');

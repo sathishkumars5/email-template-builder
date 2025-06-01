@@ -16,27 +16,32 @@ export default function NavComponents() {
         {
             type:'button',
             icon:<FontAwesomeIcon icon={faRectangleList}/>,
-            tooltip:"Button block"
+            tooltip:"Button block",
+            label:"Button"
         },
          {
             type:'link',
             icon:<FontAwesomeIcon icon={faLink}/>,
-            tooltip:"Link block"
+            tooltip:"Link block",
+            label:"Link"
         },
          {
             type:'img',
             icon:<FontAwesomeIcon icon={faImage}/>,
-            tooltip:"Image block"
+            tooltip:"Image block",
+            label:"Image"
         },
          {
             type:'text',
             icon:<FontAwesomeIcon icon={faT}/>,
-            tooltip:"Text block"
+            tooltip:"Text block",
+            label:"Text"
         },
         {
             type:'space',
             icon:<FontAwesomeIcon icon={faArrowsUpDown}/>,
-            tooltip:"Space block"
+            tooltip:"Space block",
+            label:"Spacer"
         }
     ])
 
@@ -53,6 +58,8 @@ return(
                 className='paracontainer'
             >
               {item.icon}
+              <span className='componentLabel'> {item.label || componentText.label}</span>
+             
              </p>
           </div>
         </Dragable>
