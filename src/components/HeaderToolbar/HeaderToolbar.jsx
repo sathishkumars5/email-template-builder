@@ -1,83 +1,87 @@
 import React, { useState } from 'react'
-import Htmlconvert from './Htmlconvert'
-import PopUpHtml from './PopUpHtml'
+import { useNavigate } from 'react-router-dom'
+import { generateFullHtml } from './Htmlconvert'
+import Modal from './Modal'
+import { useNotification } from '../../context/NotificationContext'
+import useEditorContext from '../../hooks/useEditorContext'
+import './NavBar.css';
 
 const HeaderToolbar = () => {
+  const navigate = useNavigate()
   const [isPopupOpen, setPopupOpen] = useState(false)
-  const [isPreview, setPreview] = useState(false)
-  const htmlCode = Htmlconvert()
+  const [modalType, setModalType] = useState('html')
+  const [modalTitle, setModalTitle] = useState('')
+  const [htmlCode, setHtmlCode] = useState('')
+  const { showSuccess, showError, showWarning } = useNotification()
+  const { template } = useEditorContext()
 
   const showPreview = () => {
-    setPreview(true)
+    navigate('/preview')
   }
 
-  const backCanvas = () => {
-    setPreview(false)
+  const openPreviewModal = () => {
+    // Generate fresh HTML with current template state
+    const freshHtmlCode = generateFullHtml(template)
+    setHtmlCode(freshHtmlCode)
+    setModalType('preview')
+    setModalTitle('HTML Preview')
+    setPopupOpen(true)
   }
 
-  const copyHtml=()=>{
-    navigator.clipboard.writeText(htmlCode)
-    .then(()=>{
-      alert('Copied to clipboard')
-    })
-    .catch(err => {
-        console.error('Failed to copy: ', err);
-    });
+  const handleExport = () => {
+    try {
+      // Generate fresh HTML with current template state
+      const freshHtmlCode = generateFullHtml(template)
+      
+      if (!freshHtmlCode || freshHtmlCode.trim() === '') {
+        showWarning('No content to export. Please add some blocks to your template first.')
+        return
+      }
+      
+      setHtmlCode(freshHtmlCode)
+      setModalType('html')
+      setModalTitle('HTML Code Editor')
+      setPopupOpen(true)
+      showSuccess('HTML code generated successfully!')
+    } catch (error) {
+      console.error('Export error:', error)
+      showError('Failed to generate HTML code. Please try again.')
+    }
   }
 
-  if (isPreview) {
-    return (
-      <div style={{ width: '100vw', height: '100vh', background: '#fff' }}>
-        <button
-          onClick={backCanvas}
-          style={{
-            position: 'absolute',
-            top: 10,
-            left: 10,
-            zIndex: 10,
-            padding: '8px 16px',
-            background: 'grey',
-            color: 'white',
-            border: 'none',
-            borderRadius: '4px',
-            cursor: 'pointer'
-          }}
-        >
-          ⬅ Back to Canvas
-        </button>
-
-        <iframe
-          title="Preview"
-          style={{ width: '100vw', height: '100vw', border: 'none' }}
-          srcDoc={htmlCode}
-        />
-      </div>
-    )
+  // Demo function to test different notification types
+  const testNotifications = () => {
+    showSuccess('This is a success notification!')
+    setTimeout(() => showWarning('This is a warning notification!'), 1000)
+    setTimeout(() => showError('This is an error notification!'), 2000)
   }
 
   return (
     <div style={{ padding: '10px', background: '#eee', textAlign: 'center' }}>
-      <button style={btnStyle} onClick={showPreview}>Preview</button>
-      <button style={btnStyle}>Undo</button>
-      <button style={btnStyle}>Redo</button>
-      <button style={btnStyle} onClick={() => setPopupOpen(true)}>Export</button>
+      <button className='btnStyle' onClick={showPreview}>PREVIEW</button>
+      {/* <button className='btnStyle' onClick={openPreviewModal}>PREVIEW MODAL</button>
+      <button className='btnStyle' onClick={testNotifications}>TEST NOTIFICATIONS</button> */}
+      <button className='mainBtnStyle' onClick={handleExport}>EXPORT</button>
 
-      <PopUpHtml isOpen={isPopupOpen} onClose={() => setPopupOpen(false)}>
-        <p>{htmlCode}</p>
-        <button onClick={copyHtml}>Copy</button>
-        <button onClick={() => setPopupOpen(false)}>Close</button>
-      </PopUpHtml>
+      <Modal 
+        isOpen={isPopupOpen} 
+        onClose={() => setPopupOpen(false)}
+        content={htmlCode}
+        title={modalTitle}
+        type={modalType}
+        onSave={(content) => {
+          try {
+            console.log('Saved content:', content);
+            showSuccess('Content saved successfully!');
+            // Here you could update the template with the edited HTML
+          } catch (error) {
+            console.error('Save error:', error);
+            showError('Failed to save content. Please try again.');
+          }
+        }}
+      />
     </div>
   )
-}
-
-const btnStyle = {
-  margin: '0 8px',
-  padding: '8px 16px',
-  border: '1px solid #ccc',
-  borderRadius: '5px',
-  background: 'lightblue',
-  cursor: 'pointer'
 }
 
 export default HeaderToolbar

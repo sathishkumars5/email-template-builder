@@ -1,6 +1,3 @@
-import React from 'react'
-import useEditorContext from '../../hooks/useEditorContext'
-
 function camelToKebab(changeCase) {
   return changeCase.replace(/[A-Z]/g, x => '-' + x.toLowerCase());
 }
@@ -11,7 +8,7 @@ function inlineStyle(objstyle) {
     .join(';');
 }
 
-const generateHtml = (template) => {
+export const generateHtml = (template) => {
       let html = '';
    
       html += `<div style="border:1px solid lightblue; margin:20px; padding:10px;">`;
@@ -24,6 +21,10 @@ const generateHtml = (template) => {
           html += `<img src="${block.src}" alt="${block.alt || ''}" style="${inlineStyle(block.style)}"/>`;
         } else if (block.type === 'button') {
           html += `<button style="${inlineStyle(block.style)}">${block.content}</button>`;
+        } else if (block.type === 'link') {
+          html += `<a href="${block.href || '#'}" style="${inlineStyle(block.style)}">${block.content}</a>`;
+        } else if (block.type === 'space') {
+          html += `<div style="${inlineStyle({ height: block.style?.height || '20px', ...block.style })}"></div>`;
         }
       });
       html += `</div>`;
@@ -36,6 +37,10 @@ const generateHtml = (template) => {
           html += `<img src="${block.src}" alt="${block.alt || ''}" style="${inlineStyle(block.style)}"/>`;
         } else if (block.type === 'button') {
           html += `<button style="${inlineStyle(block.style)}">${block.content}</button>`;
+        } else if (block.type === 'link') {
+          html += `<a href="${block.href || '#'}" style="${inlineStyle(block.style)}">${block.content}</a>`;
+        } else if (block.type === 'space') {
+          html += `<div style="${inlineStyle({ height: block.style?.height || '20px', ...block.style })}"></div>`;
         }
       });
       html += `</div>`;
@@ -48,6 +53,10 @@ const generateHtml = (template) => {
           html += `<img src="${block.src}" alt="${block.alt || ''}" style="${inlineStyle(block.style)}"/>`;
         } else if (block.type === 'button') {
           html += `<button style="${inlineStyle(block.style)}">${block.content}</button>`;
+        } else if (block.type === 'link') {
+          html += `<a href="${block.href || '#'}" style="${inlineStyle(block.style)}">${block.content}</a>`;
+        } else if (block.type === 'space') {
+          html += `<div style="${inlineStyle({ height: block.style?.height || '20px', ...block.style })}"></div>`;
         }
       });
       html += `</div>`;
@@ -56,10 +65,9 @@ const generateHtml = (template) => {
   return html;
 };
 
-const Htmlconvert = () => {
-  const {template}=useEditorContext()
+export const generateFullHtml = (template) => {
   const htmlString = generateHtml(template);
-  const fullHtml=`<!DOCTYPE html>
+  return `<!DOCTYPE html>
     <html>
       <head>
         <meta charset="UTF-8" />
@@ -69,9 +77,7 @@ const Htmlconvert = () => {
       <body>
         ${htmlString}
       </body>
-    </html>`
-
-  return (fullHtml);
+    </html>`;
 };
 
-export default Htmlconvert;
+// Export functions are used by HeaderToolbar component

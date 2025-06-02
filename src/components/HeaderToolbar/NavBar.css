@@ -1,0 +1,159 @@
+.btnStyle {
+  margin: 0 8px;
+  padding: 8px 16px;
+  border: 1px solid var(--primary-color);
+  border-radius: 5px;
+  cursor: pointer;
+  background: transparent;
+}
+
+.mainBtnStyle {
+  margin: 0 8px;
+  padding: 8px 16px;
+  border: 1px solid var(--primary-color);
+  border-radius: 5px;
+  color: var(--text-white);
+  background: var(--primary-color);
+  cursor: pointer;
+}
+
+.copy-btn {
+  margin: 0 8px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  color: var(--text-white);
+  background: var(--primary-color);
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.copy-btn:hover {
+  background: var(--background);
+}
+
+.popup-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+  overflow: auto;
+}
+
+.popup {
+  background: var(--text-white);
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 900px;
+  max-height: 80vh;
+  overflow-y: auto; 
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.html-editor-container {
+  width: 100%;
+}
+
+.html-editor-container h3 {
+  margin: 0 0 15px 0;
+  color: #333;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.editor-wrapper {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+.editor-wrapper .w-tc-editor {
+  min-height: 300px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.text-editor-container {
+  width: 100%;
+}
+
+.text-editor-container h3 {
+  margin: 0 0 15px 0;
+  color: #333;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.text-editor-wrapper {
+  margin-bottom: 15px;
+}
+
+.preview-container {
+  width: 100%;
+}
+
+.preview-container h3 {
+  margin: 0 0 15px 0;
+  color: #333;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.preview-content {
+  margin-bottom: 15px;
+}
+
+.default-content {
+  width: 100%;
+}
+
+.default-content h3 {
+  margin: 0 0 15px 0;
+  color: #333;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.content-body {
+  margin-bottom: 15px;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: center; 
+  gap: 10px; 
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+}
+
+.popup-content {
+  padding: 20px;
+  overflow-y: auto;
+  flex: 1; 
+}
+
+.popup-buttons {
+  display: flex;
+  justify-content: center; 
+  gap: 10px; 
+  margin-top: 10px;
+}

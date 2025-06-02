@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDrag } from 'react-dnd';
+import { TEXT_WHITE } from '../../constants/colors';
 
 export const Dragable = ({ children, data, tooltip }) => {
 
@@ -28,7 +29,7 @@ export const Dragable = ({ children, data, tooltip }) => {
             left: '50%',
             transform: 'translateX(-50%)',
             backgroundColor: 'rgba(0, 0, 0, 0.8)',
-            color: 'white',
+            color: TEXT_WHITE,
             padding: '4px 8px',
             borderRadius: '4px',
             fontSize: '12px',

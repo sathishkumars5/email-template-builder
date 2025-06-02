@@ -1,31 +1,23 @@
-import React, { useState } from 'react';
-import { DndProvider } from 'react-dnd';
-import { HTML5Backend } from 'react-dnd-html5-backend';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { EditorProvider } from './context';
-import HeaderToolbar from './components/HeaderToolbar/HeaderToolbar';
-import BlockSelector from './components/BlockSelector/BlockSelector';
-import CanvasEditor from './components/CanvasEditor/CanvasEditor';
-import PropertiesPanel from './components/PropertiesPanel/PropertiesPanel';
+import { NotificationProvider } from './context/NotificationContext';
+import EditorPage from './pages/EditorPage';
+import PreviewPage from './pages/PreviewPage';
 import './styles/index.css';
 
 const App = () => {
-  const [isPanelVisible, setIsPanelVisible] = useState(false);
-
   return (
-    <DndProvider backend={HTML5Backend}>
+    <Router>
       <EditorProvider>
-        <div className="app-container">   
-          <HeaderToolbar />
-          <div className="editor-body">
-            <BlockSelector />
-            <CanvasEditor onBlockClick={() => setIsPanelVisible(true)} />
-            {isPanelVisible && (
-              <PropertiesPanel onClose={() => setIsPanelVisible(false)} />
-            )}
-          </div>
-        </div>
+        <NotificationProvider>
+          <Routes>
+            <Route path="/" element={<EditorPage />} />
+            <Route path="/preview" element={<PreviewPage />} />
+          </Routes>
+        </NotificationProvider>
       </EditorProvider>
-    </DndProvider>
+    </Router>
   );
 };
 

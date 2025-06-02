@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import CodeEditor from '@uiw/react-textarea-code-editor';
 import { useNotification } from '../../context/NotificationContext';
 
-function PopUpHtml({ isOpen, onClose, content, title = "Modal", type = "default", onSave }) {
+function Modal({ isOpen, onClose, content, title = "Modal", type = "default", onSave }) {
   const [editableContent, setEditableContent] = useState(content || '');
   const { showSuccess, showError } = useNotification();
+
+  // Update editableContent when content prop changes
+  useEffect(() => {
+    setEditableContent(content || '');
+  }, [content]);
 
   if (!isOpen) return null;
 
@@ -54,9 +59,9 @@ function PopUpHtml({ isOpen, onClose, content, title = "Modal", type = "default"
             <div className="modal-actions">
               <button onClick={onClose} className='btnStyle'>CLOSE</button>
               <button onClick={copyToClipboard} className='copy-btn'>COPY</button>
-              {onSave && (
+              {/* {onSave && (
                 <button onClick={handleSave} className='copy-btn'>SAVE</button>
-              )}
+              )} */}
             </div>
           </div>
         );
@@ -107,9 +112,9 @@ function PopUpHtml({ isOpen, onClose, content, title = "Modal", type = "default"
             <div className="modal-actions">
               <button onClick={onClose} className='btnStyle'>CLOSE</button>
               <button onClick={copyToClipboard} className='copy-btn'>COPY</button>
-              {onSave && (
+              {/* {onSave && (
                 <button onClick={handleSave} className='copy-btn'>SAVE</button>
-              )}
+              )} */}
             </div>
           </div>
         );
@@ -145,4 +150,4 @@ function PopUpHtml({ isOpen, onClose, content, title = "Modal", type = "default"
   );
 }
 
-export default PopUpHtml;
+export default Modal;
