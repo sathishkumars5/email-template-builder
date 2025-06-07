@@ -10,6 +10,8 @@ const PropertyBlock = () => {
   const blockList = template[section] || [];
   const block = blockList.find((b) => b.id === id);
 
+  if (!block) return null;
+
   const handleChange = (e, key) => {
     const value = e.target.value;
     const newBlock = {

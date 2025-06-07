@@ -29,16 +29,13 @@ export const EditorProvider = ({ children }) => {
     console.log(id,'iddd')
     // Ensure ID is string for consistent comparison
     const blockId = String(id);
-    console.log(blockId)
-    console.log(section)
     
     setTemplate((prev) => {
       if (!prev[section]) {
         return prev;
       }
-  
-
-    //   // Filter out the block to delete, ensuring we only keep valid blocks
+      
+      // Filter out the block to delete, ensuring we only keep valid blocks
       const updatedSection = prev[section].filter((block) => {
         // Extra safety: ensure block is valid and ID doesn't match
         return block && block.id && String(block.id) !== blockId;
@@ -51,9 +48,9 @@ export const EditorProvider = ({ children }) => {
     });
     
     // Clear selection if the deleted block was selected
-    // if (selected.section === section && String(selected.id) === blockId) {
-    //   setSelected({ section: null, id: null });
-    // }
+    if (selected.section === section && String(selected.id) === blockId) {
+      setSelected({ section: null, id: null });
+    }
   };
 
   const getSelectedBlock = () => {
@@ -79,97 +76,3 @@ export const EditorProvider = ({ children }) => {
     </EditorContext.Provider>
   );
 };
-
-
-
-
-
-// import React, { createContext, useState } from 'react';
-// import { structure } from '../data/structure';
-
-// export const EditorContext = createContext();
-
-// export const EditorProvider = ({ children }) => {
-//   const [components, setComponents] = useState(structure.components);
-//   const [template, setTemplate] = useState(structure.templetes?.[0]?.[1] || {});
-//   const [selected, setSelected] = useState({ section: null, id: null });
-
-//   const updateBlock = (section, id, newProps) => {
-//     setTemplate((prev) => {
-//       const updatedSection = prev[section]?.map((block) =>
-//         block.id === id ? { ...block, ...newProps } : block
-//       ) || [];
-
-//       return {
-//         ...prev,
-//         [section]: updatedSection,
-//       };
-//     });
-//   };
-
-//   const getSelectedBlock = () => {
-//     if (!selected.section || !selected.id) return null;
-//     return template[selected.section]?.find((b) => b.id === selected.id);
-//   };
-
-//   return (
-//     <EditorContext.Provider
-//       value={{
-//         components,
-//         setComponents,
-//         template,
-//         setTemplate,
-//         selected,
-//         setSelected,
-//         updateBlock,
-//         getSelectedBlock,
-//       }}
-//     >
-//       {children}
-//     </EditorContext.Provider>
-//   );
-// };
-
-
-// import React, { createContext, useState } from 'react';
-// import { structure } from '../data/structure';
-
-// export const EditorContext = createContext();
-
-// export const EditorProvider = ({ children }) => {
-//   const [components, setComponents] = useState(structure.components);
-
-//   const [template, setTemplate] = useState(structure.templetes[0][1]);
-
-//   const [selected, setSelected] = useState({ section: null, id: null });
-
-//   console.log('UseContext Selected:', template);
-
-//   return (
-//     <EditorContext.Provider
-//       value={{
-//         template,
-//         setTemplate,
-//         components,
-//         setComponents,
-//         selected,
-//         setSelected
-//       }}
-//     >
-//       {children}
-//     </EditorContext.Provider>
-//   );
-// };
-
-
-
-
-
-
-
-
-
-
-
-
-
