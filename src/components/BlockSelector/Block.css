@@ -16,8 +16,8 @@ width: 20px;
   transition: background-color 0.3s, transform 0.2s; 
 }
 
-.linkTag{
-display: block;
+.linkTag {
+  display: block !important;
 }
 
 .componentDiv:hover {
