@@ -15,7 +15,7 @@ const EditorPage = () => {
         <HeaderToolbar />
         <div className="editor-body">
           <BlockSelector />
-          <CanvasEditor onBlockClick={() => setIsPanelVisible(true)} />
+          <CanvasEditor onBlockClick={() => setIsPanelVisible(true)}/>
           {isPanelVisible && (
             <PropertiesPanel onClose={() => setIsPanelVisible(false)} />
           )}

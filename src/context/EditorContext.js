@@ -29,13 +29,16 @@ export const EditorProvider = ({ children }) => {
     console.log(id,'iddd')
     // Ensure ID is string for consistent comparison
     const blockId = String(id);
+    console.log(blockId)
+    console.log(section)
     
     setTemplate((prev) => {
       if (!prev[section]) {
         return prev;
       }
-      
-      // Filter out the block to delete, ensuring we only keep valid blocks
+  
+
+    //   // Filter out the block to delete, ensuring we only keep valid blocks
       const updatedSection = prev[section].filter((block) => {
         // Extra safety: ensure block is valid and ID doesn't match
         return block && block.id && String(block.id) !== blockId;
@@ -48,9 +51,9 @@ export const EditorProvider = ({ children }) => {
     });
     
     // Clear selection if the deleted block was selected
-    if (selected.section === section && String(selected.id) === blockId) {
-      setSelected({ section: null, id: null });
-    }
+    // if (selected.section === section && String(selected.id) === blockId) {
+    //   setSelected({ section: null, id: null });
+    // }
   };
 
   const getSelectedBlock = () => {
