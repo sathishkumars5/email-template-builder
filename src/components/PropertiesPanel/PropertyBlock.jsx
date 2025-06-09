@@ -12,7 +12,7 @@ const PropertyBlock = () => {
   const block = blockList.find((b) => b.id === id);
 
   if (!block) return null;
-
+  
   const renderFields = () => {
     switch (block.type) {
       case 'text':
@@ -35,7 +35,7 @@ const PropertyBlock = () => {
             <Textinput label="Button Text" propKey="content" />
             <InputStyle label="Color" propKey="color" type="color" />
             <InputStyle label="fontSize" propKey="fontSize" type="text" /> 
-            <InputStyle label="Text Align" propKey="textAlign" type="select" useMargin={true} options={['left', 'center', 'right']}/>
+             <InputStyle label="Text Align" propKey="textAlign" type="select" useMargin={true} options={['left', 'center', 'right']}/>
             <InputStyle label="backgroundColor" propKey="backgroundColor" type="color" />
             <div className="textStyleBtn">             
              <StyleToggleButton propKey="fontWeight" value="bold" label="B" />

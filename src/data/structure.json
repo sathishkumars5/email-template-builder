@@ -10,9 +10,9 @@
               "textAlign": "center",
               "display": "block",
               "fontSize": "12px",
-              "margin": "0   auto",
+              "margin": "0 auto",
                "color": "#ffffff",
-              "backgroundColor": "var(--primary-color)",
+              "backgroundColor": "#c74a27",
               "border":"none"
         
       }
@@ -24,7 +24,7 @@
       "style": {
               "color": "#000000",
               "fontSize": "18px",
-              "fontweigth":"normal",
+              "fontweight":"normal",
               "textAlign": "center"
       }
     },
@@ -38,7 +38,7 @@
         "width":"100px",
         "height":"100px",
         "display":"block",
-        "margin":" 0 auto"
+        "margin": "0 auto"
 
       }
     },
@@ -154,7 +154,7 @@
               "display": "block",
              "margin": "0 auto",
                "color": "#ffffff",
-              "backgroundColor": "var(--primary-color)",
+               "backgroundColor": "#c74a27",
               "border":"none"
       
             }
@@ -192,6 +192,212 @@
               "fontSize": "18px",
               "fontweigth":"normal",
               "textAlign": "center"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "template2": {
+        "header": [
+          {
+            "id": "1013",
+            "type": "img",
+            "src": "https://www.dckap.com/wp-content/uploads/2023/08/logo-full-color-no-slogan.svg",
+            "alt": "Logo",
+            "style": {
+              "height": "50px",
+              "width": "50px",
+              "margin": "0 auto",
+              "display":"block"
+            }
+          },
+          {
+            "id": "1014",
+            "type": "text",
+            "content": "Style Casual",
+            "style": {
+              "color": "#000000",
+              "fontSize": "18px",
+              "fontweigth":"normal",
+              "textAlign": "center"
+            }
+          }
+        ],
+
+        "Container": [
+          {
+            "id": "1015",
+            "type": "img",
+            "src": "https://cdn.pixabay.com/photo/2016/01/26/17/15/gmail-1162901_1280.png",
+            "alt": "Email Icon",
+            "style": {
+              "height": "100px",
+              "width": "100px",
+              "display":"block",
+              "margin": "0 auto"
+            }
+         },
+          {
+            "id": "1016",
+            "type": "text",
+            "content": "Confirm Your Email",
+            "style": {
+              "color": "#000000",
+              "fontSize": "18px",
+              "fontweigth":"normal",
+              "textAlign": "center"
+            }
+          },
+          {
+            "id": "1017",
+            "type": "button",
+            "content": "CONFIRM YOUR EMAIL",
+            "style": {
+              "padding": "10px 20px",
+              "borderRadius": "8px",
+              "textAlign": "center",
+              "display": "block",
+              "margin": "20px auto",
+              "color": "black",
+              "backgroundColor": "lightblue",
+              "border":"none"
+      
+            }
+          }
+        ],
+        "footer": [
+          {
+            "id": "1018",
+            "type": "text",
+            "content": "Style Casual © 2021 Style Casual, Inc. All Rights Reserved. 4562 Hazy Panda Limits, Chair Crossing, Kentucky, US, 607898",
+            "style": {
+            "color": "#000000",
+              "fontSize": "18px",
+              "fontweigth":"normal",
+              "textAlign": "center"
+            }
+          },
+          {
+            "id": "1019",
+            "type": "text",
+            "content": "Visit Us | Privacy Policy | Terms of Use",
+            "style": {
+             "color": "#000000",
+              "fontSize": "18px",
+              "fontweigth":"normal",
+              "textAlign": "center"
+            }
+          }
+        ]
+      }
+    },
+     {
+      "template3": {
+        "header": [
+          {
+            "id": "1020",
+            "type": "img",
+            "src": "https://www.dckap.com/wp-content/uploads/2023/08/logo-full-color-no-slogan.svg",
+            "alt": "Logo",
+            "style": {
+              "height": "50px",
+              "width": "50px",
+              "margin": "0 auto",
+              "display":"block"
+            }
+          },
+          {
+            "id": "1021",
+            "type": "text",
+            "content": "Style Casual",
+            "style": {
+              "color": "#000000",
+              "fontSize": "18px",
+              "fontweigth":"normal",
+              "textAlign": "center"
+            }
+          }
+        ],
+
+        "Container": [
+          {
+            "id": "1022",
+            "type": "img",
+            "src": "https://cdn.pixabay.com/photo/2016/01/26/17/15/gmail-1162901_1280.png",
+            "alt": "Email Icon",
+            "style": {
+              "height": "100px",
+              "width": "100px",
+              "display":"block",
+              "margin": "0 auto"
+            }
+         },
+          {
+            "id": "1023",
+            "type": "text",
+            "content": "Confirm Your Email",
+            "style": {
+              "color": "#000000",
+              "fontSize": "18px",
+              "fontweigth":"normal",
+              "textAlign": "center"
+            }
+          },
+          {
+            "id": "1024",
+            "type": "button",
+            "content": "CONFIRM YOUR EMAIL",
+            "style": {
+              "padding": "10px 20px",
+              "borderRadius": "8px",
+              "textAlign": "center",
+              "display": "block",
+              "margin": "20px auto",
+              "color": "black",
+              "backgroundColor": "lightblue",
+              "border":"none"
+      
+            }
+          }
+        ],
+        "footer": [
+          {
+            "id": "1025",
+            "type": "text",
+            "content": "Style Casual © 2021 Style Casual, Inc. All Rights Reserved. 4562 Hazy Panda Limits, Chair Crossing, Kentucky, US, 607898",
+            "style": {
+            "color": "#000000",
+              "fontSize": "18px",
+              "fontweigth":"normal",
+              "textAlign": "center"
+            }
+          },
+          {
+            "id": "1026",
+            "type": "text",
+            "content": "Visit Us | Privacy Policy | Terms of Use",
+            "style": {
+             "color": "#000000",
+              "fontSize": "18px",
+              "fontweigth":"normal",
+              "textAlign": "center"
+            }
+          },
+            {
+            "id": "1027",
+            "type": "button",
+            "content": "CONFIRM YOUR ACCOUNT",
+            "style": {
+              "padding": "10px 20px",
+              "borderRadius": "8px",
+              "textAlign": "center",
+              "display": "block",
+              "margin": "20px auto",
+              "color": "black",
+              "backgroundColor": "lightgreen",
+              "border":"none"
+      
             }
           }
         ]

@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import React from 'react';
 
 import Button from '../BlockSelector/Button';
 import Image from '../BlockSelector/Image';
@@ -6,39 +6,7 @@ import Link from '../BlockSelector/Link';
 import Text from '../BlockSelector/Text';
 import Space from '../BlockSelector/Space';
 
-const TextBlock = ({ block }) => {
-  const [isEditable, setIsEditable] = useState(false);
-  const [content, setContent] = useState(block?.content || '');
-  const pRef = useRef(null);
-
-  const handleBlur = (e) => {
-    const newText = e.target.innerText;
-    setIsEditable(false);
-    setContent(newText);
-    console.log("Updated content:", newText);
-  };
-
-  useEffect(() => {
-    if (isEditable && pRef.current) {
-      pRef.current.focus();
-    }
-  }, [isEditable]);
-
-  return (
-    <p
-      id={block.id}
-      ref={pRef}
-      style={block.style}
-      contentEditable={isEditable}
-      suppressContentEditableWarning={true}
-      onBlur={handleBlur}
-    >
-      {block.content}
-    </p>
-  );
-};
-
-const renderBlock = (block) => {
+const RenderBlock = (block) => {
 
   if (!block || typeof block !== 'object' || !block.type) {
     return <div style={{ color: 'red' }}>Invalid block</div>;
@@ -100,4 +68,4 @@ const renderBlock = (block) => {
   }
 };
 
-export default renderBlock;
+export default RenderBlock;
