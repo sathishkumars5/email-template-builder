@@ -16,6 +16,10 @@ width: 20px;
   transition: background-color 0.3s, transform 0.2s; 
 }
 
+.linkTag {
+  display: block !important;
+}
+
 .componentDiv:hover {
   background-color:  rgb(255, 245, 240);
   border: solid 1px var(--primary-color);
