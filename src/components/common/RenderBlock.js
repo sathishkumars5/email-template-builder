@@ -46,13 +46,7 @@ const renderBlock = (block) => {
         id={block.id}
         href={block.href || '#'}
        linkText={block.content}
-        style={{
-            ...block.style,
-            display: 'inline-block',
-            backgroundImage: `url(${block.src})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-       }}
+       style={block.style}
   
    />
       );
