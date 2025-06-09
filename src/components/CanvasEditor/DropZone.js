@@ -3,36 +3,40 @@ import renderBlock from '../common/RenderBlock';
 import useEditorContext from '../../hooks/useEditorContext';
 import { useEffect, useRef, useState, useMemo } from 'react';
 import { PRIMARY_COLOR, TEXT_WHITE } from '../../constants/colors';
-import './DropZone.css';
+import { styles } from './DropZoneStyles'; 
 
 const ItemType = 'DRAGGABLE_ITEM';
 
 const DropZone = ({ section }) => {
-  const { template, setTemplate, setSelected, selected, deleteBlock } = useEditorContext();
+  const {
+    template,
+    setTemplate,
+    setSelected,
+    selected,
+    deleteBlock,
+  } = useEditorContext();
+
   const [hoverIndex, setHoverIndex] = useState(null);
   const [hoveredBlockId, setHoveredBlockId] = useState(null);
+  const [deleteHoveredId, setDeleteHoveredId] = useState(null);
+  const [deleteActiveId, setDeleteActiveId] = useState(null);
+
   const containerRef = useRef(null);
 
   const blocks = useMemo(() => template[section] || [], [template, section]);
 
-  // Add keyboard event listener for Delete key
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key === 'Delete' && selected.section && selected.id) {
         event.preventDefault();
-        if (deleteBlock && typeof deleteBlock === 'function') {
+        if (typeof deleteBlock === 'function') {
           deleteBlock(selected.section, selected.id);
         }
       }
     };
 
-    // Add event listener to document
     document.addEventListener('keydown', handleKeyDown);
-
-    // Cleanup event listener on unmount
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-    };
+    return () => document.removeEventListener('keydown', handleKeyDown);
   }, [selected, deleteBlock]);
 
   const [{ isOver }, dropRef] = useDrop({
@@ -80,7 +84,6 @@ const DropZone = ({ section }) => {
     if (!isOver) setHoverIndex(null);
   }, [isOver]);
 
-  // Clear hover state if the hovered block no longer exists
   useEffect(() => {
     if (hoveredBlockId && !blocks.find(block => block && block.id === hoveredBlockId)) {
       setHoveredBlockId(null);
@@ -96,29 +99,31 @@ const DropZone = ({ section }) => {
       onMouseLeave={() => setHoverIndex(null)}
       style={{
         backgroundColor: isOver ? '#ffd9ca' : TEXT_WHITE,
-        margin: '0',
+        margin: 0,
         minHeight: '50px',
         padding: '0.5rem 0',
       }}
     >
       {blocks.map((block, i) => {
-        // Comprehensive safety check for block structure
-        if (!block || !block.id || !block.type) {
-          return null;
-        }
+        if (!block || !block.id || !block.type) return null;
 
         return (
           <div key={block.id}>
             {hoverIndex === i && isOver && <Divider />}
             <div
               id={block.id}
-              className="block-container"
               onClick={() => setSelected({ section, id: block.id })}
               onMouseEnter={() => setHoveredBlockId(block.id)}
               onMouseLeave={() => setHoveredBlockId(null)}
               style={{
-                border: selected?.id === block.id ? `2px dotted ${PRIMARY_COLOR}` : '1px solid transparent',
-                backgroundColor: selected?.id === block.id ? '#fff5f0' : 'transparent',
+                ...styles.blockContainer,
+                ...(hoveredBlockId === block.id ? styles.blockContainerHover : {}),
+                border:
+                  selected?.id === block.id
+                    ? `2px dotted ${PRIMARY_COLOR}`
+                    : '1px solid transparent',
+                backgroundColor:
+                  selected?.id === block.id ? '#fff5f0' : 'transparent',
               }}
             >
               {(() => {
@@ -126,21 +131,33 @@ const DropZone = ({ section }) => {
                   return renderBlock(block);
                 } catch (error) {
                   console.error('Error rendering block:', error, block);
-                  return <div style={{ color: 'red', padding: '5px' }}>Error rendering component</div>;
+                  return (
+                    <div style={{ color: 'red', padding: '5px' }}>
+                      Error rendering component
+                    </div>
+                  );
                 }
               })()}
+
               {hoveredBlockId === block.id && (
                 <button
-                  className="delete-button"
                   onClick={(e) => {
                     e.stopPropagation();
-                    if (deleteBlock && typeof deleteBlock === 'function') {
-                      // Clear hover state before deleting to prevent reference errors
-                      setHoveredBlockId(null);
-                      deleteBlock(section, block.id);
-                    }
+                    setHoveredBlockId(null);
+                    setSelected({ section: null, id: null });
+                    deleteBlock(section, block.id);
+                  }}
+                  onMouseEnter={() => setDeleteHoveredId(block.id)}
+                  onMouseLeave={() => {
+                    setDeleteHoveredId(null);
+                    setDeleteActiveId(null);
                   }}
                   title="Delete component (or press Delete key when selected)"
+                  style={{
+                    ...styles.deleteButton,
+                    ...(deleteHoveredId === block.id ? styles.deleteButtonHover : {}),
+                    ...(deleteActiveId === block.id ? styles.deleteButtonActive : {}),
+                  }}
                 >
                   ×
                 </button>
