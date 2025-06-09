@@ -37,6 +37,7 @@ export default function NavComponents() {
             tooltip:"Text block",
             label:"Text"
         },
+        
         {
             type:'space',
             icon:<FontAwesomeIcon icon={faArrowsUpDown}/>,
@@ -64,8 +65,6 @@ return(
           </div>
         </Dragable>
 )
-
 })
-
 )
 }

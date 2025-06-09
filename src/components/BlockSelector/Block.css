@@ -46,3 +46,6 @@ width: 20px;
   padding: 10px;         
   /* z-index: 1000;       */
 }
+.aTag{
+  display: block ;
+}

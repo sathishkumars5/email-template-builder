@@ -10,9 +10,6 @@ const TextBlock = ({ block }) => {
   const [isEditable, setIsEditable] = useState(false);
   const [content, setContent] = useState(block?.content || '');
   const pRef = useRef(null);
-  const handleClick = () => {
-    setIsEditable(true);
-  };
 
   const handleBlur = (e) => {
     const newText = e.target.innerText;
@@ -34,7 +31,6 @@ const TextBlock = ({ block }) => {
       style={block.style}
       contentEditable={isEditable}
       suppressContentEditableWarning={true}
-      onClick={handleClick}
       onBlur={handleBlur}
     >
       {block.content}
@@ -78,18 +74,16 @@ const renderBlock = (block) => {
       );
         case 'link':
       return (
-      <Link
-        id={block.id}
-        href={block.href || '#'}
-       linkText={block.content}
-        style={{
-            ...block.style,
-            display: 'inline-block',
-            backgroundImage: `url(${block.src})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-       }}
   
+      <Link
+  id={block.id}
+  href={block.href}
+  linkText={block.content}
+  style={{
+    ...block.style,
+    display: 'block',
+
+  }}
    />
       );
        case 'space':

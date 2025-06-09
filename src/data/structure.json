@@ -9,7 +9,8 @@
               "borderRadius": "8px",
               "textAlign": "center",
               "display": "block",
-              "margin": "20px auto",
+              "fontSize": "12px",
+              "margin": "0   auto",
                "color": "#ffffff",
               "backgroundColor": "var(--primary-color)",
               "border":"none"
@@ -48,9 +49,9 @@
       "href": "",
       "style": {
         "color": "#000000",
-        "fontSize": "1rem",
+        "fontSize": "18px",
         "display": "block",
-        "textAlign": "center",
+        "textAlign":"center",
         "textDecoration":"none"
         
       }
@@ -149,9 +150,9 @@
             "style": {
               "padding": "10px 20px",
               "borderRadius": "8px",
-              "textAlign": "center",
+              "fontSize": "12px",
               "display": "block",
-              "margin": "20px auto",
+             "margin": "0 auto",
                "color": "#ffffff",
               "backgroundColor": "var(--primary-color)",
               "border":"none"

@@ -20,7 +20,7 @@ const PropertiesPanel = ({ onClose }) => {
       style={{ opacity: isDragging ? 0.5 : 1 }}>
       <h3 className="panel-header">
         PROPERTIES
-        <h6 className="close-btn" onClick={onClose}>X </h6>
+        <small className="close-btn" onClick={onClose}>X </small>
       </h3>
       <PropertyBlock />
     </div>
