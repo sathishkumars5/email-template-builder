@@ -10,7 +10,7 @@ const PreviewPage = () => {
   const htmlCode = generateFullHtml(template);
 
   const handleBackToEditor = () => {
-    navigate('/');
+    navigate('/editor');
   };
 
   return (

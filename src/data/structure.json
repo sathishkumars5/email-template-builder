@@ -258,9 +258,10 @@
               "borderRadius": "8px",
               "textAlign": "center",
               "display": "block",
-              "margin": "20px auto",
+              "margin": "0 auto",
+              "fontSize":"12px",
               "color": "black",
-              "backgroundColor": "lightblue",
+              "backgroundColor": "#16a5b5",
               "border":"none"
       
             }
@@ -353,9 +354,10 @@
               "borderRadius": "8px",
               "textAlign": "center",
               "display": "block",
-              "margin": "20px auto",
+                 "margin": "0 auto",
+              "fontSize":"12px",
               "color": "black",
-              "backgroundColor": "lightblue",
+              "backgroundColor": "#3075c9",
               "border":"none"
       
             }
@@ -393,9 +395,10 @@
               "borderRadius": "8px",
               "textAlign": "center",
               "display": "block",
-              "margin": "20px auto",
+              "margin": "0 auto",
+               "fontSize":"12px",
               "color": "black",
-              "backgroundColor": "lightgreen",
+              "backgroundColor": "#3075c9",
               "border":"none"
       
             }
