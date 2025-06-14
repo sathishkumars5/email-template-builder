@@ -123,7 +123,6 @@ opacity: 90%;
   }
   
   .preview-frame {
-    height: 70vh;
     border-radius: 15px;
     width: 100%;
     max-width: 100%;
@@ -156,7 +155,7 @@ opacity: 90%;
   }
   
   .preview-frame {
-    height: 60vh;
+   
     border-radius: 12px;
     width: 100%;
     max-width: 100%;

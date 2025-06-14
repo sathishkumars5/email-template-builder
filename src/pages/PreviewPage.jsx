@@ -3,21 +3,18 @@ import { useNavigate } from 'react-router-dom';
 import { generateFullHtml } from '../components/HeaderToolbar/Htmlconvert';
 import useEditorContext from '../hooks/useEditorContext';
 import './PreviewPage.css';
+import { handleEditorPage } from '../components/common/routeFunction';
 
 const PreviewPage = () => {
   const navigate = useNavigate();
   const { template } = useEditorContext();
   const htmlCode = generateFullHtml(template);
 
-  const handleBackToEditor = () => {
-    navigate('/');
-  };
-
   return (
     <div className="preview-page">
       <div className="preview-header">
         <button 
-          onClick={handleBackToEditor} 
+          onClick={()=>handleEditorPage(navigate)} 
           className="back-to-editor-btn"
         >
         Back to Editor
@@ -27,7 +24,7 @@ const PreviewPage = () => {
       
       <div className="preview-container">
         <div className="preview-frame">
-          <iframe
+          <iframe 
             title="Email Template Preview"
             srcDoc={htmlCode}
             className="preview-iframe"

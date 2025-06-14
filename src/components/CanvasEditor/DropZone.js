@@ -1,91 +1,107 @@
-import { useDrop } from 'react-dnd';
-import renderBlock from '../common/renderBlock';
+import { useDrop, useDrag } from 'react-dnd';
+import RenderBlock from '../common/RenderBlock';
 import useEditorContext from '../../hooks/useEditorContext';
-import { useEffect, useRef, useState, useMemo } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { PRIMARY_COLOR, TEXT_WHITE } from '../../constants/colors';
-import './DropZone.css';
+import { styles } from './DropZoneStyles';
 
 const ItemType = 'DRAGGABLE_ITEM';
 
 const DropZone = ({ section }) => {
-  const { template, setTemplate, setSelected, selected, deleteBlock } = useEditorContext();
+  const { template, setTemplate, selected, setSelected, deleteBlock } = useEditorContext();
   const [hoverIndex, setHoverIndex] = useState(null);
   const [hoveredBlockId, setHoveredBlockId] = useState(null);
   const containerRef = useRef(null);
+  const blocks = template[section] || [];
 
-  const blocks = useMemo(() => template[section] || [], [template, section]);
-
-  // Add keyboard event listener for Delete key
+  // Handle delete with keyboard
   useEffect(() => {
-    const handleKeyDown = (event) => {
-      if (event.key === 'Delete' && selected.section && selected.id) {
-        event.preventDefault();
-        if (deleteBlock && typeof deleteBlock === 'function') {
-          deleteBlock(selected.section, selected.id);
-        }
+    const handleKeyDown = (e) => {
+      if (e.key === 'Delete' && selected?.id) {
+        deleteBlock(section, selected.id);
       }
     };
-
-    // Add event listener to document
     document.addEventListener('keydown', handleKeyDown);
-
-    // Cleanup event listener on unmount
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [selected, deleteBlock]);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [selected, deleteBlock, section]);
 
   const [{ isOver }, dropRef] = useDrop({
     accept: ItemType,
-    hover(item, monitor) {
+    drop: (item) => {
+      const isExistingBlock = item.section !== undefined && item.index !== undefined;
+      const insertIndex = hoverIndex ?? blocks.length;
+
+      if (isExistingBlock) {
+        // Moving existing block (same or different section)
+        if (item.section === section) {
+          if (item.index === insertIndex) return;
+
+          const newBlocks = [...blocks];
+          const [removed] = newBlocks.splice(item.index, 1);
+          newBlocks.splice(insertIndex, 0, removed);
+
+          setTemplate({ ...template, [section]: newBlocks });
+        } else {
+          const sourceBlocks = [...template[item.section]];
+          const [movedBlock] = sourceBlocks.splice(item.index, 1);
+          const targetBlocks = [...blocks];
+          targetBlocks.splice(insertIndex, 0, movedBlock);
+
+          setTemplate({
+            ...template,
+            [item.section]: sourceBlocks,
+            [section]: targetBlocks
+          });
+        }
+      } else {
+        // New block from toolbox
+        const newBlock = {
+          ...item,
+          id: `${item.type}_${Date.now()}`,
+          content: item.content || '',
+          styles: item.styles || {}
+        };
+        const newBlocks = [...blocks];
+        newBlocks.splice(insertIndex, 0, newBlock);
+
+        setTemplate({
+          ...template,
+          [section]: newBlocks
+        });
+
+        // Optionally select the new block
+        setSelected({ section, id: newBlock.id });
+      }
+    },
+    hover: (item, monitor) => {
+      if (!containerRef.current) return;
       const clientOffset = monitor.getClientOffset();
-      if (!clientOffset || !containerRef.current) return;
+      if (!clientOffset) return;
 
       const containerRect = containerRef.current.getBoundingClientRect();
       const y = clientOffset.y - containerRect.top;
-
-      let newIndex = blocks.length;
+      let newHoverIndex = blocks.length;
 
       for (let i = 0; i < blocks.length; i++) {
         const el = document.getElementById(blocks[i].id);
         if (!el) continue;
-
         const { top, height } = el.getBoundingClientRect();
-        const blockY = top - containerRect.top;
-        const middleY = blockY + height / 2;
-
-        if (y < middleY) {
-          newIndex = i;
+        const middle = top - containerRect.top + height / 2;
+        if (y < middle) {
+          newHoverIndex = i;
           break;
         }
       }
-
-      setHoverIndex(newIndex);
-    },
-    drop(item) {
-      const newBlock = { ...item, id: String(Date.now()) };
-      const updated = [...blocks];
-      updated.splice(hoverIndex ?? blocks.length, 0, newBlock);
-
-      setTemplate(prev => ({ ...prev, [section]: updated }));
-      setSelected({ section, id: newBlock.id });
-      setHoverIndex(null);
+      setHoverIndex(newHoverIndex);
     },
     collect: (monitor) => ({
-      isOver: monitor.isOver({ shallow: true }),
-    }),
+      isOver: monitor.isOver()
+    })
   });
 
   useEffect(() => {
     if (!isOver) setHoverIndex(null);
   }, [isOver]);
-
-  // Clear hover state if the hovered block no longer exists
-  useEffect(() => {
-    if (hoveredBlockId && !blocks.find(block => block && block.id === hoveredBlockId)) {
-      setHoveredBlockId(null);
-    }
-  }, [blocks, hoveredBlockId]);
 
   return (
     <div
@@ -93,192 +109,93 @@ const DropZone = ({ section }) => {
         dropRef(el);
         containerRef.current = el;
       }}
-      onMouseLeave={() => setHoverIndex(null)}
       style={{
         backgroundColor: isOver ? '#ffd9ca' : TEXT_WHITE,
-        margin: '0',
         minHeight: '50px',
-        padding: '0.5rem 0',
+        padding: '0.5rem 0'
       }}
     >
-      {blocks.map((block, i) => {
-        // Comprehensive safety check for block structure
-        if (!block || !block.id || !block.type) {
-          return null;
-        }
-
-        return (
-          <div key={block.id}>
-            {hoverIndex === i && isOver && <Divider />}
-            <div
-              id={block.id}
-              className="block-container"
-              onClick={() => setSelected({ section, id: block.id })}
-              onMouseEnter={() => setHoveredBlockId(block.id)}
-              onMouseLeave={() => setHoveredBlockId(null)}
-              style={{
-                border: selected?.id === block.id ? `2px dotted ${PRIMARY_COLOR}` : '1px solid transparent',
-                backgroundColor: selected?.id === block.id ? '#fff5f0' : 'transparent',
-              }}
-            >
-              {(() => {
-                try {
-                  return renderBlock(block);
-                } catch (error) {
-                  console.error('Error rendering block:', error, block);
-                  return <div style={{ color: 'red', padding: '5px' }}>Error rendering component</div>;
-                }
-              })()}
-              {hoveredBlockId === block.id && (
-                <button
-                  className="delete-button"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    if (deleteBlock && typeof deleteBlock === 'function') {
-                      // Clear hover state before deleting to prevent reference errors
-                      setHoveredBlockId(null);
-                      deleteBlock(section, block.id);
-                    }
-                  }}
-                  title="Delete component (or press Delete key when selected)"
-                >
-                  ×
-                </button>
-              )}
-            </div>
-          </div>
-        );
-      })}
+      {blocks.map((block, index) => (
+        <DraggableBlock
+          key={block.id}
+          block={block}
+          index={index}
+          section={section}
+          isSelected={selected?.id === block.id}
+          isHovered={hoveredBlockId === block.id}
+          onSelect={() => setSelected({ section, id: block.id })}
+          onHover={() => setHoveredBlockId(block.id)}
+          onHoverEnd={() => setHoveredBlockId(null)}
+          onDelete={() => deleteBlock(section, block.id)}
+        >
+          {hoverIndex === index && isOver && <Divider />}
+        </DraggableBlock>
+      ))}
       {hoverIndex === blocks.length && isOver && <Divider />}
     </div>
   );
 };
 
+const DraggableBlock = ({
+  block,
+  index,
+  section,
+  isSelected,
+  isHovered,
+  onSelect,
+  onHover,
+  onHoverEnd,
+  onDelete,
+  children
+}) => {
+  const ref = useRef(null);
+
+  const [{ isDragging }, drag] = useDrag({
+    type: ItemType,
+    item: { ...block, index, section },
+    collect: (monitor) => ({
+      isDragging: monitor.isDragging()
+    })
+  });
+
+  drag(ref);
+
+  return (
+    <div ref={ref} style={{ opacity: isDragging ? 0.5 : 1 }}>
+      {children}
+      <div
+        id={block.id}
+        onClick={onSelect}
+        onMouseEnter={onHover}
+        onMouseLeave={onHoverEnd}
+        style={{
+          ...styles.blockContainer,
+          ...(isHovered ? styles.blockContainerHover : {}),
+          border: isSelected ? `2px dotted ${PRIMARY_COLOR}` : '1px solid transparent',
+          backgroundColor: isSelected ? '#fff5f0' : 'transparent',
+          cursor: 'move'
+        }}
+      >
+        {RenderBlock(block)}
+        {isHovered && (
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onDelete();
+            }}
+            style={styles.deleteButton}
+            title="Delete block"
+          >
+            ×
+          </button>
+        )}
+      </div>
+    </div>
+  );
+};
+
 const Divider = () => (
-  <div
-    style={{
-      height: '2px',
-      backgroundColor: '#fff5f0',
-      margin: '.8rem 0',
-    }}
-  />
+  <div style={{ height: '2px', backgroundColor: '#fff5f0', margin: '.8rem 0' }} />
 );
 
 export default DropZone;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const ItemType = 'DRAGGABLE_ITEM';
-
-// const DropZone = ({ section }) => {
-//   const { template, setTemplate, setSelected, selected } = useEditorContext();
-
-//   useEffect(() => {
-//     console.log('Updated Template:', template);
-//   }, [template]);
-
-//   useEffect(() => {
-//     if (selected?.id && selected?.section) {
-//       const selectedBlock = template[selected.section]?.find(
-//         (block) => block.id === selected.id
-//       );
-//       console.log('Selected Block:', selectedBlock);
-//     }
-//   }, [selected, template]);
-
-//   const [{ isOver }, dropRef] = useDrop({
-//     accept: ItemType,
-//     drop: (item) => {
-//       const newBlock = {
-//         ...item,
-//         id: Math.floor(1000 + Math.random() * 9000),
-//       };
-
-//       setTemplate((prevTemplate) => {
-//         const updatedSection = [...(prevTemplate[section] || []), newBlock];
-//         return {
-//           ...prevTemplate,
-//           [section]: updatedSection,
-//         };
-//       });
-
-//       setSelected({ section, id: newBlock.id });
-//     },
-//     collect: (monitor) => ({
-//       isOver: monitor.isOver(),
-//     }),
-//   });
-
-//   const background = isOver ? '#d3f9d8' : '';
-
-//   return (
-//     <div
-//       ref={dropRef}
-//       style={{ backgroundColor: background, padding: '1rem', margin: '0 2rem' }}
-//     >
-//       {(template[section] || []).map((block) => {
-//         const isSelected = selected?.id === block.id && selected?.section === section;
-
-//         const baseStyle = {
-//           marginBottom: '0.5rem',
-//           border: isSelected ? '2px solid blue' : '1px solid transparent',
-//           padding: '0.25rem',
-//           cursor: 'pointer',
-          
-//         };
-
-     
-//         const combinedStyle =
-//           block.type === 'img' && block.parentStyle
-//             ? { ...baseStyle, ...block.parentStyle }
-//             : baseStyle;
-
-//         return (
-//           <div
-//             key={block.id}
-//             onClick={() => setSelected({ section, id: block.id })}
-//             style={combinedStyle}
-//           >
-//             {renderBlock(block)}
-//           </div>
-//         );
-//       })}
-//     </div>
-//   );
-// };
-
-// export default DropZone;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
