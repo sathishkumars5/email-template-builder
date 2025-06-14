@@ -1,15 +1,17 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
+import { handleLoginpage } from '../components/common/routeFunction';
 
 const FrontPage = () => {
     const navigate=useNavigate()
 
-    const loginpage=()=>{
-        navigate('/homePage')
-    }
   return (
     <div>
-        <button onClick={loginpage}>Suma</button>
+        <div style={{backgroundColor:'lightblue', display:'flex',justifyContent:'space-evenly',alignItems:'center'}}>
+            <h2>Email template builder</h2>
+            <button style={{backgroundColor:'grey',border:'none',width:'3rem',height:'2rem'}}>Try</button>
+            <button style={{backgroundColor:'grey',border:'none',width:'3rem',height:'2rem'}} onClick={()=>handleLoginpage(navigate)}>Login</button>
+        </div>
     </div>
   )
 }

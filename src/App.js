@@ -8,6 +8,9 @@ import HomePage from './pages/HomePage';
 import StaticTemplates from './pages/StaticTemplates';
 import './styles/index.css';
 import FrontPage from './pages/FrontPage';
+import SignUp from './authentication/SignUp';
+import Login from './authentication/Login';
+
 
 const App = () => {
   return (
@@ -16,6 +19,8 @@ const App = () => {
         <NotificationProvider>
           <Routes>
             <Route path="/" element={<FrontPage />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<SignUp />} />
             <Route path="/homePage" element={<HomePage />} />
             <Route path="/templates" element={<StaticTemplates />} />
             <Route path="/editor" element={<EditorPage />} />
