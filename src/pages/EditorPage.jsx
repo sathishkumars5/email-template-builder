@@ -9,8 +9,7 @@ import useEditorContext from '../hooks/useEditorContext';
 
 const EditorPage = () => {
   const [isPanelVisible, setIsPanelVisible] = useState(false);
-  const { selected } = useEditorContext(); 
-
+  const { selected, setSelected } = useEditorContext(); 
 
   useEffect(() => {
     if (!selected?.id) {
@@ -23,11 +22,17 @@ const EditorPage = () => {
       <div className="app-container">
         <HeaderToolbar />
         <div className="editor-body">
-          <BlockSelector />
-          <CanvasEditor onBlockClick={() => setIsPanelVisible(true)} />
-          {isPanelVisible && (
-            <PropertiesPanel onClose={() => setIsPanelVisible(false)} />
+          {isPanelVisible ? (
+            <PropertiesPanel
+              onClose={() => {
+                setSelected({ section: null, id: null });
+                setIsPanelVisible(false);
+              }}
+            />
+          ) : (
+            <BlockSelector />
           )}
+          <CanvasEditor onBlockClick={() => setIsPanelVisible(true)} />
         </div>
       </div>
     </DndProvider>
@@ -35,3 +40,5 @@ const EditorPage = () => {
 };
 
 export default EditorPage;
+
+

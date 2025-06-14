@@ -5,7 +5,7 @@ import useEditorContext from '../hooks/useEditorContext';
 import './PreviewPage.css';
 import {faArrowLeft} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
+import { handleEditorPage } from '../components/common/routeFunction';
 
 
 const PreviewPage = () => {
@@ -13,15 +13,11 @@ const PreviewPage = () => {
   const { template } = useEditorContext();
   const htmlCode = generateFullHtml(template);
 
-  const handleBackToEditor = () => {
-    navigate('/editor');
-  };
-
   return (
     <div className="preview-page">
       <div className="preview-header">
         <button 
-          onClick={handleBackToEditor} 
+          onClick={()=>handleEditorPage(navigate)} 
           className="back-to-editor-btn"
         >
        <FontAwesomeIcon icon={faArrowLeft} /> 

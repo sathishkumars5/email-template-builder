@@ -13,7 +13,8 @@
               "margin": "0 auto",
                "color": "#ffffff",
               "backgroundColor": "#c74a27",
-              "border":"none"
+              "border":"none",
+               "fontFamily":"Arial"
         
       }
     },
@@ -25,7 +26,8 @@
               "color": "#000000",
               "fontSize": "18px",
               "fontweight":"normal",
-              "textAlign": "center"
+              "textAlign": "center",
+               "fontFamily":"Arial"
       }
     },
 
@@ -52,7 +54,8 @@
         "fontSize": "18px",
         "display": "block",
         "textAlign":"center",
-        "textDecoration":"none"
+        "textDecoration":"none",
+         "fontFamily":"Arial"
         
       }
     },
@@ -104,7 +107,9 @@
               "color": "#000000",
               "fontSize": "18px",
               "fontweigth":"normal",
-              "textAlign": "center"
+              "textAlign": "center",
+              "fontFamily":"Arial"
+               
             }
           }
         ],
@@ -130,7 +135,9 @@
               "color": "#000000",
               "fontSize": "18px",
               "fontweigth":"normal",
-              "textAlign": "center"
+              "textAlign": "center",
+              "fontFamily":"Arial"
+
             }
           },
           {
@@ -141,7 +148,8 @@
              "color": "#000000",
               "fontSize": "18px",
               "fontweigth":"normal",
-              "textAlign": "center"
+              "textAlign": "center",  
+              "fontFamily": "Arial"
             }
           },
           {
@@ -152,7 +160,8 @@
            "color": "#000000",
               "fontSize": "18px",
               "fontweigth":"normal",
-              "textAlign": "center"
+              "textAlign": "center",
+              "fontFamily":"Arial"
             }
           },
           {
@@ -179,7 +188,8 @@
              "color": "#000000",
               "fontSize": "18px",
               "fontweigth":"normal",
-              "textAlign": "center"
+              "textAlign": "center",
+             "fontFamily":"Arial"
             }
           }
         ],
@@ -192,7 +202,8 @@
             "color": "#000000",
               "fontSize": "18px",
               "fontweigth":"normal",
-              "textAlign": "center"
+              "textAlign": "center",
+          "fontFamily":"Arial"
             }
           },
           {
@@ -203,7 +214,8 @@
              "color": "#000000",
               "fontSize": "18px",
               "fontweigth":"normal",
-              "textAlign": "center"
+              "textAlign": "center",
+             "fontFamily":"Arial"
             }
           }
         ]
@@ -233,6 +245,7 @@
               "fontSize": "18px",
               "fontweigth":"normal",
               "textAlign": "center"
+            
             }
           }
         ],
@@ -413,6 +426,35 @@
               "backgroundColor": "#3075c9",
               "border":"none"
       
+            }
+          }
+        ]
+      }
+    },
+    {
+      "password": {
+        "header": [
+          {
+            "id": "1020",
+            "type": "img",
+            "src": "https://www.dckap.com/wp-content/uploads/2023/08/logo-full-color-no-slogan.svg",
+            "alt": "Logo",
+            "style": {
+              "height": "50px",
+              "width": "50px",
+              "margin": "0 auto",
+              "display":"block"
+            }
+          },
+          {
+            "id": "1021",
+            "type": "text",
+            "content": "hello girl",
+            "style": {
+              "color": "green",
+              "fontSize": "18px",
+              "fontweigth":"normal",
+              "textAlign": "center"
             }
           }
         ]
