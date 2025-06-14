@@ -1,17 +1,11 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './HomePage.css'; // Make sure this file is in the same folder
+import './HomePage.css';
+import { handleEditorPage } from '../components/common/routeFunction';
+import { handleTemplates } from '../components/common/routeFunction';
 
 const HomePage = () => {
   const navigate = useNavigate();
-
-  const handleNewTemplate = () => {
-    navigate('/editor');
-  };
-
-  const templates = () => {
-    navigate('/templates');
-  };
 
   return (
     <div className="home-container">
@@ -19,10 +13,10 @@ const HomePage = () => {
         <h2 className="sidebar-title">Dashboard</h2>
         <ul className="sidebar-menu">
           <li>
-            <button className="sidebar-button" onClick={templates}>Templates</button>
+            <button className="sidebar-button" onClick={() => handleTemplates(navigate)}>Templates</button>
           </li>
           <li>
-            <button className="sidebar-button" onClick={handleNewTemplate}>My Templates</button>
+            <button className="sidebar-button" onClick={() => handleEditorPage(navigate)}>My Templates</button>
           </li>
         </ul>
       </div>

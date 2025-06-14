@@ -3,11 +3,21 @@ import DropZone from './DropZone';
 import useEditorContext from '../../hooks/useEditorContext';
 
 const CanvasEditor = ({ onBlockClick }) => {
-  const { template } = useEditorContext();
+  const { template,setSelected } = useEditorContext();
 
   useEffect(()=>{
     console.log(template.header,template.header.length)
   },[template])
+
+   const handleCanvasClick = (e) => {
+        if (e.target.id==='') {
+          setSelected({section: null, id: null })
+          return
+        }
+        else{
+          onBlockClick()
+        }
+  };
 
   if (!template || typeof template !== 'object') {
     return (
@@ -21,7 +31,7 @@ const CanvasEditor = ({ onBlockClick }) => {
     <div
       className="canvas"
       style={{ padding: '1rem', border: '1px dashed gray' }}
-      onClick={onBlockClick} 
+      onClick={handleCanvasClick} 
     >
        {template.header?.length > 0 && <DropZone section="header" />}
       {template.Container?.length > 0 && <DropZone section="Container" />}

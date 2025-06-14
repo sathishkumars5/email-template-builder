@@ -53,11 +53,6 @@ export const EditorProvider = ({ children }) => {
     }
   };
 
-  const getSelectedBlock = () => {
-    if (!selected.section || !selected.id) return null;
-    return template[selected.section]?.find((b) => b.id === selected.id);
-  };
-
   return (
     <EditorContext.Provider
       value={{
@@ -69,7 +64,6 @@ export const EditorProvider = ({ children }) => {
         setSelected,
         updateBlock,
         deleteBlock,
-        getSelectedBlock,
       }}
     >
       {children}
