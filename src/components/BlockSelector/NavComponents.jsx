@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import useEditorContext from '../../hooks/useEditorContext';
 import { Dragable } from './Dragable';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faRectangleList,faImage,faLink,faT,faArrowsUpDown} from '@fortawesome/free-solid-svg-icons';
+import { faRectangleList,faImage,faLink,faT,faArrowsUpDown,faH} from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -43,6 +43,12 @@ export default function NavComponents() {
             icon:<FontAwesomeIcon icon={faArrowsUpDown}/>,
             tooltip:"Space block",
             label:"Spacer"
+        },
+        {
+            type:'heading',
+            icon:<FontAwesomeIcon icon={faH} />,
+            tooltip:"Heading block",
+            label:"Heading"
         }
     ])
 

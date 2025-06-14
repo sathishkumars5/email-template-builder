@@ -66,7 +66,19 @@
       "height":"20px"
 
       }
+    },
+        {
+      "id": "1006",
+      "type": "heading",
+      "content": "Enter the text",
+      "style": {
+              "color": "#000000",
+              "fontSize": "none",
+              "fontweight":"none",
+              "textAlign": "center"
+      }
     }
+
   ],
   "templates": [
     {

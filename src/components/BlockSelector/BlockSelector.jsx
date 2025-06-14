@@ -3,6 +3,8 @@ import './Block.css'
 
 const BlockSelector = () => {
  
+
+  
   return (
     <div className="sidebar left">
      <div id='components'>

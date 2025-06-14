@@ -69,6 +69,6 @@ body {
 .template-preview {
   transform: scale(0.4);
   transform-origin: top left;
-  width: 250%;
+  width: 100%;
   pointer-events: none;
 }
