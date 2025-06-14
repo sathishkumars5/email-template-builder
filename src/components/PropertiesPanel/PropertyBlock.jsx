@@ -3,6 +3,8 @@ import useEditorContext from '../../hooks/useEditorContext';
 import Textinput from './Textinput';
 import InputStyle from './InputForStyles';
 import StyleToggleButton from './StyleToggleButton';
+import FontSizeInput from './FontSize';
+import AlignmentButtonGroup from './FontAling';
 
 
 const PropertyBlock = () => {
@@ -20,27 +22,60 @@ const PropertyBlock = () => {
           <>
             <Textinput label="Text Content" propKey="content" />
             <InputStyle label="Color" propKey="color" type="color" />
-               <InputStyle label="fontSize" propKey="fontSize" type="text" />   
-            <InputStyle label="Text Align" propKey="textAlign" type="select" options={['left', 'center', 'right']}/>
-            <div className="textStyleBtn"> 
-             <StyleToggleButton propKey="fontWeight" value="bold" label="B" />
-             <StyleToggleButton propKey="fontStyle" value="italic" label="I" />
-             <StyleToggleButton propKey="textDecoration" value="underline" label="U" />  
-             </div>
+            <FontSizeInput/>
+            <InputStyle label="Font Family" propKey="fontFamily"  type="select" 
+                  options={[
+                      'Roboto',
+                      'Open Sans',
+                      'Lato',
+                      'Montserrat',
+                      'Playfair Display',
+                      'Merriweather',
+                      'Quicksand',
+                      'Raleway',
+                      'PT Serif',
+                      'Dancing Script'
+                    ]}/>
+            <AlignmentButtonGroup/>
+          <div className="textStyleBtn">
+              <span>Font Style</span>
+              <div className="FontStyle">
+                <StyleToggleButton propKey="fontWeight" value="bold"  label="B" />
+              <StyleToggleButton propKey="fontStyle" value="italic" label="I" />
+              <StyleToggleButton propKey="textDecoration" value="underline" label="U" />  
+              </div>
+            </div>
           </>
         );
       case 'button':
         return (
           <>
             <Textinput label="Button Text" propKey="content" />
+            <Textinput label="Href" propKey="href" />
             <InputStyle label="Color" propKey="color" type="color" />
-            <InputStyle label="fontSize" propKey="fontSize" type="text" /> 
-             <InputStyle label="Text Align" propKey="textAlign" type="select" useMargin={true} options={['left', 'center', 'right']}/>
+            <FontSizeInput/>
+            <AlignmentButtonGroup/>
+            <InputStyle label="Font Family" propKey="fontFamily"  type="select" 
+                  options={[
+                      'Roboto',
+                      'Open Sans',
+                      'Lato',
+                      'Montserrat',
+                      'Playfair Display',
+                      'Merriweather',
+                      'Quicksand',
+                      'Raleway',
+                      'PT Serif',
+                      'Dancing Script'
+                    ]}/>
             <InputStyle label="backgroundColor" propKey="backgroundColor" type="color" />
-            <div className="textStyleBtn">             
-             <StyleToggleButton propKey="fontWeight" value="bold" label="B" />
-             <StyleToggleButton propKey="fontStyle" value="italic" label="I" />
-             <StyleToggleButton propKey="textDecoration" value="underline" label="U" />  
+           <div className="textStyleBtn">
+              <span>Font Style</span>
+              <div className="FontStyle">
+                <StyleToggleButton propKey="fontWeight" value="bold"  label="B" />
+              <StyleToggleButton propKey="fontStyle" value="italic" label="I" />
+              <StyleToggleButton propKey="textDecoration" value="underline" label="U" />  
+              </div>
             </div>
           </>
         );
@@ -52,7 +87,7 @@ const PropertyBlock = () => {
             <Textinput label="Alt Text" propKey="alt" />
             <InputStyle label="height" propKey="height" type="text" />
             <InputStyle label="width" propKey="width" type="text" />
-            <InputStyle label="Text Align" propKey="textAlign" type="select" useMargin={true} options={['left', 'center', 'right']}/>
+            <AlignmentButtonGroup/>
           </>
         );
 
@@ -62,12 +97,28 @@ const PropertyBlock = () => {
             <Textinput label="Link Text" propKey="content" />
             <Textinput label="Href" propKey="href" />
             <InputStyle label="color" propKey="color" type="color" />
-            <InputStyle label="fontSize" propKey="fontSize" type="text" />     
-            <InputStyle label="Text Align" propKey="textAlign" type="select" options={['left', 'center', 'right']}/>
+            <FontSizeInput/>   
+            <InputStyle label="Font Family" propKey="fontFamily"  type="select" 
+                  options={[
+                      'Roboto',
+                      'Open Sans',
+                      'Lato',
+                      'Montserrat',
+                      'Playfair Display',
+                      'Merriweather',
+                      'Quicksand',
+                      'Raleway',
+                      'PT Serif',
+                      'Dancing Script'
+                    ]}/>
+            <AlignmentButtonGroup/>
             <div className="textStyleBtn">
-              <StyleToggleButton propKey="fontWeight" value="bold" label="B" />
+              <span>Font Style</span>
+              <div className="FontStyle">
+                <StyleToggleButton propKey="fontWeight" value="bold"  label="B" />
               <StyleToggleButton propKey="fontStyle" value="italic" label="I" />
               <StyleToggleButton propKey="textDecoration" value="underline" label="U" />  
+              </div>
             </div>
           </>
         );

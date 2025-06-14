@@ -1,5 +1,3 @@
-// src/context/EditorContext.js
-
 import React, { createContext, useState } from 'react';
 import rawStructure from '../data/structure.json';
 

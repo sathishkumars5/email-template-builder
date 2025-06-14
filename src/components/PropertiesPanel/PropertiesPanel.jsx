@@ -1,23 +1,15 @@
 import React from 'react';
 import PropertyBlock from '../PropertiesPanel/PropertyBlock';
 import './property.css';
-import { useDrag } from 'react-dnd';
 
-const PropertiesPanel = ({ onClose }) => {
 
-  const [{ isDragging }, dragRef] = useDrag(() => ({
-    type: 'PANEL',
-    item: {},
-    collect: (monitor) => ({
-      isDragging: !!monitor.isDragging(),
-    }),
-  }));
-  
+const PropertiesPanel = ({onClose}) => {
+
   return (
    <div className='main'>
-     <div ref={dragRef}
+     <div 
       className="properties-panel"
-      style={{ opacity: isDragging ? 0.5 : 1 }}>
+      >
       <h3 className="panel-header">
         PROPERTIES
         <small className="close-btn" onClick={onClose}>X </small>
@@ -26,7 +18,7 @@ const PropertiesPanel = ({ onClose }) => {
     </div>
    </div>
   );
-};
+}; 
 
 export default PropertiesPanel;
 

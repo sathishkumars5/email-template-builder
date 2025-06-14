@@ -106,7 +106,7 @@ const StaticTemplates = () => {
   const { setTemplate } = useEditorContext();
 
   const handleHomepage = () => {
-    navigate('/');
+    navigate('/homePage');
   };
 
   const EditorPage = () => {
@@ -134,8 +134,8 @@ const StaticTemplates = () => {
 
   return (
     <div className="static-container">
-      <h3 className="static-heading">Static Templates</h3>
-      <button onClick={handleHomepage} className="homepage-btn">HomePage</button>
+      {/* <h3 className="static-heading">Static Templates</h3> */}
+      {/* <button onClick={handleHomepage} className="homepage-btn">HomePage</button> */}
       <div className="template-list-wrapper">
         <div className="template-grid">
           {templates.map((templateObj, index) => {

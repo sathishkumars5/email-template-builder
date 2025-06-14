@@ -72,7 +72,7 @@ const DropZone = ({ section }) => {
       updated.splice(hoverIndex ?? blocks.length, 0, newBlock);
 
       setTemplate(prev => ({ ...prev, [section]: updated }));
-      setSelected({ section, id: newBlock.id });
+      // setSelected({ section, id: newBlock.id });
       setHoverIndex(null);
     },
     collect: (monitor) => ({
