@@ -80,7 +80,7 @@ export const NotificationProvider = ({ children }) => {
               position: 'fixed',
               top: `${20 + index * 80}px`,
               right: '20px',
-              zIndex: 1000 + index
+              zIndex: 9999 + index
             }}
           >
             <Notification

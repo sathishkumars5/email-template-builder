@@ -66,15 +66,7 @@
         "height":"20px"
 
       }
-    },
-    {
-    "type": "indent",
-    "label": "Indent",
-    "component": "Indent",
-     "style": {
-        "paddingLeft": "40px"
-      }
-  }
+    }
   ],
   "templates": [
     {
@@ -409,6 +401,24 @@
               "backgroundColor": "#3075c9",
               "border":"none"
       
+            }
+          }
+        ]
+      }
+    },
+    {
+      "template4": {
+        "header": [
+         
+          {
+            "id": "1021",
+            "type": "text",
+            "content": "Create your own design ",
+            "style": {
+              "color": "black",
+              "fontSize": "30px",
+              "fontweigth":"normal",
+              "textAlign": "center"
             }
           }
         ]

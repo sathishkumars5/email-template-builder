@@ -153,8 +153,8 @@ const DraggableBlock = ({
 
   const [{ isDragging }, drag] = useDrag({
     type: ItemType,
-    item: () => {// Clear selection when dragging starts
-      setSelected({ section: null, id: null }); // Return the item data
+    item: () => {
+      setSelected({ section: null, id: null }); 
       return { ...block, index, section };
     },
     collect: (monitor) => ({

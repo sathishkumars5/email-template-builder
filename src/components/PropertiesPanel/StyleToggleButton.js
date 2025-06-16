@@ -28,7 +28,9 @@ const StyleToggleButton = ({ propKey, value, label }) => {
   };
 
   return (
+      
     <div className='style-toggle-group'>
+ 
 <button
       className={`style-toggle-button ${isActive ? 'active' : ''}`}
       onClick={toggleStyle}
@@ -37,6 +39,7 @@ const StyleToggleButton = ({ propKey, value, label }) => {
       {label}
     </button>
     </div>
+
     
   );
 };

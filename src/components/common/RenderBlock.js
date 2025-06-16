@@ -63,6 +63,7 @@ const RenderBlock = (block) => {
       );
 
 
+
     default:
       return <div>Unknown block type: {block.type}</div>;
   }

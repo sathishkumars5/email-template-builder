@@ -42,4 +42,3 @@ const CanvasEditor = ({ onBlockClick }) => {
 };
 
 export default CanvasEditor;
-

@@ -25,6 +25,7 @@ const App = () => {
             <Route path="/templates" element={<StaticTemplates />} />
             <Route path="/editor" element={<EditorPage />} />
             <Route path="/preview" element={<PreviewPage />} />
+      
           </Routes>
         </NotificationProvider>
       </EditorProvider>

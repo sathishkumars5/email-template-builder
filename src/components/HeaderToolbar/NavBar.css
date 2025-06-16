@@ -1,41 +1,78 @@
-.btnStyle {
-  margin: 0 8px;
-  padding: 8px 16px;
-  border: 1px solid var(--primary-color);
-  border-radius: 5px;
-  cursor: pointer;
-  background: transparent;
-}
-
-.mainBtnStyle {
-  margin: 0 8px;
-  padding: 8px 16px;
-  border: 1px solid var(--primary-color);
-  border-radius: 5px;
-  color: var(--text-white);
-  background: var(--primary-color);
-  cursor: pointer;
-}
-
+.btnStyle,
+.mainBtnStyle,
 .copy-btn {
   margin: 0 8px;
   padding: 8px 16px;
-  border: none;
   border-radius: 5px;
-  color: var(--text-white);
-  background: var(--primary-color);
   cursor: pointer;
   font-weight: 500;
+  transition: background 0.3s ease, color 0.3s ease;
+  border: 1px solid var(--primary-color);
+}
+
+.undonBtn,.redoBtn {
+  padding: 3px 16px;
+  border: 1px solid var(--primary-color);
+  background: transparent;
+}
+
+.redoBtn:hover,.undonBtn:hover  {
+opacity: 90%;
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+}
+
+.redoBtn:active,.undonBtn:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 2px rgba(0, 123, 255, 0.2);
+}
+#logoDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 250px;
+  max-height: 60px;
+  flex-shrink: 0;
+}
+
+#logoDiv img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.mainBtnStyle {
+  border: 1px solid var(--primary-color);
+  background: var(--primary-color);
+  color: var(--text-white);
+}
+
+.copy-btn {
+  border: none;
+  background: var(--primary-color);
+  color: var(--text-white);
 }
 
 .copy-btn:hover {
   background: var(--background);
 }
 
+
+#headerToolbarDiv {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 1001;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 .popup-wrapper {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 0; left: 0;
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
@@ -54,21 +91,51 @@
   width: 90%;
   max-width: 900px;
   max-height: 80vh;
-  overflow-y: auto; 
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
   gap: 15px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-.html-editor-container {
+.popup-content {
+  padding: 20px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.popup-buttons,
+.modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.modal-actions {
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+}
+
+.popup-buttons {
+  margin-top: 10px;
+}
+
+
+.html-editor-container,
+.text-editor-container,
+.preview-container,
+.default-content {
   width: 100%;
 }
 
-.html-editor-container h3 {
-  margin: 0 0 15px 0;
-  color: #333;
+.html-editor-container h3,
+.text-editor-container h3,
+.preview-container h3,
+.default-content h3 {
+  margin: 0 0 15px;
   font-size: 1.5rem;
+  color: #333;
   text-align: center;
 }
 
@@ -85,75 +152,69 @@
   overflow-y: auto;
 }
 
-.text-editor-container {
-  width: 100%;
-}
-
-.text-editor-container h3 {
-  margin: 0 0 15px 0;
-  color: #333;
-  font-size: 1.5rem;
-  text-align: center;
-}
-
-.text-editor-wrapper {
+.text-editor-wrapper,
+.preview-content,
+.content-body {
   margin-bottom: 15px;
-}
-
-.preview-container {
-  width: 100%;
-}
-
-.preview-container h3 {
-  margin: 0 0 15px 0;
-  color: #333;
-  font-size: 1.5rem;
-  text-align: center;
-}
-
-.preview-content {
-  margin-bottom: 15px;
-}
-
-.default-content {
-  width: 100%;
-}
-
-.default-content h3 {
-  margin: 0 0 15px 0;
-  color: #333;
-  font-size: 1.5rem;
-  text-align: center;
 }
 
 .content-body {
-  margin-bottom: 15px;
   padding: 15px;
   background: #f8f9fa;
-  border-radius: 8px;
   border: 1px solid #e9ecef;
+  border-radius: 8px;
   max-height: 400px;
   overflow-y: auto;
 }
 
-.modal-actions {
-  display: flex;
-  justify-content: center; 
-  gap: 10px; 
-  margin-top: 15px;
-  padding-top: 15px;
-  border-top: 1px solid #eee;
+
+@media (max-width: 768px) {
+  .btnStyle,
+  .mainBtnStyle,
+  .copy-btn,
+  .undonBtn,
+  .redoBtn {
+    width: 100%;
+    margin: 5px 0;
+  }
+
+  #headerToolbarDiv {
+    flex-direction: column;
+    align-items:stretch;
+  }
+
+  .popup {
+    width: 95%;
+    padding: 15px;
+  }
+
+  .popup-content {
+    padding: 15px;
+  }
+
+  .html-editor-container h3,
+  .text-editor-container h3,
+  .preview-container h3,
+  .default-content h3 {
+    font-size: 1.25rem;
+  }
 }
 
-.popup-content {
-  padding: 20px;
-  overflow-y: auto;
-  flex: 1; 
-}
+@media (max-width: 480px) {
+  .popup {
+    max-height: 95vh;
+  }
 
-.popup-buttons {
-  display: flex;
-  justify-content: center; 
-  gap: 10px; 
-  margin-top: 10px;
+  .popup-buttons,
+  .modal-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btnStyle,
+  .mainBtnStyle,
+  .copy-btn {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
 }

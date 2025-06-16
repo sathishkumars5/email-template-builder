@@ -22,9 +22,9 @@ const PropertiesPanel = ({ onClose }) => {
 
   return (
    <div className='main'>
-     <div ref={dragRef}
+     <div 
       className="properties-panel"
-      style={{ opacity: isDragging ? 0.5 : 1 }}>
+      >
       <h3 className="panel-header">
         PROPERTIES
         <small className="close-btn" onClick={handleClose}>X </small>
@@ -33,7 +33,7 @@ const PropertiesPanel = ({ onClose }) => {
     </div>
    </div>
   );
-};
+}; 
 
 export default PropertiesPanel;
 
