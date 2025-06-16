@@ -70,7 +70,7 @@ const DropZone = ({ section }) => {
         });
 
         // Optionally select the new block
-        setSelected({ section, id: newBlock.id });
+        // setSelected({ section, id: newBlock.id });
       }
     },
     hover: (item, monitor) => {
@@ -149,14 +149,19 @@ const DraggableBlock = ({
   children
 }) => {
   const ref = useRef(null);
+  const { setSelected } = useEditorContext();
 
   const [{ isDragging }, drag] = useDrag({
     type: ItemType,
-    item: { ...block, index, section },
+    item: () => {// Clear selection when dragging starts
+      setSelected({ section: null, id: null }); // Return the item data
+      return { ...block, index, section };
+    },
     collect: (monitor) => ({
       isDragging: monitor.isDragging()
     })
   });
+
 
   drag(ref);
 

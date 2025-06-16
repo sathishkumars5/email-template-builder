@@ -1,6 +1,4 @@
-// src/context/EditorContext.js
-
-import React, { createContext, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import rawStructure from '../data/structure.json';
 
 const structure = typeof rawStructure === 'string' ? JSON.parse(rawStructure) : rawStructure;
@@ -11,6 +9,66 @@ export const EditorProvider = ({ children }) => {
   const [components, setComponents] = useState(structure.components);
   const [template, setTemplate] = useState(structure.templates?.[0]?.template1 || {});
   const [selected, setSelected] = useState({ section: null, id: null });
+
+  const [history, setHistory] = useState({
+    past: [],
+    present: null,
+    future: [],
+  });
+
+  useEffect(() => {
+    if (template && !history.present) {
+      setHistory({
+        past: [],
+        present: template,
+        future: [],
+      });
+    }
+  }, [template]);
+
+  useEffect(() => {
+    if (history.present && template !== history.present) {
+      setHistory((prev) => {
+        if (template === prev.present) return prev;
+
+        return {
+          past: [...prev.past, prev.present],
+          present: template,
+          future: [],
+        };
+      });
+    }
+  }, [template]);
+
+  const undo = () => {
+    if (history.past.length === 0) return;
+
+    const previous = history.past[history.past.length - 1];
+    const newPast = history.past.slice(0, -1);
+
+    setTemplate(previous);
+
+    setHistory({
+      past: newPast,
+      present: previous,
+      future: [history.present, ...history.future],
+    });
+  };
+
+  const redo = () => {
+    if (history.future.length === 0) return;
+
+    const next = history.future[0];
+    const newFuture = history.future.slice(1);
+
+    setTemplate(next);
+
+    setHistory({
+      past: [...history.past, history.present],
+      present: next,
+      future: newFuture,
+    });
+  };
 
   const updateBlock = (section, id, newProps) => {
     setTemplate((prev) => {
@@ -26,28 +84,21 @@ export const EditorProvider = ({ children }) => {
   };
 
   const deleteBlock = (section, id) => {
-    console.log(id,'iddd')
-    // Ensure ID is string for consistent comparison
     const blockId = String(id);
-    
+
     setTemplate((prev) => {
-      if (!prev[section]) {
-        return prev;
-      }
-      
-      // Filter out the block to delete, ensuring we only keep valid blocks
-      const updatedSection = prev[section].filter((block) => {
-        // Extra safety: ensure block is valid and ID doesn't match
-        return block && block.id && String(block.id) !== blockId;
-      });
+      if (!prev[section]) return prev;
+
+      const updatedSection = prev[section].filter(
+        (block) => block && block.id && String(block.id) !== blockId
+      );
 
       return {
         ...prev,
         [section]: updatedSection,
       };
     });
-    
-    // Clear selection if the deleted block was selected
+
     if (selected.section === section && String(selected.id) === blockId) {
       setSelected({ section: null, id: null });
     }
@@ -64,6 +115,8 @@ export const EditorProvider = ({ children }) => {
         setSelected,
         updateBlock,
         deleteBlock,
+        undo,
+        redo,
       }}
     >
       {children}

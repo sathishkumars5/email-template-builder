@@ -62,11 +62,19 @@
       "type": "space",
       "style": {
         "color": "#000000",
-      "backgroundColor":"",
-      "height":"20px"
+        "backgroundColor":"",
+        "height":"20px"
 
       }
-    }
+    },
+    {
+    "type": "indent",
+    "label": "Indent",
+    "component": "Indent",
+     "style": {
+        "paddingLeft": "40px"
+      }
+  }
   ],
   "templates": [
     {

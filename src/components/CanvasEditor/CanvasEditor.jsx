@@ -5,9 +5,9 @@ import useEditorContext from '../../hooks/useEditorContext';
 const CanvasEditor = ({ onBlockClick }) => {
   const { template,setSelected } = useEditorContext();
 
-  useEffect(()=>{
-    console.log(template.header,template.header.length)
-  },[template])
+  // useEffect(()=>{
+  //   console.log(template.header,template.header.length)
+  // },[template])
 
    const handleCanvasClick = (e) => {
         if (e.target.id==='') {
