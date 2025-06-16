@@ -1,7 +1,7 @@
 /* Preview Page Styles */
 .preview-page {
   min-height: 100vh;
-  background: #f8f9fa;
+   background: linear-gradient(to right, #ccf2ff, #f5e6ff);
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
@@ -24,22 +24,15 @@
 }
 
 .back-to-editor-btn {
-  background: var(--primary-color);
-  color: var(--text-white);
-  border: none;
-  padding: 12px 32px;
-  border-radius: 6px;
-  font-size: 14px;
-  font-weight: 500;
+  margin: 0 40px;
+  padding: 8px 16px;
+  text-align: center;
+  border: 1px solid var(--primary-color);
+  border-radius: 5px;
+  color: var(--textBlack);
+  border: 1px solid var(--primary-color);
+  background: transparent;
   cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: 0 2px 4px rgba(0, 123, 255, 0.2);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
 }
 
 .back-to-editor-btn:hover {
@@ -56,42 +49,29 @@ opacity: 90%;
   color: #333;
   font-size: 28px;
   font-weight: 700;
-  margin: 0;
+  margin: 0 auto;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .preview-container {
-  flex: 1;
-  padding: 30px;
+  width: 100%;
+  margin-top: 35px;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  min-height: calc(100vh - 100px);
-  width: 100%;
-  box-sizing: border-box;
-  overflow-x: hidden;
+  padding: 1rem;
 }
-
 .preview-frame {
-  background: var(--text-white);
-  border-radius: 20px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
   width: 100%;
   max-width: 800px;
-  height: 80vh;
-  position: relative;
-  box-sizing: border-box;
 }
 
 
-
-.preview-iframe {
+#preview-iframe {
+  background-color: var(--text-white);
   width: 100%;
-  height: 100%;
   border: none;
-  border-radius: 0 0 20px 20px;
-  margin-top: 40px;
+  display: block;
+  /* height: fit-content; */
 }
 
 /* Responsive Design */

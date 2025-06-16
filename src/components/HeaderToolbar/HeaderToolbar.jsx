@@ -8,6 +8,9 @@ import { handleShowPreview } from '../common/routeFunction'
 import { handleTemplates } from '../common/routeFunction'
 
 import './NavBar.css';
+import {faMagnifyingGlass,faArrowUpFromBracket,faArrowLeft} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import undoImg from '../../assets/undo.png';
 
 const HeaderToolbar = () => {
   const navigate = useNavigate()
@@ -22,6 +25,14 @@ const HeaderToolbar = () => {
     present: null,  
     future: []      
   });
+
+  const showPreview = () => {
+    navigate('/preview')
+  }
+
+  const backToTemplate=()=>{
+    navigate('/templates')
+  }
 
   const openPreviewModal = () => {
     // Generate fresh HTML with current template state
@@ -115,16 +126,33 @@ const redo = () => {
     present: nextState,
     future: newFuture
   });
-};   
+};
+      
   return (
-    <div style={{ padding: '10px', background: '#eee', textAlign: 'center' }}>
-      <button className='btnStyle' onClick={()=>handleTemplates(navigate)}>BACK</button>
-      <button className='btnStyle' onClick={()=>handleShowPreview(navigate)}>PREVIEW</button>
-      <button className='btnStyle' onClick={undo}>UNDO</button>
-      <button className='btnStyle' onClick={redo}>REDO</button>
-      {/* <button className='btnStyle' onClick={openPreviewModal}>PREVIEW MODAL</button>
-      <button className='btnStyle' onClick={testNotifications}>TEST NOTIFICATIONS</button> */}
-      <button className='mainBtnStyle' onClick={handleExport}>EXPORT</button>
+    <div id='headerToolbarDiv' style={{ padding: '5px 30px', background: '#eee', textAlign: 'center' }}>
+
+<div id='logoDiv'>
+
+  <div>
+ <img src='/assets/sliceMailer.png' alt="logo" />
+  </div>
+ 
+
+         <button className='btnStyle back-to-editor-btn' onClick={backToTemplate}> <FontAwesomeIcon icon={faArrowLeft} /></button>
+
+</div>
+      
+       <div id='undoRedoDiv'>
+       <button className='btnStyle undonBtn' onClick={undo}> <img src='/assets/undo.png' alt="undo" style={{  height: '24px',
+  width: '24px', objectFit: 'contain'}} /></button>
+       <button className='btnStyle redoBtn' onClick={redo}><img src='/assets/redo.png' alt="redo" style={{  height: '24px',
+  width: '24px'}}/></button>
+        </div>
+        <div id='exportPreviewDiv'>
+
+       <button className='btnStyle' onClick={showPreview}><FontAwesomeIcon icon={faMagnifyingGlass}/> Preview</button>
+       <button className='mainBtnStyle btnStyle' onClick={handleExport}><FontAwesomeIcon icon={faArrowUpFromBracket} /> Export</button>
+       </div>
 
       <Modal 
         isOpen={isPopupOpen} 

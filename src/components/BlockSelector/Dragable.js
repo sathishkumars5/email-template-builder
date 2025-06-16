@@ -25,7 +25,7 @@ export const Dragable = ({ children, data, tooltip }) => {
         <div
             style={{
             position: 'absolute',
-            top: '-11px',
+            top: '-15px',
             left: '50%',
             transform: 'translateX(-50%)',
             backgroundColor: 'rgba(0, 0, 0, 0.8)',

@@ -75,4 +75,3 @@ const StaticTemplates = () => {
 };
 
 export default StaticTemplates;
-

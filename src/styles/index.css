@@ -24,13 +24,18 @@ body, html {
 }
 
 .sidebar {
-  width: 100px;
+  width:20%;
   display: flex;
   flex-direction: column;
   align-items: center;
   background: #f8f5f5;
   padding: 10px;
+
 }
+
+
+
+
 
 .sidebar.right {
   border-left: 1px solid #ccc;
