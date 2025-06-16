@@ -51,7 +51,6 @@ const PropertyBlock = () => {
         return (
           <>
             <Textinput label="Button Text" propKey="content" />
-            <Textinput label="Href" propKey="href" />
             <InputStyle label="Color" propKey="color" type="color" />
             <FontSizeInput/>
             <AlignmentButtonGroup/>

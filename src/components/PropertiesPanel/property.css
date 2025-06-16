@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&family=Open+Sans&family=Lato&family=Montserrat&family=Playfair+Display&family=Merriweather&family=Quicksand&family=Raleway&family=PT+Serif&family=Dancing+Script&display=swap');
 
+/* Root Variables */
 :root {
   --primary-color: #c74a27;
   --background-color: #d43306;
@@ -7,9 +8,11 @@
   --text-black: #000000;
   --secondary-color: #fff5f0;
 }
+
+/* Panel container */
 .property-panel {
   background-color: white;
-  width: 350px;
+  width: 340px;
   font-family: 'Inter', sans-serif;
   font-size: 14px;
   display: flex;
@@ -18,6 +21,7 @@
   transition: all 0.3s ease-in-out;
 }
 
+/* Panel header */
 .properties-panel h3 {
   padding: 15px;
   background: var(--text-white);
@@ -25,10 +29,12 @@
   display: flex;
   justify-content: space-between;
   cursor: all-scroll;
-  border-top: 1px solid #ccc ;
+  border-top: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
   z-index: 1;
 }
+
+/* Close button with hover animation */
 .properties-panel .close-btn {
   color: red;
   font-size: small;
@@ -36,34 +42,54 @@
   margin-top: 5px;
   transition: transform 0.3s ease, color 0.3s ease;
 }
-/* inputs parent */
-.input-style-wrapper,.input-group,
-.textStyleBtn,.align-button-group {
+.properties-panel .close-btn:hover {
+  transform: scale(1.2);
+  color: #b30000;
+}
+
+/* General input wrapper styles */
+.input-style-wrapper, .input-group, .textStyleBtn, .align-button-group {
   display: flex; 
   justify-content: space-between;
   align-items: center;
   padding: 15px;
   width: 100%;
-  border-bottom: 1px solid #ccc ;
+  border-bottom: 1px solid #ccc;
 }
-/* Text input */
-.input-group input{
-padding: 7px;
-border-radius: 8px;
-border: 1px solid #ccc;
+
+/* Inputs */
+.input-group input {
+  padding: 7px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  transition: border 0.3s ease;
 }
-.font-size-wrapper{
-   display: flex; 
+.input-group input:hover,
+.input-group input:focus {
+  border-color: #999;
+}
+
+/* Font Size Wrapper */
+.font-size-wrapper {
+  display: flex;
   gap: 8.8rem;
   align-items: center;
   padding: 15px;
   width: 100%;
-  border-bottom: 1px solid #ccc ;
+  border-bottom: 1px solid #ccc;
 }
-.styled-input,
-.input-style-wrapper select,
-.input-style-wrapper input[type="text"],
-.input-style-wrapper input[type="number"] {
+
+/* Color and Hex Input Combo */
+.color-styled-div {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 250px;
+  gap: 1px;
+}
+
+.color-styled-div input[type="color"],
+.color-styled-div input[type="text"] {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 8px;
@@ -73,12 +99,16 @@ border: 1px solid #ccc;
   outline: none;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
+
+.color-styled-div input:hover,
+.color-styled-div input:focus {
+  border-color: #999;
+}
+
+/* Font Size Control */
 .font-size-control input[type="number"] {
-  padding: 8px ;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  padding: 8px;
+  font-size: 14px;
   border-radius: 6px;
   border: 1px solid #ccc;
   width: 100%;
@@ -87,16 +117,26 @@ border: 1px solid #ccc;
   transition: border 0.2s ease;
 }
 
-/* WebKit */
+/* Hide number input arrows */
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+.styled-input{
+   padding: 8px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 25%;
+  box-sizing: border-box;
+  outline: none;
+  transition: border 0.2s ease;
+}
 .styled-input:focus,
 .input-style-wrapper select:focus,
 .input-style-wrapper input:focus {
-  border-color:  1px solid #ccc;
+  border-color: #ccc;
   box-shadow: 0 0 0 2px rgba(199, 74, 39, 0.15);
 }
 .font-size-control input[type="number"]{
@@ -109,47 +149,51 @@ input[type="number"]::-webkit-outer-spin-button {
   gap: 0.6rem;
   width: 20%;
 }
+
 .font-size-control button {
-  padding: 6px 12px;
+  padding: 4px 10px;
   border-radius: 6px;
   background-color: var(--text-white);
-  border:  1px solid #ccc;
+  border: 1px solid #ccc;
   cursor: pointer;
-  font-weight: 600;
+  font-weight: 900;
   font-size: 14px;
-  color: var(--primary-color);
-  transition: all 0.2s ease;
+  color: black;
+  transition: all 0.3s ease;
 }
 .font-size-control button:hover {
   background-color: var(--primary-color);
   color: var(--text-white);
 }
 
-/* Custom Dropdown */
-.custom-dropdown {
-  position: relative;
-  width: 35%;
+
+
+.dropdown-selected {
+   position: relative;
+  width: fit-content;
   border: 1px solid lightgray;
   border-radius: 6px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-}
-
-.dropdown-selected {
   padding: 10px 12px;
   cursor: pointer;
   display: flex;
-  gap: 25px;
   font-size: 16px;
-  width: 100%;
-  display: flex;
   justify-content: space-between;
   align-items: center;
   color: #050505;
+  transition: background 0.3s ease;
+}
+.dropdown-selected:hover {
+  background-color: #fdf3ee;
 }
 
 .dropdown-arrow {
   font-size: 12px;
   margin-left: 8px;
+  transition: transform 0.3s ease-in-out;
+}
+.dropdown-arrow.open {
+  transform: rotate(180deg);
 }
 
 .dropdown-options {
@@ -163,95 +207,29 @@ input[type="number"]::-webkit-outer-spin-button {
   border: 1px solid #fff;
   border-radius: 6px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-  /* max-height: 200px; */
-  overflow-y: auto;
+  width: fit-content;
+  animation: dropdownFadeIn 0.2s ease-in-out;
+}
+@keyframes dropdownFadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .dropdown-options li {
   padding: 10px 12px;
   cursor: pointer;
   font-size: 14px;
-  transition: background 0.2s ease;
+  transition: background 0.2s ease, color 0.2s ease;
 }
-
 .dropdown-options li:hover {
   background-color: #fdcabc;
 }
-
 .dropdown-options li.active {
-  background-color: #e77555 ;
+  background-color: #e77555;
   color: white;
 }
-/* Alignment Buttons */
-.align-button-group {
-  display: flex;
-  justify-content: flex-start;
-  gap: 0.5rem;
-}
 
-.align-button {
-  background: var(--text-white);
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  padding: 8px 10px;
-  cursor: pointer;
-  color: var(--primary-color);
-  transition: background 0.3s ease, border 0.3s ease;
-}
-
-.align-button:hover {
-  background: #f1f1f1;
-}
-
-.align-button.active {
-  background-color: var(--primary-color);
-  border-color: var(--primary-color);
-  color: var(--text-white);
-}
-
-/* Style Toggle Buttons */
-.style-toggle-group {
-  display: inline-block;
-}
-
-.style-toggle-button {
-  padding: 6px 10px;
-  width: 30px;
-  border-radius: 6px;
-  margin:0 10px ;
-  border: 1px solid #ccc;
-  background: var(--text-white);
-  cursor: pointer;
-  font-weight: bold;
-  color: var(--primary-color);
-  transition: all 0.2s ease;
-}
-.FontStyle {
- border: 1px solid #ccc;
-  border-radius: 6px;
-  padding: 8px 0px;
-  cursor: pointer;
-  color: var(--primary-color);
-  transition: background 0.3s ease, border 0.3s ease;
-
-}
-.style-toggle-button:hover {
-  background: #f8f8f8;
-}
-
-.style-toggle-button.active {
-  background-color: var(--primary-color);
-  border-color: var(--primary-color);
-  color: var(--text-white);
-}
-label{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-
-/* Button group wrapper */
+/* Alignment Buttons Group */
 .align-button-group {
   display: flex;
   width: 40%;
@@ -264,7 +242,7 @@ label{
   border-radius: 6px;
 }
 
-/* Button style */
+/* Alignment Button */
 .align-button {
   background: none;
   border: none;
@@ -273,15 +251,60 @@ label{
   font-size: 16px;
   color: #555;
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: background 0.2s ease, transform 0.2s ease;
 }
-
 .align-button:hover {
   background-color: #eee;
+  transform: scale(1.05);
 }
-
-/* Highlighted when selected */
 .align-button.active {
   background-color: #eee6ff;
-  color: #c74a27;
+  color: var(--primary-color);
+}
+
+/* Font Style Button Group */
+.style-toggle-group {
+  display: inline-block;
+}
+
+.style-toggle-button {
+  padding: 6px 10px;
+  width: 30px;
+  border-radius: 6px;
+  margin: 0 10px;
+  border: 1px solid #ccc;
+  background: var(--text-white);
+  cursor: pointer;
+  font-weight: bold;
+  color: black;
+  transition: all 0.2s ease;
+}
+.style-toggle-button:hover {
+  background: #f8f8f8;
+}
+.style-toggle-button.active {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: var(--text-white);
+}
+
+/* Font Style Selector */
+.FontStyle {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 8px 0px;
+  cursor: pointer;
+  color: var(--primary-color);
+  transition: background 0.3s ease, border 0.3s ease;
+}
+.FontStyle:hover {
+  background-color: #fceee8;
+  border-color: var(--primary-color);
+}
+
+/* Label Centering */
+label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

@@ -164,7 +164,8 @@
              "margin": "0 auto",
                "color": "#ffffff",
                "backgroundColor": "#c74a27",
-              "border":"none"
+              "border":"none",
+                "fontFamily":"Arial"
       
             }
           },
@@ -275,7 +276,8 @@
               "fontSize":"12px",
               "color": "black",
               "backgroundColor": "#16a5b5",
-              "border":"none"
+              "border":"none",
+                "fontFamily":"Arial"
       
             }
           }
@@ -371,7 +373,8 @@
               "fontSize":"12px",
               "color": "black",
               "backgroundColor": "#3075c9",
-              "border":"none"
+              "border":"none",  
+              "fontFamily":"Arial"
       
             }
           }
@@ -412,7 +415,8 @@
                "fontSize":"12px",
               "color": "black",
               "backgroundColor": "#3075c9",
-              "border":"none"
+              "border":"none",
+                "fontFamily":"Arial"
       
             }
           }

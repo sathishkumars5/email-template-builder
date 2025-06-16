@@ -27,14 +27,14 @@ const InputForStyles = ({ label, propKey, type = 'text', options = []}) => {
       <label>{label}</label>
 
       {type === 'select' ? (
-        <div className="custom-dropdown">
+     
           <div
-            className={`dropdown-selected ${dropdownOpen ? 'open' : ''}`}
+            className={`dropdown-selected ${dropdownOpen ? 'show' : ''}`}
             onClick={() => setDropdownOpen(!dropdownOpen)}
           >
             {getValue()||'select'}
-            <span className="dropdown-arrow">▾</span>
-          </div>
+            <span className={`dropdown-arrow ${dropdownOpen ? 'open' : ''}`}>▾</span>
+     
 
           {dropdownOpen && (
             <ul className="dropdown-options">
@@ -52,7 +52,7 @@ const InputForStyles = ({ label, propKey, type = 'text', options = []}) => {
           )}
         </div>
       ) : type === 'color' ? (
-        <div style={{ display: 'flex',width:'40%' }}>
+        <div className='color-styled-div' style={{ display: 'flex',width:'40%' }}>
      <input
             type="color"
             value={getValue()}

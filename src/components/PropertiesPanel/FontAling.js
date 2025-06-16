@@ -48,7 +48,11 @@
       {Object.entries(alignOptions).map(([align, config]) => (
         <button
           key={align}
-          className={`align-button ${block.style?.textAlign === align ? 'active' : ''}`}
+ className={`align-button ${
+                   (isTextAlign && block?.style?.textAlign === align) || (!isTextAlign && block?.style?.margin === alignOptions[align].margin)
+                   ? 'active' : ''}`}
+
+
           onClick={() => setAlign(align)}
         >
           <FontAwesomeIcon icon={config.icon} />
