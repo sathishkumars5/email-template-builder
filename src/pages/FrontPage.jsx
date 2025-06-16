@@ -11,6 +11,7 @@ const FrontPage = () => {
             <h2>Email template builder</h2>
             <button style={{backgroundColor:'grey',border:'none',width:'3rem',height:'2rem'}}>Try</button>
             <button style={{backgroundColor:'grey',border:'none',width:'3rem',height:'2rem'}} onClick={()=>handleLoginpage(navigate)}>Login</button>
+            <button style={{backgroundColor:'red',border:'none',width:'4rem',height:'2rem'}}>Logout</button>
         </div>
     </div>
   )

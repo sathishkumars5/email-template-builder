@@ -23,4 +23,3 @@ export default function Link({ href, id, style, linkText }) {
     </a>
   );
 }
-

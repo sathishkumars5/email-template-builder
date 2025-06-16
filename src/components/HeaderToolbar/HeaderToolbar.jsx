@@ -16,7 +16,7 @@ const HeaderToolbar = () => {
   const [htmlCode, setHtmlCode] = useState('');
 
   const { showSuccess, showError, showWarning } = useNotification();
-  const { template, undo, redo } = useEditorContext(); // ✅ use from context
+  const { template, undo, redo,setSelected } = useEditorContext(); // ✅ use from context
 
   const openPreviewModal = () => {
     const freshHtmlCode = generateFullHtml(template);
@@ -54,10 +54,10 @@ const HeaderToolbar = () => {
 
   return (
     <div style={{ padding: '10px', background: '#eee', textAlign: 'center' }}>
-      <button className='btnStyle' onClick={() => handleTemplates(navigate)}>BACK</button>
-      <button className='btnStyle' onClick={() => handleShowPreview(navigate)}>PREVIEW</button>
-      <button className='btnStyle' onClick={undo}>UNDO</button>
-      <button className='btnStyle' onClick={redo}>REDO</button>
+      <button className='btnStyle' onClick={() => {handleTemplates(navigate);setSelected({ section: null, id: null });}}>BACK</button>
+      <button className='btnStyle' onClick={() => {handleShowPreview(navigate);setSelected({ section: null, id: null });}}>PREVIEW</button>
+      <button className='btnStyle' onClick={()=>{undo();setSelected({ section: null, id: null })}}>UNDO</button>
+      <button className='btnStyle' onClick={()=>{redo();setSelected({ section: null, id: null })}}>REDO</button>
       {/* <button className='btnStyle' onClick={openPreviewModal}>PREVIEW MODAL</button> */}
       <button className='mainBtnStyle' onClick={handleExport}>EXPORT</button>
 
