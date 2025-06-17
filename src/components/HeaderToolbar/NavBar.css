@@ -8,7 +8,6 @@
   --font-family: 'Inter', sans-serif;
 }
 
-/* Toolbar Container */
 #headerToolbarDiv {
   display: flex;
   justify-content: space-between;
