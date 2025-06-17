@@ -24,6 +24,7 @@ const getCanvasStyle = () => {
     return {
       padding: '1rem',
       border: '1px dashed gray',
+       width: '1024px'
     };
   }
 };
