@@ -101,7 +101,7 @@ const SignUp = () => {
       
 
     } catch (error) {
-      showNotification(error.message || 'An error occurred during registration', 'error');
+      showNotification('An error occurred during registration', 'error');
     }
   };
 

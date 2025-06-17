@@ -9,6 +9,12 @@ export const EditorProvider = ({ children }) => {
   const [components, setComponents] = useState(structure.components);
   const [template, setTemplate] = useState(structure.templates?.[0]?.template1 || {});
   const [selected, setSelected] = useState({ section: null, id: null });
+  const [templateName,setTemplateName]=useState('')
+  
+  const [widthState,setWidthState]=useState({
+    mobile:false,
+    desktop:false
+  })
 
   const [history, setHistory] = useState({
     past: [],
@@ -117,6 +123,8 @@ export const EditorProvider = ({ children }) => {
         deleteBlock,
         undo,
         redo,
+        setTemplateName,
+        templateName,setWidthState,widthState
       }}
     >
       {children}

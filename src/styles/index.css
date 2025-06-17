@@ -20,7 +20,7 @@ body, html {
 
 .editor-body {
   display: flex;
-  flex: 1;
+  /* flex: 1; */
 }
 
 .sidebar {
@@ -41,11 +41,11 @@ body, html {
   border-left: 1px solid #ccc;
 }
 
-.canvas {
+/* .canvas {
   flex: 1;
   padding: 20px;  
   border-left: 1px solid #ccc;
   border-right: 1px solid #ccc;
-}
+} */
 
 

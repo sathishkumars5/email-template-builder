@@ -6,14 +6,12 @@ import './StaticTemplates.css';
 import { handleHomepage } from '../components/common/routeFunction';
 import { handleEditorPage } from '../components/common/routeFunction';
 
-
 const structure = typeof rawStructure === 'string' ? JSON.parse(rawStructure) : rawStructure;
 
 const StaticTemplates = () => {
   const navigate = useNavigate();
   const { templates } = structure;
-  const { setTemplate } = useEditorContext();
-
+  const { setTemplate,setTemplateName } = useEditorContext();
 
 
   const renderComponent = (comp) => {
@@ -49,6 +47,7 @@ const StaticTemplates = () => {
                 key={index}
                 className="template-card"
                 onClick={() => {
+                  setTemplateName(templateKey)
                   setTemplate(templatedata);
                   handleEditorPage(navigate);
                 }}

@@ -18,3 +18,7 @@ export const handleLoginpage=(navigate)=>{
     navigate('/login')
 }
 
+export const handleSignUppage=(navigate)=>{
+    navigate('/signup')
+}
+
