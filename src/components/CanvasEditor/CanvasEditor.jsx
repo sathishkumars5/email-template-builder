@@ -18,7 +18,7 @@ const getCanvasStyle = () => {
       margin:'auto',
       padding: '1rem',
       border: '1px dashed gray',
-      width: '1000px',
+      width: '1024px',
     };
   } else {
     return {
