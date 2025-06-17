@@ -16,7 +16,7 @@ export const Dragable = ({ children, data, tooltip }) => {
 
   return (
     <div
-      style={{ opacity: isDragging ? 0.5 : 1, cursor: 'pointer', position: 'relative', 
+      style={{ opacity: isDragging ? 0.5 : 1, cursor: 'pointer', position: 'relative',height:'90px', 
         }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}

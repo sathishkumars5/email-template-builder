@@ -1,11 +1,9 @@
 import React from 'react';
-
 import Button from '../BlockSelector/Button';
 import Image from '../BlockSelector/Image';
 import Link from '../BlockSelector/Link';
 import Text from '../BlockSelector/Text';
 import Space from '../BlockSelector/Space';
-import Heading from '../BlockSelector/Heading';
 
 const RenderBlock = (block) => {
 
@@ -62,15 +60,6 @@ const RenderBlock = (block) => {
         style={block.style}
         />
       );
-
-       case 'heading':
-      return <Heading 
-        id={block.id}
-        style={block.style}
-        Textcontent={block.content||"Enter a text"}
-      />;
-
-
     default:
       return <div>Unknown block type: {block.type}</div>;
   }

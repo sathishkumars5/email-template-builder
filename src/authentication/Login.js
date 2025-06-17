@@ -14,6 +14,7 @@ const Login = () => {
     email: '',
     password: '',
   });
+
   const [errors, setErrors] = useState({});
   const [showPassword, setShowPassword] = useState(false);
 
@@ -30,15 +31,16 @@ const Login = () => {
     }, 3000);
   };
 
-  const handleChange = (e) =>
-    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  const handleChange = (e) => {
+    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const newErrors = {};
-    if (!formData.email) newErrors.email = 'Email is required';
-    if (!formData.password) newErrors.password = 'Password is required';
+    if (!formData.email.trim()) newErrors.email = 'Email is required';
+    if (!formData.password.trim()) newErrors.password = 'Password is required';
 
     setErrors(newErrors);
     if (Object.keys(newErrors).length > 0) return;
@@ -54,7 +56,7 @@ const Login = () => {
 
   return (
     <div className="auth-container">
-     
+
       <Notification
         message={notification.message}
         type={notification.type}
@@ -89,7 +91,7 @@ const Login = () => {
             />
             <span
               className="password-toggle"
-              onClick={() => setShowPassword((prev) => !prev)}
+              onClick={() => setShowPassword(prev => !prev)}
             >
               <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />
             </span>

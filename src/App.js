@@ -11,7 +11,6 @@ import FrontPage from './pages/FrontPage';
 import SignUp from './authentication/SignUp';
 import Login from './authentication/Login';
 
-
 const App = () => {
   return (
     <Router>
@@ -25,7 +24,6 @@ const App = () => {
             <Route path="/templates" element={<StaticTemplates />} />
             <Route path="/editor" element={<EditorPage />} />
             <Route path="/preview" element={<PreviewPage />} />
-      
           </Routes>
         </NotificationProvider>
       </EditorProvider>

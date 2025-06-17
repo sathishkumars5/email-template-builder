@@ -5,7 +5,7 @@ import Modal from './Modal'
 import { useNotification } from '../../context/NotificationContext'
 import useEditorContext from '../../hooks/useEditorContext'
 import { handleShowPreview } from '../common/routeFunction'
-import { handleTemplates } from '../common/routeFunction'
+import { handleHomepage } from '../common/routeFunction'
 
 import './NavBar.css';
 import {faMagnifyingGlass,faArrowUpFromBracket,faArrowLeft} from '@fortawesome/free-solid-svg-icons';
@@ -26,13 +26,13 @@ const HeaderToolbar = () => {
     future: []      
   });
 
-  const showPreview = () => {
-    navigate('/preview')
-  }
+  // const showPreview = () => {
+  //   navigate('/preview')
+  // }
 
-  const backToTemplate=()=>{
-    navigate('/templates')
-  }
+  // const backToTemplate=()=>{
+  //   navigate('/templates')
+  // }
 
   const openPreviewModal = () => {
     // Generate fresh HTML with current template state
@@ -45,7 +45,7 @@ const HeaderToolbar = () => {
 
   const handleExport = () => {
     try {
-      // Generate fresh HTML with current template state
+ 
       const freshHtmlCode = generateFullHtml(template)
       
       if (!freshHtmlCode || freshHtmlCode.trim() === '') {
@@ -133,12 +133,12 @@ const redo = () => {
 
 <div id='logoDiv'>
 
-  <div>
+  <div id='logoContainer' >
  <img src='/assets/sliceMailer.png' alt="logo" />
   </div>
  
 
-         <button className='btnStyle back-to-editor-btn' onClick={backToTemplate}> <FontAwesomeIcon icon={faArrowLeft} /></button>
+         <button className='btnStyle back-to-editor-btn' onClick={()=>handleHomepage(navigate)}> <FontAwesomeIcon icon={faArrowLeft} /></button>
 
 </div>
       
@@ -150,7 +150,7 @@ const redo = () => {
         </div>
         <div id='exportPreviewDiv'>
 
-       <button className='btnStyle' onClick={showPreview}><FontAwesomeIcon icon={faMagnifyingGlass}/> Preview</button>
+       <button className='btnStyle' onClick={()=>handleShowPreview(navigate)}><FontAwesomeIcon icon={faMagnifyingGlass}/> Preview</button>
        <button className='mainBtnStyle btnStyle' onClick={handleExport}><FontAwesomeIcon icon={faArrowUpFromBracket} /> Export</button>
        </div>
 

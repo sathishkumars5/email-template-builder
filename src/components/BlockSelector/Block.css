@@ -11,6 +11,11 @@
   box-sizing: border-box;
 }
 
+.left h3{
+  width: 100%;
+  margin-top: 10px;
+  padding-left: 20px;
+}
 .componentDiv {
   display: flex;
   flex-direction: column;
