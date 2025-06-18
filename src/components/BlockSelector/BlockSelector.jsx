@@ -7,7 +7,8 @@ const BlockSelector = () => {
   
   return (
     <div className="sidebar left">
-     <div id='components'>
+      <h3>Components</h3>
+     <div id='components'>  
     <NavComponents/>
       </div>
     </div>

@@ -1,16 +1,16 @@
-/* StaticTemplates.css */
+
+
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .static-container {
-  padding: 2rem;
-  background: linear-gradient(145deg, #f9f9f9, #f1f1f1);
-  min-height: 100vh;
+  border-radius: 5px;
+  width: 100%;
 }
 
 .static-heading {
-  font-size: 28px;
+  font-size: 25px;
   font-weight: bold;
   color: #333;
   margin-bottom: 1.5rem;
@@ -36,7 +36,6 @@ body {
 
 .template-list-wrapper {
   display: flex;
-  justify-content: center;
 }
 
 .template-grid {
@@ -58,7 +57,7 @@ body {
   padding: 10px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .template-card:hover {
@@ -67,8 +66,10 @@ body {
 }
 
 .template-preview {
-  transform: scale(0.4);
-  transform-origin: top left;
-  width: 250%;
+  display: flex;
+  font-size: 8px;
+  flex-direction: column;
   pointer-events: none;
+  align-items: center;
+  text-align: center;
 }
