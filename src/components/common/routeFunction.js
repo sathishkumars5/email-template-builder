@@ -12,9 +12,14 @@ export const handleTemplates = (navigate) => {
 
 export const handleShowPreview = (navigate) => {
     navigate('/preview')
+};
+
+export const handleLoginPage=(navigate)=>{
+    navigate('/login')
+};
+
+export const handleSignUpPage=(navigate)=>{
+    navigate('/signup')
 }
 
-export const handleLoginpage=(navigate)=>{
-    navigate('/login')
-}
 

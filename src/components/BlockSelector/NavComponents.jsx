@@ -44,12 +44,6 @@ export default function NavComponents() {
             tooltip:"Space block",
             label:"Spacer"
         },
-        {
-            type:'heading',
-            icon:<FontAwesomeIcon icon={faH} />,
-            tooltip:"Heading block",
-            label:"Heading"
-        }
     ])
 
   return (

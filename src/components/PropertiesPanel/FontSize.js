@@ -27,6 +27,7 @@ const fontSizeValue = block?.style?.[propKey]? parseInt(block.style[propKey]):18
         <button onClick={() => handleFontChange(fontSizeValue - 1)}>-</button>
         <input
           type="number"
+          className='total-value'
           value={fontSizeValue}
           onChange={(e) => handleFontChange(Number(e.target.value))}
         />

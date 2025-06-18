@@ -38,12 +38,12 @@ const PropertyBlock = () => {
                     ]}/>
             <AlignmentButtonGroup/>
           <div className="textStyleBtn">
-              <span>Font Style</span>
+              <span className='font-style-label'>Font Style</span>
               <div className="FontStyle">
                 <StyleToggleButton propKey="fontWeight" value="bold"  label="B" />
               <StyleToggleButton propKey="fontStyle" value="italic" label="I" />
               <StyleToggleButton propKey="textDecoration" value="underline" label="U" />  
-              </div>
+              </div>    
             </div>
           </>
         );

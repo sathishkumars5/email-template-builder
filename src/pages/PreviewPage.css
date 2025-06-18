@@ -25,25 +25,14 @@
 
 .back-to-editor-btn {
   margin: 0 40px;
-  padding: 8px 16px;
   text-align: center;
-  border: 1px solid var(--primary-color);
   border-radius: 5px;
   color: var(--textBlack);
-  border: 1px solid var(--primary-color);
   background: transparent;
   cursor: pointer;
 }
 
-.back-to-editor-btn:hover {
-opacity: 90%;
-  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
-}
 
-.back-to-editor-btn:active {
-  transform: translateY(1px);
-  box-shadow: 0 1px 2px rgba(0, 123, 255, 0.2);
-}
 
 .preview-title {
   color: #333;

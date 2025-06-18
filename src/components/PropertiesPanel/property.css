@@ -9,6 +9,26 @@
   --secondary-color: #fff5f0;
 }
 
+::-webkit-scrollbar {
+  width: 4px;
+  transition: width 0.3s ease;
+}
+
+::-webkit-scrollbar-track {
+  background: #ffbba8;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 20px;
+  transition: background 0.3s ease, height 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--background);
+}
+
 /* Panel container */
 .property-panel {
   background-color: white;
@@ -59,7 +79,7 @@
 
 /* Inputs */
 .input-group input {
-  padding: 7px;
+  padding: 10.5px;
   border-radius: 8px;
   border: 1px solid #ccc;
   transition: border 0.3s ease;
@@ -68,27 +88,16 @@
 .input-group input:focus {
   border-color: #999;
 }
-
-/* Font Size Wrapper */
-.font-size-wrapper {
-  display: flex;
-  gap: 8.8rem;
-  align-items: center;
-  padding: 15px;
-  width: 100%;
-  border-bottom: 1px solid #ccc;
-}
-
 /* Color and Hex Input Combo */
 .color-styled-div {
   display: flex;
   align-items: center;
   width: 100%;
   max-width: 250px;
-  gap: 1px;
+  gap: 5px;
 }
 
-.color-styled-div input[type="color"],
+
 .color-styled-div input[type="text"] {
   padding: 10px;
   border: 1px solid #ccc;
@@ -104,6 +113,34 @@
 .color-styled-div input:focus {
   border-color: #999;
 }
+
+/* image hight and width */
+.styled-input{
+   padding: 8px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 25%;
+  box-sizing: border-box;
+  outline: none;
+  transition: border 0.2s ease;
+}
+.styled-input:focus,
+.input-style-wrapper select:focus,
+.input-style-wrapper input:focus {
+  border-color: #ccc;
+  box-shadow: 0 0 0 2px rgba(199, 74, 39, 0.15);
+}
+/* Font Size Wrapper */
+.font-size-wrapper {
+  display: flex;
+  gap: 7.5rem;
+  align-items: center;
+  padding: 15px;
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+}
+
 
 /* Font Size Control */
 .font-size-control input[type="number"] {
@@ -123,24 +160,9 @@ input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-.styled-input{
-   padding: 8px;
-  font-size: 14px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  width: 25%;
-  box-sizing: border-box;
-  outline: none;
-  transition: border 0.2s ease;
-}
-.styled-input:focus,
-.input-style-wrapper select:focus,
-.input-style-wrapper input:focus {
-  border-color: #ccc;
-  box-shadow: 0 0 0 2px rgba(199, 74, 39, 0.15);
-}
+
 .font-size-control input[type="number"]{
-  width: 35px;
+  width:50px;
 }
 .font-size-control {
   display: flex;
@@ -149,6 +171,7 @@ input[type="number"]::-webkit-outer-spin-button {
   gap: 0.6rem;
   width: 20%;
 }
+
 
 .font-size-control button {
   padding: 4px 10px;
@@ -165,16 +188,13 @@ input[type="number"]::-webkit-outer-spin-button {
   background-color: var(--primary-color);
   color: var(--text-white);
 }
-
-
-
 .dropdown-selected {
    position: relative;
-  width: fit-content;
+  width: 60%;
   border: 1px solid lightgray;
   border-radius: 6px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-  padding: 10px 12px;
+  padding: 5.5px 12px;
   cursor: pointer;
   display: flex;
   font-size: 16px;
@@ -201,6 +221,8 @@ input[type="number"]::-webkit-outer-spin-button {
   margin: 0;
   padding: 4px 0;
   position: absolute;
+  top: 42px;
+  right: 0px;
   width: 100%;
   z-index: 10;
   background-color: #fff;
@@ -209,6 +231,8 @@ input[type="number"]::-webkit-outer-spin-button {
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
   width: fit-content;
   animation: dropdownFadeIn 0.2s ease-in-out;
+  max-height: 200px;
+  overflow-y: auto;
 }
 @keyframes dropdownFadeIn {
   from { opacity: 0; transform: translateY(-4px); }
@@ -303,8 +327,50 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 /* Label Centering */
-label {
+label ,.label-text,.font-style-label{
   display: flex;
   justify-content: center;
   align-items: center;
+  font-weight: 600;
+}
+
+.box-model-input {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid #eee;
+  border-radius: 6px;
+}
+
+.box-label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.input-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.box-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.box-dir {
+  font-size: 0.85rem;
+  margin-bottom: 0.25rem;
+}
+
+.box-control {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.box-control input {
+  width: 3rem;
+  text-align: center;
 }
