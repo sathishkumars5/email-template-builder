@@ -1,0 +1,161 @@
+
+*{
+  box-sizing: border-box;
+}
+/* Auth.css */
+
+.auth-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #fff;
+}
+
+.auth-card {
+  min-width: 35%;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.auth-title {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #c74a27;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.form-input {
+  width: 100%;
+  appearance: none;
+  padding: 10px 40px 10px 14px;
+  border: none;
+  border-radius: 8px;
+  border-bottom: 1px solid #b03e24;
+  outline: none;
+  background-color: #fff;
+  font-size: 16px;
+  color: #333;
+}
+
+.form-input:focus {
+  border: 1px solid #b03e24;
+  box-shadow: none;
+  background-color: #fff5f0;
+}
+
+.input-error {
+  border-bottom-color: red;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.85rem;
+  margin-top: 0.3rem;
+}
+
+.passIcon-position{
+  position: relative;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #666;
+  z-index: 2;
+}
+
+
+.password-rules {
+  position: absolute;
+  left: 105%;
+  top: 35%;
+  width: 60%;
+  background: #fff;
+  border: 1px solid #b03e24;
+  padding: 0.6rem; 
+  border-radius: 0rem 1.6rem 1.6rem 1.6rem ; 
+  font-size: 0.8rem; 
+  text-align: left;
+  z-index: 10;
+  box-shadow: 0 0.125rem 0.625rem rgba(0, 0, 0, 0.1); 
+}
+
+.password-rules p{
+  margin-top: 0px;
+  color: #c74a27;
+  font-weight: 800;
+}
+
+.password-rules ul {
+  padding-left: .6rem;
+  margin: 0;
+}
+
+.password-rules li {
+  list-style: none;
+}
+
+.password-rules .valid {
+  color: green;
+}
+
+.password-rules .invalid {
+  color: red;
+}
+
+.auth-button {
+  width: 100%;
+  padding: 10px;
+  background: #c74a27;
+  color: white;
+  border: none;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.auth-button:hover {
+  background: #b03e24;
+}
+
+.auth-message {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.auth-message.success {
+  color: green;
+}
+
+.auth-message.error {
+  color: red;
+}
+
+.auth-footer {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.auth-link {
+  color: #c74a27;
+  text-decoration: none;
+}
+
+.auth-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: #ffffff;
+}
+

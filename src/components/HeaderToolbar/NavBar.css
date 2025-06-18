@@ -1,41 +1,171 @@
-.btnStyle {
-  margin: 0 8px;
-  padding: 8px 16px;
-  border: 1px solid var(--primary-color);
-  border-radius: 5px;
-  cursor: pointer;
-  background: transparent;
+:root {
+  --primary-color: #1e1e1e;
+  --accent-color: #7c3aed;
+  --input-bg: #f9f9fb;
+  --divider-color: #ddd;
+  --icon-color: #2c1d55;
+  --hover-bg: rgba(0, 0, 0, 0.05);
+  --font-family: 'Inter', sans-serif;
 }
 
-.mainBtnStyle {
-  margin: 0 8px;
-  padding: 8px 16px;
-  border: 1px solid var(--primary-color);
-  border-radius: 5px;
-  color: var(--text-white);
-  background: var(--primary-color);
+#headerToolbarDiv {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 24px;
+  background: #fff;
+  border-bottom: 1px solid var(--divider-color);
+  font-family: var(--font-family);
+  gap: 18px;
+}
+
+/* Left Side */
+#logoDiv {
+  display: flex;
+  align-items: center;
+  width: 100px;
+  height: 60px;
+  gap: 12px;
+}
+.img-logo{
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.back-to-editor-btn {
+  background: transparent;
+  color: var(--icon-color);
+  padding: 3px 5px;
+  font-size: 12px;
+  border-radius: 8px;
   cursor: pointer;
+  transition: background 0.2s;
+  border:1px solid
+}
+
+.back-to-editor-btn:hover {
+  background: var(--hover-bg);
+}
+
+/* Template Name Input */
+.input-style {
+  padding: 6px 10px;
+  font-size: 15px;
+  background: var(--input-bg);
+  border: 1px solid var(--divider-color);
+  border-radius: 8px;
+  width: 180px;
+  transition: 0.2s ease;
+}
+
+.input-style:focus {
+  border-color: var(--accent-color);
+  outline: none;
+  background: #fff;
+}
+
+/* Icon Buttons */
+.btnStyle,
+.view-toggle-button {
+  background: transparent;
+  border: none;
+  color: var(--icon-color);
+  font-size: 15px;
+  padding: 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btnStyle:hover,
+.view-toggle-button:hover {
+  background: var(--hover-bg);
+}
+
+/* Icons (Undo, Redo) */
+.undonBtn img,
+.redoBtn img {
+  height: 22px;
+  width: 22px;
+  object-fit: contain;
+}
+
+/* Button Groups */
+#undoRedoDiv,
+#exportPreviewDiv {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Export Button */
+.mainBtnStyle {
+  background: var(--accent-color);
+  color: #fff;
+  font-weight: 600;
+  padding: 8px 18px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: none;
+  transition: background 0.2s;
+}
+
+.mainBtnStyle:hover {
+  background: #6931d4;
+}
+
+/* Divider Lines */
+#undoRedoDiv::before,
+#exportPreviewDiv::before {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 28px;
+  background: var(--divider-color);
+  margin: 0 8px;
 }
 
 .copy-btn {
-  margin: 0 8px;
-  padding: 8px 16px;
   border: none;
-  border-radius: 5px;
-  color: var(--text-white);
   background: var(--primary-color);
-  cursor: pointer;
-  font-weight: 500;
+  color: var(--text-white);
 }
 
 .copy-btn:hover {
   background: var(--background);
 }
 
+/* Responsive */
+@media screen and (max-width: 768px) {
+  #headerToolbarDiv {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+
+  #logoDiv,
+  #undoRedoDiv,
+  #exportPreviewDiv {
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .input-style {
+    width: 100%;
+  }
+
+  .mainBtnStyle {
+    width: 100%;
+    justify-content: center;
+  }
+}
 .popup-wrapper {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 0; left: 0;
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
@@ -54,106 +184,32 @@
   width: 90%;
   max-width: 900px;
   max-height: 80vh;
-  overflow-y: auto; 
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
   gap: 15px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-.html-editor-container {
-  width: 100%;
-}
-
-.html-editor-container h3 {
-  margin: 0 0 15px 0;
-  color: #333;
-  font-size: 1.5rem;
-  text-align: center;
-}
-
-.editor-wrapper {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  overflow: hidden;
-  margin-bottom: 15px;
-}
-
-.editor-wrapper .w-tc-editor {
-  min-height: 300px;
-  max-height: 400px;
+.popup-content {
+  padding: 20px;
   overflow-y: auto;
+  flex: 1;
 }
 
-.text-editor-container {
-  width: 100%;
-}
-
-.text-editor-container h3 {
-  margin: 0 0 15px 0;
-  color: #333;
-  font-size: 1.5rem;
-  text-align: center;
-}
-
-.text-editor-wrapper {
-  margin-bottom: 15px;
-}
-
-.preview-container {
-  width: 100%;
-}
-
-.preview-container h3 {
-  margin: 0 0 15px 0;
-  color: #333;
-  font-size: 1.5rem;
-  text-align: center;
-}
-
-.preview-content {
-  margin-bottom: 15px;
-}
-
-.default-content {
-  width: 100%;
-}
-
-.default-content h3 {
-  margin: 0 0 15px 0;
-  color: #333;
-  font-size: 1.5rem;
-  text-align: center;
-}
-
-.content-body {
-  margin-bottom: 15px;
-  padding: 15px;
-  background: #f8f9fa;
-  border-radius: 8px;
-  border: 1px solid #e9ecef;
-  max-height: 400px;
-  overflow-y: auto;
+.popup-buttons,
+.modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
 }
 
 .modal-actions {
-  display: flex;
-  justify-content: center; 
-  gap: 10px; 
-  margin-top: 15px;
   padding-top: 15px;
   border-top: 1px solid #eee;
 }
 
-.popup-content {
-  padding: 20px;
-  overflow-y: auto;
-  flex: 1; 
-}
-
 .popup-buttons {
-  display: flex;
-  justify-content: center; 
-  gap: 10px; 
   margin-top: 10px;
 }

@@ -9,10 +9,12 @@
               "borderRadius": "8px",
               "textAlign": "center",
               "display": "block",
-              "margin": "20px auto",
+              "fontSize": "12px",
+              "margin": "0 auto",
                "color": "#ffffff",
-              "backgroundColor": "var(--primary-color)",
-              "border":"none"
+              "backgroundColor": "#c74a27",
+              "border":"none",
+               "fontFamily":"Arial"
         
       }
     },
@@ -23,8 +25,9 @@
       "style": {
               "color": "#000000",
               "fontSize": "18px",
-              "fontweigth":"normal",
-              "textAlign": "center"
+              "fontweight":"normal",
+              "textAlign": "center",
+               "fontFamily":"Arial"
       }
     },
 
@@ -37,7 +40,7 @@
         "width":"100px",
         "height":"100px",
         "display":"block",
-        "margin":" 0 auto"
+        "margin": "0 auto"
 
       }
     },
@@ -48,10 +51,11 @@
       "href": "",
       "style": {
         "color": "#000000",
-        "fontSize": "1rem",
+        "fontSize": "18px",
         "display": "block",
-        "textAlign": "center",
-        "textDecoration":"none"
+        "textAlign":"center",
+        "textDecoration":"none",
+         "fontFamily":"Arial"
         
       }
     },
@@ -65,7 +69,19 @@
       "height":"20px"
 
       }
+    },
+        {
+      "id": "1006",
+      "type": "heading",
+      "content": "Enter the text",
+      "style": {
+              "color": "#000000",
+              "fontSize": "none",
+              "fontweight":"none",
+              "textAlign": "center"
+      }
     }
+
   ],
   "templates": [
     {
@@ -91,7 +107,9 @@
               "color": "#000000",
               "fontSize": "18px",
               "fontweigth":"normal",
-              "textAlign": "center"
+              "textAlign": "center",
+              "fontFamily":"Arial"
+               
             }
           }
         ],
@@ -117,7 +135,9 @@
               "color": "#000000",
               "fontSize": "18px",
               "fontweigth":"normal",
-              "textAlign": "center"
+              "textAlign": "center",
+              "fontFamily":"Arial"
+
             }
           },
           {
@@ -128,7 +148,8 @@
              "color": "#000000",
               "fontSize": "18px",
               "fontweigth":"normal",
-              "textAlign": "center"
+              "textAlign": "center",  
+              "fontFamily": "Arial"
             }
           },
           {
@@ -139,7 +160,8 @@
            "color": "#000000",
               "fontSize": "18px",
               "fontweigth":"normal",
-              "textAlign": "center"
+              "textAlign": "center",
+              "fontFamily":"Arial"
             }
           },
           {
@@ -149,12 +171,13 @@
             "style": {
               "padding": "10px 20px",
               "borderRadius": "8px",
-              "textAlign": "center",
+              "fontSize": "12px",
               "display": "block",
-              "margin": "20px auto",
+             "margin": "0 auto",
                "color": "#ffffff",
-              "backgroundColor": "var(--primary-color)",
-              "border":"none"
+               "backgroundColor": "#c74a27",
+              "border":"none",
+                "fontFamily":"Arial"
       
             }
           },
@@ -166,7 +189,8 @@
              "color": "#000000",
               "fontSize": "18px",
               "fontweigth":"normal",
-              "textAlign": "center"
+              "textAlign": "center",
+             "fontFamily":"Arial"
             }
           }
         ],
@@ -179,7 +203,8 @@
             "color": "#000000",
               "fontSize": "18px",
               "fontweigth":"normal",
-              "textAlign": "center"
+              "textAlign": "center",
+          "fontFamily":"Arial"
             }
           },
           {
@@ -190,7 +215,246 @@
              "color": "#000000",
               "fontSize": "18px",
               "fontweigth":"normal",
-              "textAlign": "center"
+              "textAlign": "center",
+             "fontFamily":"Arial"
+            }
+          }
+        ]
+      }
+    },
+{
+      "template2": {
+        "header": [
+          {
+            "id": "2011",
+            "type": "img",
+            "src": "https://www.dckap.com/wp-content/uploads/2023/08/logo-full-color-no-slogan.svg",
+            "alt": "Logo",
+            "style": {
+              "height": "50px",
+              "width": "50px",
+              "margin": "0 auto",
+              "display": "block"
+            }
+          },
+          {
+            "id": "2012",
+            "type": "text",
+            "content": "Style Casual",
+            "style": {
+              "color": "#000000",
+              "fontSize": "18px",
+              "fontweigth": "normal",
+              "textAlign": "center",
+              "fontFamily": "Arial"
+            }
+          }
+        ],
+        "Container": [
+          {
+            "id": "2013",
+            "type": "img",
+            "src": "https://cdn-icons-png.flaticon.com/512/103/103084.png",
+            "alt": "Password Icon",
+            "style": {
+              "height": "100px",
+              "width": "100px",
+              "display": "block",
+              "margin": "0 auto"
+            }
+          },
+          {
+            "id": "2014",
+            "type": "text",
+            "content": "Reset Your Password",
+            "style": {
+              "color": "#000000",
+              "fontSize": "20px",
+              "fontWeight": "bold",
+              "textAlign": "center",
+              "fontFamily": "Arial"
+            }
+          },
+          {
+            "id": "2015",
+            "type": "text",
+            "content": "We received a request to reset your password. Click the button below to set a new password.",
+            "style": {
+              "color": "#555555",
+              "fontSize": "16px",
+              "textAlign": "center",
+              "marginTop": "10px",
+              "fontFamily": "Arial"
+            }
+          },
+          {
+            "id": "2016",
+            "type": "button",
+            "content": "RESET PASSWORD",
+            "link": "{{resetLink}}",
+            "style": {
+              "padding": "12px 24px",
+              "borderRadius": "8px",
+              "textAlign": "center",
+              "display": "block",
+              "margin": "20px auto",
+              "fontSize": "14px",
+              "color": "white",
+              "backgroundColor": "#007bff",
+              "border": "none",
+              "fontFamily": "Arial",
+              "textDecoration": "none"
+            }
+          },
+          {
+            "id": "2017",
+            "type": "text",
+            "content": "If you didn’t request this, you can safely ignore this email.",
+            "style": {
+              "color": "#888888",
+              "fontSize": "14px",
+              "textAlign": "center",
+              "marginTop": "20px",
+              "fontFamily": "Arial"
+            }
+          }
+        ],
+        "footer": [
+          {
+            "id": "2018",
+            "type": "text",
+            "content": "Style Casual © 2025 Style Casual, Inc. All Rights Reserved. 4562 Hazy Panda Limits, Chair Crossing, Kentucky, US, 607898",
+            "style": {
+              "color": "#000000",
+              "fontSize": "12px",
+              "fontweigth": "normal",
+              "textAlign": "center",
+              "fontFamily": "Arial"
+            }
+          }
+        ]
+      }
+    },
+
+     {
+      "template3": {
+        "header": [
+          {
+            "id": "3011",
+            "type": "img",
+            "src": "https://www.dckap.com/wp-content/uploads/2023/08/logo-full-color-no-slogan.svg",
+            "alt": "Logo",
+            "style": {
+              "height": "50px",
+              "width": "50px",
+              "margin": "0 auto",
+              "display": "block"
+            }
+          },
+          {
+            "id": "3012",
+            "type": "text",
+            "content": "Style Casual",
+            "style": {
+              "color": "#000000",
+              "fontSize": "18px",
+              "fontweigth": "normal",
+              "textAlign": "center",
+              "fontFamily": "Arial"
+            }
+          }
+        ],
+        "Container": [
+          {
+            "id": "3013",
+            "type": "img",
+            "src": "https://cdn-icons-png.flaticon.com/512/2919/2919600.png",
+            "alt": "OTP Icon",
+            "style": {
+              "height": "100px",
+              "width": "100px",
+              "display": "block",
+              "margin": "0 auto"
+            }
+          },
+          {
+            "id": "3014",
+            "type": "text",
+            "content": "Your OTP Code",
+            "style": {
+              "color": "#000000",
+              "fontSize": "20px",
+              "fontWeight": "bold",
+              "textAlign": "center",
+              "fontFamily": "Arial"
+            }
+          },
+          {
+            "id": "3015",
+            "type": "text",
+            "content": "Use the following one-time password (OTP) to complete your verification process.",
+            "style": {
+              "color": "#555555",
+              "fontSize": "16px",
+              "textAlign": "center",
+              "marginTop": "10px",
+              "fontFamily": "Arial"
+            }
+          },
+          {
+            "id": "3016",
+            "type": "text",
+            "content": "{{otpCode}}",
+            "style": {
+              "color": "#007bff",
+              "fontSize": "32px",
+              "fontWeight": "bold",
+              "textAlign": "center",
+              "margin": "20px 0",
+              "fontFamily": "Courier New, monospace"
+            }
+          },
+          {
+            "id": "3017",
+            "type": "text",
+            "content": "This OTP is valid for only 10 minutes. Do not share it with anyone.",
+            "style": {
+              "color": "#888888",
+              "fontSize": "14px",
+              "textAlign": "center",
+              "fontFamily": "Arial"
+            }
+          }
+        ],
+        "footer": [
+          {
+            "id": "3018",
+            "type": "text",
+            "content": "Style Casual © 2025 Style Casual, Inc. All Rights Reserved. 4562 Hazy Panda Limits, Chair Crossing, Kentucky, US, 607898",
+            "style": {
+              "color": "#000000",
+              "fontSize": "12px",
+              "fontweigth": "normal",
+              "textAlign": "center",
+              "fontFamily": "Arial"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "newtemplate": {
+        "header": [
+          {
+            "id": "1020",
+            "type": "img",
+            "src": "https://www.dckap.com/wp-content/uploads/2023/08/logo-full-color-no-slogan.svg",
+            "alt": "Logo",
+            "style": {
+              "height": "50px",
+              "width": "50px",
+              "margin": "0 auto",
+              "display":"block"
             }
           }
         ]
