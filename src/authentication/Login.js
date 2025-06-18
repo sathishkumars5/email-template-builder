@@ -8,7 +8,6 @@ import './Auth.css';
 import Notification from '../components/common/Notification'; 
 
 const Login = () => {
-  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     email: '',
@@ -17,12 +16,13 @@ const Login = () => {
 
   const [errors, setErrors] = useState({});
   const [showPassword, setShowPassword] = useState(false);
-
   const [notification, setNotification] = useState({
     message: '',
     type: 'success',
     isVisible: false,
   });
+
+   const navigate = useNavigate();
 
   const showNotification = (message, type = 'success') => {
     setNotification({ message, type, isVisible: true });
@@ -31,32 +31,46 @@ const Login = () => {
     }, 3000);
   };
 
-  const handleChange = (e) => {
-    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
-  };
+  const handleChange = (e) =>
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const newErrors = {};
-    if (!formData.email.trim()) newErrors.email = 'Email is required';
-    if (!formData.password.trim()) newErrors.password = 'Password is required';
+    if (!formData.email) newErrors.email = 'Email is required';
+    if (!formData.password) newErrors.password = 'Password is required';
 
     setErrors(newErrors);
     if (Object.keys(newErrors).length > 0) return;
+try {
+  const userCredential = await signInWithEmailAndPassword(
+    auth,
+    formData.email,
+    formData.password
+  );
 
-    try {
-      await signInWithEmailAndPassword(auth, formData.email, formData.password);
-      showNotification('Login successful!', 'success');
-      setTimeout(() => navigate('/homePage'), 1000);
-    } catch (error) {
-      showNotification('Login failed please check your email & password');
-    }
-  };
+  const user = userCredential.user;
+  const uid = user.uid;
+
+  sessionStorage.setItem('uid', uid);
+
+  setTimeout(() => {
+    sessionStorage.clear();
+    navigate('/login');
+  }, 8 * 60 *60* 1000); 
+
+  showNotification('Login successful!', 'success');
+  setTimeout(() => navigate('/homePage'), 1000);
+
+  } 
+  catch (error) {
+    showNotification('Login failed. Please check your email & password.', 'error');
+  }
+}
 
   return (
     <div className="auth-container">
-
       <Notification
         message={notification.message}
         type={notification.type}
@@ -91,7 +105,7 @@ const Login = () => {
             />
             <span
               className="password-toggle"
-              onClick={() => setShowPassword(prev => !prev)}
+              onClick={() => setShowPassword((prev) => !prev)}
             >
               <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />
             </span>
@@ -110,5 +124,3 @@ const Login = () => {
 };
 
 export default Login;
-
-

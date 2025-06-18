@@ -1,4 +1,3 @@
-// src/authentication/AuthContext.js
 import React, { useContext, useEffect, useState, createContext } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './firebase';

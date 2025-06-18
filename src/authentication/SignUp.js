@@ -10,9 +10,8 @@ import './Auth.css';
 
 const SignUp = () => {
   const navigate = useNavigate();
-
+  
   const [formData, setFormData] = useState({
-    fullName: '',
     username: '',
     email: '',
     password: '',
@@ -52,10 +51,9 @@ const SignUp = () => {
   };
 
   const validate = () => {
-    const { fullName, username, email, password, confirmPassword } = formData;
+    const { username, email, password, confirmPassword } = formData;
     const newErrors = {};
 
-    if (!fullName.trim()) newErrors.fullName = 'Full name is required';
     if (!username.trim()) newErrors.username = 'Username is required';
     if (!email.trim()) newErrors.email = 'Email is required';
     else if (!/\S+@\S+\.\S+/.test(email)) newErrors.email = 'Invalid email';
@@ -92,24 +90,33 @@ const SignUp = () => {
         formData.password
       );
 
+      sessionStorage.setItem('uid', userCredential.user.uid);
+      sessionStorage.setItem('loginTime', Date.now().toString());
+
       showNotification('Account created successfully!', 'success');
-      setTimeout(() => navigate('/homePage'), 1000);
 
       await setDoc(doc(db, 'users', userCredential.user.uid), {
-        fullName: formData.fullName,
         username: formData.username,
         email: formData.email,
-        createdAt: new Date(),
       });
 
+      setTimeout(() => navigate('/homePage'), 1000);
+
+      setTimeout(() => {
+        sessionStorage.removeItem('uid');
+        sessionStorage.removeItem('loginTime');
+        navigate('/login');
+      }, 8 * 60 * 60 * 1000); 
+
     } catch (error) {
+      console.error(error);
       showNotification('An error occurred during registration', 'error');
     }
   };
 
   return (
     <div className="auth-wrapper">
-      <Notification
+      <Notification 
         message={notification.message}
         type={notification.type}
         isVisible={notification.isVisible}
@@ -118,17 +125,6 @@ const SignUp = () => {
 
       <form className="auth-card" onSubmit={handleSubmit}>
         <h2 className="auth-title">Create Account</h2>
-
-        <div className="form-group">
-          <input
-            name="fullName"
-            placeholder="Full Name"
-            value={formData.fullName}
-            onChange={handleChange}
-            className={`form-input ${errors.fullName ? 'input-error' : ''}`}
-          />
-          {errors.fullName && <p className="error-message">{errors.fullName}</p>}
-        </div>
 
         <div className="form-group">
           <input
@@ -191,10 +187,7 @@ const SignUp = () => {
               onChange={handleChange}
               className={`form-input ${errors.confirmPassword ? 'input-error' : ''}`}
             />
-            <span
-              className="password-toggle"
-              onClick={() => setShow(prev => ({ ...prev, confirmPassword: !prev.confirmPassword }))}
-            >
+            <span className="password-toggle" onClick={() => setShow(prev => ({ ...prev, confirmPassword: !prev.confirmPassword }))}>
               <FontAwesomeIcon icon={show.confirmPassword ? faEye : faEyeSlash} />
             </span>
           </div>

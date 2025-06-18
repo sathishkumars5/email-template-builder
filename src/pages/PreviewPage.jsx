@@ -9,6 +9,7 @@ import { handleEditorPage } from '../components/common/routeFunction';
 
 
 const PreviewPage = () => {
+   
   const navigate = useNavigate();
   const { template } = useEditorContext();
   const htmlCode = generateFullHtml(template);

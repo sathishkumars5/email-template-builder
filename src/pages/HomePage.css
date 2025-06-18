@@ -1,5 +1,4 @@
-
-* {
+{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -11,12 +10,9 @@ html, body {
   background-color: #fff5f0;
   color: #222;
 }
-
-
 #bodyy {
   display: flex;
 }
-
 
 .home-container {
   overflow: hidden;
@@ -42,7 +38,6 @@ html, body {
     align-items: center;
     gap: 12px;
     width: 100px;
-    /* height: 220px; */
     overflow: hidden;
 }
 
