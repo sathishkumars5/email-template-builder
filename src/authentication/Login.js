@@ -50,7 +50,7 @@ const Login = () => {
       showNotification('Login successful!', 'success');
       setTimeout(() => navigate('/homePage'), 1000);
     } catch (error) {
-      showNotification(error.message || 'Login failed', 'error');
+      showNotification('Login failed please check your email & password');
     }
   };
 
@@ -110,3 +110,5 @@ const Login = () => {
 };
 
 export default Login;
+
+

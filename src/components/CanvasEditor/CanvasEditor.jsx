@@ -3,11 +3,31 @@ import DropZone from './DropZone';
 import useEditorContext from '../../hooks/useEditorContext';
 
 const CanvasEditor = ({ onBlockClick }) => {
-  const { template,setSelected } = useEditorContext();
+  const { template,setSelected,widthState } = useEditorContext();
 
-  useEffect(()=>{
-    console.log(template.header,template.header.length)
-  },[template])
+const getCanvasStyle = () => {
+  if (widthState.mobile) {
+    return {
+      margin:'auto',
+      padding: '1rem',
+      border: '1px dashed gray',
+      width: '425px',
+    };
+  } else if (widthState.desktop) {
+    return {
+      margin:'auto',
+      padding: '1rem',
+      border: '1px dashed gray',
+      width: '1024px',
+    };
+  } else {
+    return {
+      padding: '1rem',
+      border: '1px dashed gray',
+      width: '1024px'
+    };
+  }
+};
 
    const handleCanvasClick = (e) => {
         if (e.target.id==='') {
@@ -30,10 +50,10 @@ const CanvasEditor = ({ onBlockClick }) => {
   return (
     <div
       className="canvas"
-      style={{ padding: '1rem', border: '1px dashed gray' }}
+      style={getCanvasStyle()}
       onClick={handleCanvasClick} 
     >
-       {template.header?.length > 0 && <DropZone section="header" />}
+      {template.header?.length > 0 && <DropZone section="header" />}
       {template.Container?.length > 0 && <DropZone section="Container" />}
       {template.footer?.length > 0 && <DropZone section="footer" />}
       

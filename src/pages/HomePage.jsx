@@ -4,15 +4,10 @@ import { useNavigate } from 'react-router-dom';
 
 import './HomePage.css';
 import { handleEditorPage } from '../components/common/routeFunction';
-import StaticTemplates from './StaticTemplates';
-import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { handleTemplates } from '../components/common/routeFunction';
 
 const HomePage = () => {
   const navigate = useNavigate();
-
-  const [activeButton, setActiveButton] = useState('');
-
 
   return (
     <div className="home-container">
@@ -31,15 +26,12 @@ const HomePage = () => {
 <div id='bodyy'> 
       <div className="left-sidebar">
         <ul className="sidebar-menu">
-         <li
- className='sidebar-button'
-  onClick={() => {
-    setActiveButton('myTemplates');
-    handleEditorPage(navigate);
-  }}
->
-  Recent Activity
-</li>
+          <li>
+            <button className="sidebar-button" onClick={() => handleTemplates(navigate)}>Templates</button>
+          </li>
+          <li>
+            <button className="sidebar-button" onClick={() => handleEditorPage(navigate)}>My Templates</button>
+          </li>
         </ul>
       </div>
      
@@ -48,17 +40,8 @@ const HomePage = () => {
 
 
         <h1>Welcome to Email Builder</h1>
-       <StaticTemplates/> 
-       
       </div>
     </div>
-
-
-      
-
-<div>
- 
-</div>
     </div>
   );
 };

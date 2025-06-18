@@ -14,7 +14,6 @@ const DropZone = ({ section }) => {
   const containerRef = useRef(null);
   const blocks = template[section] || [];
 
-  // Handle delete with keyboard
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Delete' && selected?.id) {
@@ -32,7 +31,6 @@ const DropZone = ({ section }) => {
       const insertIndex = hoverIndex ?? blocks.length;
 
       if (isExistingBlock) {
-        // Moving existing block (same or different section)
         if (item.section === section) {
           if (item.index === insertIndex) return;
 
@@ -54,7 +52,6 @@ const DropZone = ({ section }) => {
           });
         }
       } else {
-        // New block from toolbox
         const newBlock = {
           ...item,
           id: `${item.type}_${Date.now()}`,
@@ -68,9 +65,6 @@ const DropZone = ({ section }) => {
           ...template,
           [section]: newBlocks
         });
-
-        // Optionally select the new block
-        setSelected({ section, id: newBlock.id });
       }
     },
     hover: (item, monitor) => {
@@ -149,15 +143,18 @@ const DraggableBlock = ({
   children
 }) => {
   const ref = useRef(null);
+  const { setSelected } = useEditorContext();
 
   const [{ isDragging }, drag] = useDrag({
     type: ItemType,
-    item: { ...block, index, section },
+    item: () => {
+      setSelected({ section: null, id: null }); 
+      return { ...block, index, section };
+    },
     collect: (monitor) => ({
       isDragging: monitor.isDragging()
     })
   });
-
   drag(ref);
 
   return (

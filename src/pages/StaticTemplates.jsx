@@ -6,15 +6,20 @@ import './StaticTemplates.css';
 import { handleHomepage } from '../components/common/routeFunction';
 import { handleEditorPage } from '../components/common/routeFunction';
 
-
 const structure = typeof rawStructure === 'string' ? JSON.parse(rawStructure) : rawStructure;
 
 const StaticTemplates = () => {
   const navigate = useNavigate();
   const { templates } = structure;
-  const { setTemplate } = useEditorContext();
+  const { setTemplate,setTemplateName } = useEditorContext();
 
+  // const handleHomepage = () => {
+  //   navigate('/homePage');
+  // };
 
+  // const EditorPage = () => {
+  //   navigate('/editor');
+  // };
 
   const renderComponent = (comp) => {
     const style = comp.style || {};
@@ -46,11 +51,8 @@ case 'button':
   return (
 
     <div className="static-container">
-
-
-
-
-      <h3 className="static-heading">Default Templates</h3>
+      <h3 className="static-heading">Static Templates</h3>
+      <button onClick={()=>handleHomepage(navigate)} className="homepage-btn">HomePage</button>
       <div className="template-list-wrapper">
         <div className="template-grid">
           {templates.map((templateObj, index) => {
@@ -62,6 +64,7 @@ case 'button':
                 key={index}
                 className="template-card"
                 onClick={() => {
+                  setTemplateName(templateKey)
                   setTemplate(templatedata);
                   handleEditorPage(navigate);
                 }}         
@@ -81,3 +84,4 @@ case 'button':
 };
 
 export default StaticTemplates;
+

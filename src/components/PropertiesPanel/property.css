@@ -374,3 +374,72 @@ label ,.label-text,.font-style-label{
   width: 3rem;
   text-align: center;
 }
+
+
+.padding-inputs {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+}
+
+.padding-inputs h4 {
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #555;
+}
+
+.padding-input-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.padding-control {
+  display: flex;
+  flex-direction: column;
+}
+
+.padding-control label {
+  font-size: 12px;
+  margin-bottom: 4px;
+  color: #666;
+}
+
+.padding-adjuster {
+  display: flex;
+  align-items: center;
+}
+
+.padding-btn {
+  width: 25px;
+  height: 25px;
+  background: #f0f0f0;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+.padding-btn:hover {
+  background: #e0e0e0;
+}
+
+.padding-btn:active {
+  background: #d0d0d0;
+}
+
+.padding-adjuster .input-style {
+  margin: 0 5px;
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.padding-adjuster .input-style input {
+  text-align: center;
+  padding: 4px;
+}
+
+

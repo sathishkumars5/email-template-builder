@@ -130,4 +130,3 @@ const PropertyBlock = () => {
 };
 
 export default PropertyBlock;
-
