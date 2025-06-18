@@ -1,11 +1,17 @@
 :root {
-  --primary-color: #1e1e1e;
-  --accent-color: #7c3aed;
-  --input-bg: #f9f9fb;
-  --divider-color: #ddd;
-  --icon-color: #2c1d55;
-  --hover-bg: rgba(0, 0, 0, 0.05);
-  --font-family: 'Inter', sans-serif;
+  --primary-color: #d64933;
+  --primary-dark: #b13825;
+  --text-color: #1e1e1e;
+  --bg-color: #ffffff;
+  --footer-bg: #f9f9f9;
+  --light-gray: #f4f4f6;
+  --dark-gray: #666;
+  --border-light: #ddd;
+  --font-main: 'Inter', sans-serif;
+  --radius: 16px;
+  --transition: all 0.3s ease;
+  --glow: 0 0 12px rgba(214, 73, 51, 0.5);
+  --max-width: 1200px;
 }
 
 #headerToolbarDiv {
@@ -98,25 +104,48 @@
 #exportPreviewDiv {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 1rem
 }
 
 /* Export Button */
+.btnStyle,
 .mainBtnStyle {
-  background: var(--accent-color);
-  color: #fff;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: var(--transition);
+  background: transparent;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
   font-weight: 600;
   padding: 8px 18px;
   font-size: 14px;
-  border-radius: 8px;
-  border: none;
-  transition: background 0.2s;
+  transition: background 1s;
 }
-
-.mainBtnStyle:hover {
-  background: #6931d4;
+.undonBtn,.redoBtn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: var(--transition);
+  background: transparent;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  font-weight: 600;
+  padding: 5px 10px;
+  font-size: 14px;
+  transition: background 1s;
 }
-
+.mainBtnStyle:hover,.btnStyle:hover,.view-toggle-button:hover {
+  background: var(--primary-color);
+  color: #fff;
+  box-shadow: var(--glow);
+}
+.namebar{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 /* Divider Lines */
 #undoRedoDiv::before,
 #exportPreviewDiv::before {
@@ -152,9 +181,11 @@
     flex-wrap: wrap;
     width: 100%;
     justify-content: space-between;
+  
+
   }
 
-  .input-style {
+  .betweeninput-style {
     width: 100%;
   }
 
