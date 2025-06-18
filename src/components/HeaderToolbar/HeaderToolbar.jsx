@@ -56,17 +56,21 @@ const HeaderToolbar = () => {
 
  return (
     <div id='headerToolbarDiv' style={{ padding: '5px 30px', background: '#eee', textAlign: 'center' }}>
-      <div id='logoDiv'>
-       <div>
-          <img src='/assets/sliceMailer.png' alt="logo" className='img-logo' />
-      </div>
-      <button className='back-to-editor-btn' onClick={()=>{handleHomepage(navigate);setSelected({ section: null, id: null });}}> <FontAwesomeIcon icon={faArrowLeft} /></button>
-    </div>
-      
+          <div id='logoDiv'>
+          <div>
+              <img src='/assets/sliceMailer.png' alt="logo" className='img-logo' />
+          </div>
+          </div>
+        
+        <div className="namebar">
+            <button className='back-to-editor-btn' onClick={()=>{handleHomepage(navigate);setSelected({ section: null, id: null });}}> <FontAwesomeIcon icon={faArrowLeft} /></button>
+          <input type="text" value={templateName}  onChange={(e)=>setTemplateName(e.target.value)} placeholder='Enter Template name' className='input-style' />
+        
+          </div>
     <div id='undoRedoDiv'>
-      <input type="text" value={templateName}  onChange={(e)=>setTemplateName(e.target.value)} placeholder='Enter Template name' className='input-style' />
-      <button className='btnStyle undonBtn' onClick={() => { undo(); setSelected({ section: null, id: null }); }}><img src='/assets/undo.png' alt="undo" style={{ height: '24px', width: '24px', objectFit: 'contain' }} /></button>
-      <button className='btnStyle redoBtn' onClick={() => { redo(); setSelected({ section: null, id: null }); }}><img src='/assets/redo.png' alt="redo" style={{ height: '24px', width: '24px' }} /></button>
+     
+      <button className='btnStyle undonBtn' onClick={() => { undo(); setSelected({ section: null, id: null }); }}><img src='/assets/undo.png' alt="undo" style={{ height: '24px', width: '24px', objectFit: 'contain' }} />Undo</button>
+      <button className='btnStyle redoBtn' onClick={() => { redo(); setSelected({ section: null, id: null }); }}><img src='/assets/redo.png' alt="redo" style={{ height: '24px', width: '24px' }} />Redo</button>
       {/* <button className='btnStyle' onClick={openPreviewModal}>PREVIEW MODAL</button> */}
       {/* <button className='btnStyle' onClick={testNotifications}>TEST NOTIFICATIONS</button>  */}
     </div>
