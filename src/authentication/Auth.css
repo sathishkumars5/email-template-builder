@@ -5,11 +5,9 @@
 
 .auth-wrapper {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
   background-color: #fff;
 }
+
 
 .auth-card {
   min-width: 35%;
@@ -153,10 +151,25 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 83vh;
   background: #ffffff;
 }
 
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2.5rem;
+  background: var(--bg-color);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.logo-area {
+  width: 170px;
+  height: 50px;
+  background: url('/public/emailtemplatelogo.png') no-repeat center/cover;
+  
+}
 * {
   box-sizing: border-box;
 }
@@ -308,10 +321,4 @@
   text-decoration: none;
 }
 
-.auth-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  background: #ffffff;
-}
+

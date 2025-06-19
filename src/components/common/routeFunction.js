@@ -1,5 +1,5 @@
 export const handleHomepage = (navigate) => {
-  navigate('/homePage');
+  navigate('/dashBoard');
 };
 
 export const handleEditorPage = (navigate) => {
@@ -20,6 +20,9 @@ export const handleLoginPage=(navigate)=>{
 
 export const handleSignUpPage=(navigate)=>{
     navigate('/signup')
+}
+export const handleLandingPage=(navigate)=>{
+    navigate('/')
 }
 
 

@@ -1,16 +1,10 @@
 import React, { useState } from "react";
-
 import { useNavigate } from "react-router-dom";
-
 import "./HomePage.css";
 import { handleEditorPage } from "../components/common/routeFunction";
 import StaticTemplates from "./StaticTemplates";
-import {
-  faFacebook,
-  faTwitter,
-  faInstagram,
-} from "@fortawesome/free-brands-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { handleLandingPage } from '../components/common/routeFunction';
+
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -21,7 +15,7 @@ const HomePage = () => {
     <div className="home-container">
       <div className="homePageNav">
         <div className="nav-left">
-          <img src="/assets/sliceMailer.png" alt="logo" className="logoImage" />
+          <img src="/assets/sliceMailer.png" alt="logo" className="logoImage" onClick={() => handleLandingPage(navigate)} />
         </div>
 
         <div className="nav-right">
