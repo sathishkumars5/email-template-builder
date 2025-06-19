@@ -34,13 +34,16 @@ const HeaderToolbar = () => {
     setWidthState,
   } = useEditorContext();
 
-  const openPreviewModal = () => {
-    const freshHtmlCode = generateFullHtml(template);
-    setHtmlCode(freshHtmlCode);
-    setModalType("preview");
-    setModalTitle("HTML Preview");
-    setPopupOpen(true);
-  };
+  // const openPreviewModal = () => {
+  //   const freshHtmlCode = generateFullHtml(template);
+  //   setHtmlCode(freshHtmlCode);
+  //   setModalType("preview");
+  //   setModalTitle("HTML Preview");
+  //   setPopupOpen(true);
+  // };
+
+  const saved = sessionStorage.getItem('selectedTemplate');
+  let getUserTemplate = JSON.parse(saved);
 
   const handleExport = () => {
     try {
@@ -64,11 +67,11 @@ const HeaderToolbar = () => {
     }
   };
 
-  const testNotifications = () => {
-    showSuccess("This is a success notification!");
-    setTimeout(() => showWarning("This is a warning notification!"), 1000);
-    setTimeout(() => showError("This is an error notification!"), 2000);
-  };
+  // const testNotifications = () => {
+  //   showSuccess("This is a success notification!");
+  //   setTimeout(() => showWarning("This is a warning notification!"), 1000);
+  //   setTimeout(() => showError("This is an error notification!"), 2000);
+  // };
 
   return (
     <div
@@ -95,13 +98,7 @@ const HeaderToolbar = () => {
             {" "}
             <FontAwesomeIcon icon={faArrowLeft} />
           </button>
-          <input
-            type="text"
-            value={templateName}
-            onChange={(e) => setTemplateName(e.target.value)}
-            placeholder="Enter Template name"
-            className="input-style"
-          />
+        <h4>{getUserTemplate.key}</h4>
         </div>
       </div>
 
@@ -188,3 +185,4 @@ const HeaderToolbar = () => {
 };
 
 export default HeaderToolbar;
+  

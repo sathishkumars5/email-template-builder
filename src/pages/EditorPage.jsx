@@ -8,6 +8,7 @@ import PropertiesPanel from '../components/PropertiesPanel/PropertiesPanel';
 import useEditorContext from '../hooks/useEditorContext';
 
 const EditorPage = () => {
+
   const [isPanelVisible, setIsPanelVisible] = useState(false);
   const { selected, setSelected } = useEditorContext(); 
 

@@ -1,11 +1,13 @@
-import React, { useState } from "react";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../components/common/firebase";
-import { Link, useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import "./Auth.css";
-import Notification from "../components/common/Notification";
+import React, { useState } from 'react';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../components/common/firebase';
+import { Link, useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import './Auth.css';
+import Notification from '../components/common/Notification'; 
+import { getDoc, doc } from 'firebase/firestore';
+import { db } from '../components/common/firebase';
 import { handleLandingPage } from "../components/common/routeFunction";
 
 const Login = () => {
@@ -35,40 +37,55 @@ const Login = () => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    const newErrors = {};
-    if (!formData.email) newErrors.email = "Email is required";
-    if (!formData.password) newErrors.password = "Password is required";
+  const newErrors = {};
+  if (!formData.email) newErrors.email = 'Email is required';
+  if (!formData.password) newErrors.password = 'Password is required';
 
-    setErrors(newErrors);
-    if (Object.keys(newErrors).length > 0) return;
-    try {
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        formData.email,
-        formData.password
-      );
+  setErrors(newErrors);
+  if (Object.keys(newErrors).length > 0) return;
 
-      const user = userCredential.user;
-      const uid = user.uid;
+  try {
+    const userCredential = await signInWithEmailAndPassword(
+      auth,
+      formData.email,
+      formData.password
+    );
 
-      sessionStorage.setItem("uid", uid);
+    const user = userCredential.user;
+    const uid = user.uid;
 
-      setTimeout(() => {
-        sessionStorage.clear();
-        navigate("/login");
-      }, 8 * 60 * 60 * 1000);
+    showNotification('Login successful!', 'success');
 
-      showNotification("Login successful!", "success");
-      setTimeout(() => navigate("/dashBoard"), 1000);
-    } catch (error) {
-      showNotification(
-        "Login failed. Please check your email & password.",
-        "error"
-      );
+    setTimeout(() => navigate('/dashBoard'), 1000);
+
+    
+    const userDocRef = doc(db, 'users', uid);
+    const userSnap = await getDoc(userDocRef);
+
+    if (userSnap.exists()) {
+      const userData = userSnap.data();
+      sessionStorage.setItem('name', userData.username); 
     }
-  };
+
+    sessionStorage.setItem('uid', uid);
+    sessionStorage.setItem('loginTime', Date.now().toString());
+
+    
+
+    // Clear session after 8 hours
+    setTimeout(() => {
+      sessionStorage.clear();
+      navigate('/login');
+    }, 8 * 60 * 60 * 1000);
+
+  } catch (error) {
+    console.error(error);
+    showNotification('Login failed. Please check your email & password.', 'error');
+  }
+};
+
 
   return (
     <div>

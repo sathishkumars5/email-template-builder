@@ -52,6 +52,9 @@ body {
   background: url('/public/emailtemplatelogo.png') no-repeat center/cover;
   
 }
+.user-name{
+  margin: auto;
+}
 
 .button-group {
   display: flex;

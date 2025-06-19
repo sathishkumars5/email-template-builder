@@ -77,7 +77,6 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     const validationErrors = validate();
     setErrors(validationErrors);
 
@@ -94,8 +93,9 @@ const SignUp = () => {
         formData.password
       );
 
-      sessionStorage.setItem("uid", userCredential.user.uid);
-      sessionStorage.setItem("loginTime", Date.now().toString());
+      sessionStorage.setItem('uid', userCredential.user.uid);
+      sessionStorage.setItem('loginTime', Date.now().toString());
+      sessionStorage.setItem('name', formData.username); 
 
       showNotification("Account created successfully!", "success");
 
@@ -107,10 +107,12 @@ const SignUp = () => {
       setTimeout(() => navigate("/dashBoard"), 1000);
 
       setTimeout(() => {
-        sessionStorage.removeItem("uid");
-        sessionStorage.removeItem("loginTime");
-        navigate("/login");
+        sessionStorage.removeItem('uid');
+        sessionStorage.removeItem('loginTime');
+        sessionStorage.removeItem('name'); 
+        navigate('/login');
       }, 8 * 60 * 60 * 1000);
+
     } catch (error) {
       console.error(error);
       showNotification("An error occurred during registration", "error");
