@@ -10,7 +10,7 @@
               "textAlign": "center",
               "display": "block",
               "fontSize": "12px",
-              "margin": "0 auto",
+              "margin": "10px auto;",
                "color": "#ffffff",
               "backgroundColor": "#c74a27",
               "border":"none",

@@ -5,17 +5,17 @@ import { useNavigate } from "react-router-dom";
 import "./HomePage.css";
 import { handleEditorPage } from "../components/common/routeFunction";
 import StaticTemplates from "./StaticTemplates";
-import {
-  faFacebook,
-  faTwitter,
-  faInstagram,
-} from "@fortawesome/free-brands-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import {
+//   faFacebook,
+//   faTwitter,
+//   faInstagram,
+// } from "@fortawesome/free-brands-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const HomePage = () => {
   const navigate = useNavigate();
 
-  const [activeButton, setActiveButton] = useState("");
+  // const [activeButton, setActiveButton] = useState("");
 
   return (
     <div className="home-container">
@@ -38,7 +38,7 @@ const HomePage = () => {
         </div>
       </div>
 
-      <div id="bodyy">
+      <div id="homePageBody">
         <div className="left-sidebar">
           <ul className="sidebar-menu">
             <li

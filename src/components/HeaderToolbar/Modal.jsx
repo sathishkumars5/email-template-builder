@@ -58,7 +58,7 @@ function Modal({ isOpen, onClose, content, title = "Modal", type = "default", on
             </div>
             <div className="modal-actions">
               <button onClick={onClose} className='btnStyle'>CLOSE</button>
-              <button onClick={copyToClipboard} className='copy-btn'>COPY</button>
+              <button onClick={copyToClipboard} className='btnStyle copy-btn'>COPY</button>
               {/* {onSave && (
                 <button onClick={handleSave} className='copy-btn'>SAVE</button>
               )} */}
