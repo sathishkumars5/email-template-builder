@@ -158,10 +158,11 @@
   box-shadow: var(--glow);
   border: var(--primary-color);
 }
-.namebar {
+.namebar{
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 5px;
 }
 
 #undoRedoDiv::before,

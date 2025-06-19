@@ -70,7 +70,7 @@ const StaticTemplates = () => {
                     )}
                   </div>
                 </div>
-                <h5 className="template-name">{templateKey[0]}</h5>
+                <h5 className="template-name">{templateKey[0]?.toLowerCase() === 'confirmemail' ? 'Confirm Email' : templateKey[0]?.toLowerCase() === 'resetpassword' ? 'Reset Password' :templateKey[0]?.toLowerCase() === 'otpgenerat' ? 'Generate OTP' :templateKey[0]?.toLowerCase() === 'newtemplate' ? 'New Template' :null}</h5>
               </div>
             );
           })}

@@ -87,7 +87,7 @@ const HeaderToolbar = () => {
             {" "}
             <FontAwesomeIcon icon={faArrowLeft} />
           </button>
-        <h4>{getUserTemplate.key}</h4>
+         <h4 className="template-name" style={{whiteSpace:'pre'}}>{getUserTemplate.key?.toLowerCase() === 'confirmemail' ? 'Confirm Email' : getUserTemplate.key?.toLowerCase() === 'resetpassword' ? 'Reset Password' :getUserTemplate.key?.toLowerCase() === 'otpgenerat' ? 'Generate OTP' :getUserTemplate.key?.toLowerCase() === 'newtemplate' ? 'New Template' :getUserTemplate.key}</h4>
         </div>
       </div>
 
