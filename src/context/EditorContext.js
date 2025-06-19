@@ -6,15 +6,28 @@ const structure = typeof rawStructure === 'string' ? JSON.parse(rawStructure) : 
 export const EditorContext = createContext();
 
 export const EditorProvider = ({ children }) => {
+  let defaultTemplate = {};
+  let getUserTemplate = null;
+
+  try {
+    const saved = sessionStorage.getItem('selectedTemplate');
+    if (saved) {
+      getUserTemplate = JSON.parse(saved);
+      defaultTemplate =
+        structure.templates?.[getUserTemplate.i]?.[getUserTemplate.key] || {};
+    }
+  } catch (error) {
+    console.error('Error parsing selected template from sessionStorage', error);
+  }
+
   const [components, setComponents] = useState(structure.components);
-  const [template, setTemplate] = useState(structure.templates?.[0]?.template1 || {});
+  const [template, setTemplate] = useState(defaultTemplate);
   const [selected, setSelected] = useState({ section: null, id: null });
-  const [templateName,setTemplateName]=useState('')
-  
-  const [widthState,setWidthState]=useState({
-    mobile:false,
-    desktop:false
-  })
+  const [templateName, setTemplateName] = useState('');
+  const [widthState, setWidthState] = useState({
+    mobile: false,
+    desktop: false,
+  });
 
   const [history, setHistory] = useState({
     past: [],
@@ -48,12 +61,9 @@ export const EditorProvider = ({ children }) => {
 
   const undo = () => {
     if (history.past.length === 0) return;
-
     const previous = history.past[history.past.length - 1];
     const newPast = history.past.slice(0, -1);
-
     setTemplate(previous);
-
     setHistory({
       past: newPast,
       present: previous,
@@ -63,12 +73,9 @@ export const EditorProvider = ({ children }) => {
 
   const redo = () => {
     if (history.future.length === 0) return;
-
     const next = history.future[0];
     const newFuture = history.future.slice(1);
-
     setTemplate(next);
-
     setHistory({
       past: [...history.past, history.present],
       present: next,
@@ -81,7 +88,6 @@ export const EditorProvider = ({ children }) => {
       const updatedSection = prev[section]?.map((block) =>
         block.id === id ? { ...block, ...newProps } : block
       ) || [];
-
       return {
         ...prev,
         [section]: updatedSection,
@@ -91,14 +97,11 @@ export const EditorProvider = ({ children }) => {
 
   const deleteBlock = (section, id) => {
     const blockId = String(id);
-
     setTemplate((prev) => {
       if (!prev[section]) return prev;
-
       const updatedSection = prev[section].filter(
         (block) => block && block.id && String(block.id) !== blockId
       );
-
       return {
         ...prev,
         [section]: updatedSection,
@@ -124,7 +127,9 @@ export const EditorProvider = ({ children }) => {
         undo,
         redo,
         setTemplateName,
-        templateName,setWidthState,widthState
+        templateName,
+        setWidthState,
+        widthState,
       }}
     >
       {children}

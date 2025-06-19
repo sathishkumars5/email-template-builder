@@ -1,5 +1,3 @@
-/** @format */
-
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { generateFullHtml } from "./Htmlconvert";
@@ -16,7 +14,7 @@ import {
   faDisplay,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { handleHomepage } from "../common/routeFunction";
+import { handleHomepage, handleLandingPage } from "../common/routeFunction";
 
 const HeaderToolbar = () => {
   const navigate = useNavigate();
@@ -37,13 +35,8 @@ const HeaderToolbar = () => {
     setWidthState,
   } = useEditorContext();
 
-  const openPreviewModal = () => {
-    const freshHtmlCode = generateFullHtml(template);
-    setHtmlCode(freshHtmlCode);
-    setModalType("preview");
-    setModalTitle("HTML Preview");
-    setPopupOpen(true);
-  };
+  const saved = sessionStorage.getItem('selectedTemplate');
+  let getUserTemplate = JSON.parse(saved);
 
   const handleExport = () => {
     try {
@@ -67,11 +60,7 @@ const HeaderToolbar = () => {
     }
   };
 
-  const testNotifications = () => {
-    showSuccess("This is a success notification!");
-    setTimeout(() => showWarning("This is a warning notification!"), 1000);
-    setTimeout(() => showError("This is an error notification!"), 2000);
-  };
+
 
   return (
     <div
@@ -80,24 +69,28 @@ const HeaderToolbar = () => {
     >
       <div id="logoDiv">
         <div>
-          <img src="/assets/sliceMailer.png" alt="logo" className="img-logo" />
+          <img
+            src="/assets/sliceMailer.png"
+            alt="logo"
+            className="img-logo"
+            onClick={() => handleLandingPage(navigate)}
+          />
+        </div>
+        <div className="namebar">
+          <button
+            className="back-to-editor-btn"
+            onClick={() => {
+              handleHomepage(navigate);
+              setSelected({ section: null, id: null });
+            }}
+          >
+            {" "}
+            <FontAwesomeIcon icon={faArrowLeft} />
+          </button>
+        <h4>{getUserTemplate.key}</h4>
         </div>
       </div>
 
-      <div className="namebar">
-        <button
-          className="back-to-editor-btn"
-          onClick={() => {
-            handleHomepage(navigate);
-            setSelected({ section: null, id: null });
-          }}
-        >
-          {" "}
-          <FontAwesomeIcon icon={faArrowLeft} />
-        </button>
-        {/* <input type="text" value={templateName}  onChange={(e)=>setTemplateName(e.target.value)} placeholder='Enter Template name' className='input-style' /> */}
-        <h3 className="input-style">{templateName}</h3>
-      </div>
       <div id="undoRedoDiv">
         <button
           className="btnStyle undonBtn"
@@ -110,7 +103,7 @@ const HeaderToolbar = () => {
             src="/assets/undo.png"
             alt="undo"
             className="undoImgage"
-            // style={{ height: "20px", width: "20px", objectFit: "contain" }}
+          
           />
           Undo
         </button>
@@ -125,12 +118,9 @@ const HeaderToolbar = () => {
             src="/assets/redo.png"
             alt="redo"
             className="redoImgage"
-            // style={{ height: "20px", width: "20px" }}
           />
           Redo
         </button>
-        {/* <button className='btnStyle' onClick={openPreviewModal}>PREVIEW MODAL</button> */}
-        {/* <button className='btnStyle' onClick={testNotifications}>TEST NOTIFICATIONS</button>  */}
       </div>
 
       <div id="exportPreviewDiv">
@@ -203,3 +193,4 @@ const HeaderToolbar = () => {
 };
 
 export default HeaderToolbar;
+  

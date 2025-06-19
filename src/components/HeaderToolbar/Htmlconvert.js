@@ -79,5 +79,3 @@ export const generateFullHtml = (template) => {
       </body>
     </html>`;
 };
-
-// Export functions are used by HeaderToolbar component

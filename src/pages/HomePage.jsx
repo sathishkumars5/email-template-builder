@@ -1,40 +1,42 @@
-import React, { useState } from "react";
-
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 import "./HomePage.css";
-import { handleEditorPage } from "../components/common/routeFunction";
 import StaticTemplates from "./StaticTemplates";
-// import {
-//   faFacebook,
-//   faTwitter,
-//   faInstagram,
-// } from "@fortawesome/free-brands-svg-icons";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { handleLandingPage,handleEditorPage } from '../components/common/routeFunction';
+import { handleLogout } from "../components/common/authHelpers";
 
 const HomePage = () => {
   const navigate = useNavigate();
+  const [username, setUsername] = useState("");
 
-  // const [activeButton, setActiveButton] = useState("");
+  useEffect(() => {
+    const storedName = sessionStorage.getItem("name");
+    if (storedName) {
+      setUsername(storedName);
+    } else {
+      navigate("/login");
+    }
+  }, [navigate]);
 
   return (
     <div className="home-container">
       <div className="homePageNav">
         <div className="nav-left">
-          <img src="/assets/sliceMailer.png" alt="logo" className="logoImage" />
+          <img src="/assets/sliceMailer.png" alt="logo" className="logoImage" onClick={() => handleLandingPage(navigate)} />
         </div>
 
         <div className="nav-right">
-          <h4 className="user-greeting">Hi, User username</h4>
-          <button
-            className="logoutBtn"
-            onClick={() => {
-              sessionStorage.clear();
-              navigate("/login");
-            }}
-          >
-            Log out
-          </button>
+          <h4 className="user-greeting">
+            Hi{username ? `, ${username}` : ""}
+          </h4>
+          
+        <button
+          className="logoutBtn"
+          onClick={() => handleLogout(navigate)}
+        >
+          Log out
+        </button>
+        
         </div>
       </div>
 
@@ -43,9 +45,7 @@ const HomePage = () => {
           <ul className="sidebar-menu">
             <li
               className="sidebar-button"
-              onClick={() => {
-                handleEditorPage(navigate);
-              }}
+              onClick={() => handleEditorPage(navigate)}
             >
               Recent Activity
             </li>
@@ -57,8 +57,6 @@ const HomePage = () => {
           <StaticTemplates />
         </div>
       </div>
-
-      <div></div>
     </div>
   );
 };
