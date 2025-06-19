@@ -9,8 +9,17 @@ import Notification from '../components/common/Notification';
 import { getDoc, doc } from 'firebase/firestore';
 import { db } from '../components/common/firebase';
 import { handleLandingPage } from "../components/common/routeFunction";
+import useHead from '../hooks/useHead';
 
 const Login = () => {
+  // Set meta tags for the login page
+  useHead({
+    title: 'Login - Email Template Builder',
+    description: 'Sign in to your Email Template Builder account to create and manage your email templates.',
+    keywords: 'login, sign in, email template builder, user account',
+    author: 'Email Template Builder Team'
+  });
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",

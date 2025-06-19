@@ -4,10 +4,19 @@ import "./HomePage.css";
 import StaticTemplates from "./StaticTemplates";
 import { handleLandingPage,handleEditorPage } from '../components/common/routeFunction';
 import { handleLogout } from "../components/common/authHelpers";
+import useHead from '../hooks/useHead';
 
 const HomePage = () => {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
+
+  // Set meta tags for the home/dashboard page
+  useHead({
+    title: 'Dashboard - Email Template Builder',
+    description: 'Access your email template dashboard. Manage, create, and edit your email templates from one central location.',
+    keywords: 'dashboard, email templates, template management, email builder dashboard',
+    author: 'Email Template Builder Team'
+  });
 
   useEffect(() => {
     const storedName = sessionStorage.getItem("name");

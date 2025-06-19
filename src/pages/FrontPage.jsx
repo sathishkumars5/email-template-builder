@@ -10,6 +10,7 @@ import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './FrontPage.css';
 import { handleLogout } from "../components/common/authHelpers";
+import useHead from '../hooks/useHead';
 
 const FrontPage = () => {
   const navigate = useNavigate();
@@ -17,6 +18,14 @@ const FrontPage = () => {
   const [loading, setLoading] = useState(true);
 
   const [username, setUsername] = useState("");
+
+  // Set meta tags for the front page
+  useHead({
+    title: 'Email Template Builder - Create Professional Email Templates',
+    description: 'Build stunning, responsive email templates with our intuitive drag-and-drop editor. Perfect for marketing campaigns, newsletters, and professional communications.',
+    keywords: 'email template builder, drag and drop email editor, responsive email design, email marketing tools, newsletter creator',
+    author: 'Email Template Builder Team'
+  });
   
     useEffect(() => {
       const storedName = sessionStorage.getItem("name");

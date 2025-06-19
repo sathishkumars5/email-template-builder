@@ -5,6 +5,7 @@ import useEditorContext from '../hooks/useEditorContext';
 import './StaticTemplates.css'; 
 // import { handleHomepage } from '../components/common/routeFunction';
 import { handleEditorPage } from '../components/common/routeFunction';
+import useHead from '../hooks/useHead';
 
 const structure = typeof rawStructure === 'string' ? JSON.parse(rawStructure) : rawStructure;
 
@@ -13,6 +14,13 @@ const StaticTemplates = () => {
   const { templates } = structure;
   const { setTemplate,setTemplateName } = useEditorContext();
 
+  // Set meta tags for the templates page
+  useHead({
+    title: 'Email Templates - Email Template Builder',
+    description: 'Browse our collection of professional email templates. Choose from various designs for newsletters, marketing campaigns, and business communications.',
+    keywords: 'email templates, template gallery, pre-made templates, email designs, business templates, newsletter templates',
+    author: 'Email Template Builder Team'
+  });
 
   const renderComponent = (comp) => {
     const style = comp.style || {};

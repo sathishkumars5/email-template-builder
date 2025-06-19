@@ -8,9 +8,18 @@ import { Link, useNavigate } from "react-router-dom";
 import Notification from "../components/common/Notification";
 import "./Auth.css";
 import { handleLandingPage } from "../components/common/routeFunction";
+import useHead from '../hooks/useHead';
 
 const SignUp = () => {
   const navigate = useNavigate();
+
+  // Set meta tags for the signup page
+  useHead({
+    title: 'Sign Up - Email Template Builder',
+    description: 'Create your free Email Template Builder account and start designing professional email templates today.',
+    keywords: 'sign up, register, email template builder, create account, free registration',
+    author: 'Email Template Builder Team'
+  });
 
   const [formData, setFormData] = useState({
     username: "",
