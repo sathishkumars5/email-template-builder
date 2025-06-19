@@ -18,7 +18,7 @@ const HeaderToolbar = () => {
   const [htmlCode, setHtmlCode] = useState('');
 
   const { showSuccess, showError, showWarning } = useNotification();
-  const { template, undo, redo,setSelected,templateName,setTemplateName,setWidthState } = useEditorContext(); 
+  const { template, undo, redo,setSelected,templateName,setTemplateName,setWidthState,temp } = useEditorContext(); 
 
   const openPreviewModal = () => {
     const freshHtmlCode = generateFullHtml(template);
@@ -54,6 +54,8 @@ const HeaderToolbar = () => {
     setTimeout(() => showError('This is an error notification!'), 2000)
   }
 
+   const saved = sessionStorage.getItem('selectedTemplate');
+  let getUserTemplate = JSON.parse(saved);
  return (
     <div id='headerToolbarDiv' style={{ padding: '5px 30px', background: '#eee', textAlign: 'center' }}>
           <div id='logoDiv'>
@@ -64,8 +66,8 @@ const HeaderToolbar = () => {
         
         <div className="namebar">
             <button className='back-to-editor-btn' onClick={()=>{handleHomepage(navigate);setSelected({ section: null, id: null });}}> <FontAwesomeIcon icon={faArrowLeft} /></button>
-          <input type="text" value={templateName}  onChange={(e)=>setTemplateName(e.target.value)} placeholder='Enter Template name' className='input-style' />
-        
+          {/* <input type="text" value={templateName}  onChange={(e)=>setTemplateName(e.target.value)} placeholder='Enter Template name' className='input-style' /> */}
+            <h4>{getUserTemplate.key}</h4>
           </div>
     <div id='undoRedoDiv'>
      

@@ -41,7 +41,7 @@ const getCanvasStyle = () => {
 
   if (!template || typeof template !== 'object') {
     return (
-      <div className="canvas" style={{ padding: '1rem', border: '1px dashed gray' }}>
+      <div className="canvas" style={{ padding: '1rem', border: '1px dashed gray', minHeight:'100Vh' }}>
         <p>Drag blocks here</p>
       </div>
     );
