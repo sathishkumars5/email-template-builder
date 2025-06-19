@@ -24,7 +24,7 @@ const App = () => {
             <Route path="/signup" element={<SignUp />} />
             
             <Route
-              path="/homePage"
+              path="/dashBoard"
               element={
                 <PrivateRoute>
                   <HomePage />

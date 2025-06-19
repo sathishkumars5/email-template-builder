@@ -10,7 +10,7 @@
               "textAlign": "center",
               "display": "block",
               "fontSize": "12px",
-              "margin": "0 auto",
+              "margin": "10px auto;",
                "color": "#ffffff",
               "backgroundColor": "#c74a27",
               "border":"none",
@@ -85,20 +85,9 @@
   ],
   "templates": [
     {
-      "template1": {
+      "ConfirmEmail": {
         "header": [
-          {
-            "id": "1003",
-            "type": "img",
-            "src": "https://www.dckap.com/wp-content/uploads/2023/08/logo-full-color-no-slogan.svg",
-            "alt": "Logo",
-            "style": {
-              "height": "50px",
-              "width": "50px",
-              "margin": "0 auto",
-              "display":"block"
-            }
-          },
+        
           {
             "id": "1004",
             "type": "text",
@@ -153,35 +142,6 @@
             }
           },
           {
-            "id": "1008",
-            "type": "text",
-            "content": "If you did not register with us, please disregard this email.",
-            "style": {
-           "color": "#000000",
-              "fontSize": "18px",
-              "fontweigth":"normal",
-              "textAlign": "center",
-              "fontFamily":"Arial"
-            }
-          },
-          {
-            "id": "1009",
-            "type": "button",
-            "content": "CONFIRM YOUR EMAIL",
-            "style": {
-              "padding": "10px 20px",
-              "borderRadius": "8px",
-              "fontSize": "12px",
-              "display": "block",
-             "margin": "0 auto",
-               "color": "#ffffff",
-               "backgroundColor": "#c74a27",
-              "border":"none",
-                "fontFamily":"Arial"
-      
-            }
-          },
-          {
             "id": "1010",
             "type": "text",
             "content": "Once confirmed, this email will be uniquely associated with your account.",
@@ -223,7 +183,7 @@
       }
     },
 {
-      "template2": {
+      "ResetPassword": {
         "header": [
           {
             "id": "2011",
@@ -337,7 +297,7 @@
     },
 
      {
-      "template3": {
+      "OTPGenerat": {
         "header": [
           {
             "id": "3011",
@@ -443,7 +403,7 @@
       }
     },
     {
-      "newtemplate": {
+      "Newtemplate": {
         "header": [
           {
             "id": "1020",

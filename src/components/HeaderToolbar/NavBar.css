@@ -1,3 +1,5 @@
+/** @format */
+
 :root {
   --primary-color: #d64933;
   --primary-dark: #b13825;
@@ -7,7 +9,7 @@
   --light-gray: #f4f4f6;
   --dark-gray: #666;
   --border-light: #ddd;
-  --font-main: 'Inter', sans-serif;
+  --font-main: "Inter", sans-serif;
   --radius: 16px;
   --transition: all 0.3s ease;
   --glow: 0 0 12px rgba(214, 73, 51, 0.5);
@@ -25,20 +27,20 @@
   gap: 18px;
 }
 
-/* Left Side */
 #logoDiv {
   display: flex;
   align-items: center;
+  flex-direction: row;
   width: 100px;
   height: 60px;
   gap: 12px;
 }
-.img-logo{
+.img-logo {
   width: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
-  
+  cursor: pointer;
 }
 
 .back-to-editor-btn {
@@ -49,14 +51,9 @@
   border-radius: 8px;
   cursor: pointer;
   transition: background 0.2s;
-  border:1px solid
+  border: 1px solid;
 }
 
-.back-to-editor-btn:hover {
-  background: var(--hover-bg);
-}
-
-/* Template Name Input */
 .input-style {
   padding: 6px 10px;
   font-size: 15px;
@@ -73,7 +70,6 @@
   background: #fff;
 }
 
-/* Icon Buttons */
 .btnStyle,
 .view-toggle-button {
   background: transparent;
@@ -91,31 +87,38 @@
   background: var(--hover-bg);
 }
 
-/* Icons (Undo, Redo) */
-.undonBtn img,
-.redoBtn img {
-  height: 22px;
-  width: 22px;
-  object-fit: contain;
-}
-
-/* Button Groups */
 #undoRedoDiv,
 #exportPreviewDiv {
   display: flex;
   align-items: center;
-  gap: 1rem
+  gap: 1rem;
 }
-
+#undoRedoDiv{
+  margin-left: 10rem;
+ 
+}
 /* Export Button */
-.btnStyle,
-.mainBtnStyle {
+.btnStyle
+ {
   border-radius: var(--radius);
   cursor: pointer;
   transition: var(--transition);
   background: transparent;
   border: 1px solid var(--primary-color);
   color: var(--primary-color);
+  font-weight: 600;
+  padding: 8px 18px;
+  font-size: 14px;
+  transition: background 1s;
+}
+.mainBtnStyle{
+
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: var(--transition);
+  background: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  color: white;
   font-weight: 600;
   padding: 8px 18px;
   font-size: 14px;
@@ -132,24 +135,38 @@
   border: 1px solid var(--primary-color);
   color: var(--primary-color);
   font-weight: 600;
+  gap: 5px;
   padding: 5px 10px;
   font-size: 14px;
   transition: background 1s;
 }
-.mainBtnStyle:hover,.btnStyle:hover,.view-toggle-button:hover {
+.btnStyle:hover,.view-toggle-button:hover {
   background: var(--primary-color);
-  color: #fff;
+  color: white;
   box-shadow: var(--glow);
 }
-.namebar{
+
+.redoImgage,
+.undoImgage {
+  height: 20px;
+  width: 15px;
+  object-fit: contain;
+}
+.mainBtnStyle:hover{
+   background: var(--transition);
+  color: black;
+  box-shadow: var(--glow);
+  border: var(--primary-color);
+}
+.namebar {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-/* Divider Lines */
+
 #undoRedoDiv::before,
 #exportPreviewDiv::before {
-  content: '';
+  content: "";
   display: block;
   width: 1px;
   height: 28px;
@@ -167,7 +184,6 @@
   background: var(--background);
 }
 
-/* Responsive */
 @media screen and (max-width: 768px) {
   #headerToolbarDiv {
     flex-direction: column;
@@ -181,8 +197,6 @@
     flex-wrap: wrap;
     width: 100%;
     justify-content: space-between;
-  
-
   }
 
   .betweeninput-style {
@@ -196,7 +210,8 @@
 }
 .popup-wrapper {
   position: fixed;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
@@ -243,4 +258,11 @@
 
 .popup-buttons {
   margin-top: 10px;
+}
+
+.active-view {
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 5px;
+  border: none;
 }

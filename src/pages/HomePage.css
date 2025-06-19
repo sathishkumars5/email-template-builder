@@ -1,16 +1,17 @@
-{
+*{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   height: 100%;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: #fff5f0;
   color: #222;
 }
-#bodyy {
+#homePageBody {
   display: flex;
 }
 
@@ -34,16 +35,16 @@ html, body {
 }
 
 .nav-left {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    width: 100px;
-    overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100px;
+  overflow: hidden;
 }
 
 .logoImage {
-
-    width: 100%;
+  width: 100%;
+  cursor: pointer;
 }
 
 .brand-name {
@@ -80,7 +81,6 @@ html, body {
   background-color: #a13b1f;
 }
 
-
 .left-sidebar {
   width: 260px;
   height: 100vh;
@@ -106,17 +106,16 @@ html, body {
 
 .sidebar-menu li :hover {
   margin-bottom: 16px;
-    background-color: #c74a27;
+  background-color: #c74a27;
   color: white;
   transform: translateX(5px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  
 }
 
 .sidebar-button {
   width: 100%;
   padding: 10px 16px;
-  font-size:large;
+  font-size: large;
   color: #333;
   background-color: transparent;
   border: none;
@@ -147,9 +146,8 @@ html, body {
 .main-area h1 {
   font-size: 2rem;
   color: #c74a27;
-  margin-bottom:10px;
+  margin-bottom: 10px;
 }
-
 
 @keyframes fadeIn {
   from {
@@ -162,9 +160,8 @@ html, body {
   }
 }
 
-
 @media (max-width: 768px) {
-  #bodyy {
+  #homePageBody {
     flex-direction: column;
   }
 

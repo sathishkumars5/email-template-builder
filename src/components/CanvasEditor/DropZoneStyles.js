@@ -43,6 +43,8 @@ export const styles = {
     cursor: 'pointer',
     transition: 'all 0.2s ease',
     borderRadius: '4px',
+        display: 'flex',
+    justifyContent: 'center'
   },
 
   blockContainerHover: {

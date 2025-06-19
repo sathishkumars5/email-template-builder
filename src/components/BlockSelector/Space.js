@@ -1,6 +1,4 @@
-
-
- export default  function Space({id,style}) {
+export default  function Space({id,style}) {
    return (
      <div
        id={id}
